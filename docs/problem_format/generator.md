@@ -35,4 +35,19 @@ For the second test case, `generator_args` defaults to `[]`, so the generator wi
 
 The generator should output the test case's input data to `stdout`, and the output data to `stderr`.
 
-If a test case already has an input file **and** output file defined by the `in` and `out` keys, the generator will not be run for that test case.
+It is also possible to mix generators with regular test cases. For example,
+
+```yaml
+generator: gen.cpp
+test_cases:
+- {generator_args: [1], points: 1}
+- {in: 1.in, points: 1}
+- {in: 1.out, out: 2.out, points: 1}
+- {out: 3.out, points: 1}
+```
+
+In the first case, the generator will run with 2 arguments: `"_aux_file"`, `"1"`.
+For the following three test cases, the generator will not be run.
+
+For compatibility with legacy generators, it is possible to specify an input file for generators via `generator_in`,
+however this is not recommended outside of backwards compatibility.
