@@ -1,44 +1,56 @@
-# Status codes
+# Các mã trạng thái chấm bài (Verdicts)
 
-This page lists all status codes encountered on the DMOJ and their description. It should be noted that it is possible for a test case to be given multiple status codes (indeed, this is usually the case for non-AC verdicts), in which case the one with the highest priority will be displayed. This page lists status codes in order of increasing priority.
+Trang này liệt kê tất cả các mã trạng thái (kết quả chấm) bạn có thể gặp trên FPTOJ và ý nghĩa của chúng. 
 
-## AC - Accepted
+Khi một bài nộp có nhiều trạng thái khác nhau trên các test case khác nhau, hệ thống sẽ ưu tiên hiển thị lỗi có thứ tự ưu tiên cao nhất làm kết quả chung cho toàn bộ bài nộp. Dưới đây là danh sách các trạng thái được xếp theo thứ tự ưu tiên tăng dần:
 
-Your program passed testing! In some cases, this may be accompanied with additional feedback from the grader.
+---
 
-## WA - Wrong Answer
+## 1. AC - Accepted (Chấp nhận bài làm)
+Chúc mừng! Chương trình của bạn đã chạy chính xác trên tất cả các test case và trả về kết quả đúng trong giới hạn thời gian và bộ nhớ cho phép.
 
-Your program did not crash while executing, but the output it produced was wrong. As for AC, this may be accompanied with additional feedback stating what you did wrong.
+---
 
-## IR - Invalid Return
+## 2. WA - Wrong Answer (Kết quả sai)
+Chương trình của bạn đã chạy xong mà không bị sập (crash), nhưng kết quả xuất ra (output) không khớp với kết quả mẫu (key) của đề bài.
 
-Your program returned with a nonzero exit code (if you're not using a native language like C++, it crashed). For languages like Python or Java, this will typically be accompanied with the name of the exception your program threw, e.g., `NameError` or `java.lang.NullPointerException`, respectively.
+---
 
-## RTE - Runtime Error
+## 3. IR - Invalid Return (Trả về giá trị không hợp lệ)
+Chương trình kết thúc với mã lỗi khác 0 (exit code != 0).
+- Đối với các ngôn ngữ như C/C++, lỗi này thường xảy ra khi bạn quên `return 0;` trong hàm `main`, hoặc chương trình bị sập.
+- Đối với Python hoặc Java, lỗi này thường đi kèm với tên ngoại lệ (Exception) cụ thể gây sập chương trình như `NameError`, `IndexError`, hoặc `java.lang.NullPointerException`.
 
-Your program caused a runtime error to occur. This will only occur for native languages like C or C++. DMOJ maps many common RTEs to more useful descriptions, described below.
+---
 
-| Feedback | Description |
-|----------|-------------|
-| `segmentation fault`, `bus error` | Your program was killed by `SIGSEGV` or `SIGBUS`. Generally, this means you ran out of memory, but it can also mean that you are accessing arrays out of bounds, in some cases. |
-| `floating point exception` | Your program performed a bad arithmetic operation, such as division by zero. |
-| `killed` | Your program was killed by the runtime for some reason (we don't know). |
-| `{} syscall disallowed` | Unless you are doing something of a dubious nature, you should never see this message. If you do, please [submit an issue](https://github.com/DMOJ/judge-server/issues) so we can get it sorted out. It is raised when your program attempts to use a disallowed system call. |
-| `std::bad_alloc` | `new` failed to allocate enough memory. |
-| `failed initializing` | Your program uses too much data defined in global scope for it to fit inside the memory constraints at startup. A typical example is code like `int arr[10000][10000]` on a problem with a 64mb memory limit — the aforementioned array will take 381mb, far above the allowed limit. |
+## 4. RTE - Runtime Error (Lỗi thời gian chạy)
+Chương trình của bạn bị dừng đột ngột hoặc vi phạm các quy tắc an toàn hệ thống (chủ yếu xảy ra với các ngôn ngữ biên dịch như C/C++). FPTOJ phân tích chi tiết lỗi thời gian chạy thành các mô tả sau:
 
-## OLE - Output Limit Exceeded
+| Thông báo hiển thị | Ý nghĩa chi tiết |
+| :--- | :--- |
+| `segmentation fault`, `bus error` | Chương trình truy cập vào vùng nhớ không được phép (ví dụ: chỉ số mảng vượt quá giới hạn, sử dụng con trỏ NULL) hoặc bị hệ thống tắt do tràn bộ nhớ. |
+| `floating point exception` | Chương trình thực hiện phép toán không hợp lệ, phổ biến nhất là **chia cho số 0**. |
+| `killed` | Chương trình bị tắt bởi hệ thống giám sát thời gian chạy (chưa rõ nguyên nhân). |
+| `{} syscall disallowed` | Lỗi vi phạm bảo mật hệ thống. Chương trình của bạn đã cố gắng gọi một hàm hệ thống (system call) bị cấm (ví dụ: cố gắng mở file trên ổ đĩa, chạy lệnh hệ thống shell, hoặc kết nối mạng). |
+| `std::bad_alloc` | Chương trình sử dụng lệnh `new` để cấp phát động nhưng bộ nhớ RAM còn lại không đủ đáp ứng. |
+| `failed initializing` | Chương trình khai báo các biến hoặc mảng tĩnh toàn cục có kích thước quá lớn vượt quá giới hạn bộ nhớ của bài tập ngay từ khi khởi động (Ví dụ: khai báo `int a[10000][10000]` chiếm tới 381MB bộ nhớ trong khi giới hạn của bài chỉ là 64MB). |
 
-Your program outputted too much data to `stdout`, typically over 256mb (though some problems may have custom — generally larger — constraints).
+---
 
-## MLE - Memory Limit Exceeded
+## 5. OLE - Output Limit Exceeded (Xuất quá nhiều dữ liệu)
+Chương trình ghi quá nhiều dữ liệu ra màn hình (`stdout`), thông thường giới hạn tối đa là 256MB để ngăn chặn các chương trình bị lặp vô hạn ghi file làm đầy ổ cứng của Server.
 
-Your program ran out of memory. Sometimes, this might manifest itself as an RTE with `segmentation fault` or `std::bad_alloc`.
+---
 
-## TLE - Time Limit Exceeded
+## 6. MLE - Memory Limit Exceeded (Quá giới hạn bộ nhớ)
+Chương trình của bạn sử dụng lượng bộ nhớ RAM vượt quá giới hạn cho phép của bài tập. Lỗi này cũng có thể gián tiếp kích hoạt lỗi RTE `segmentation fault` hoặc `std::bad_alloc`.
 
-Your program took too long to execute.
+---
 
-## IE - Internal Error
+## 7. TLE - Time Limit Exceeded (Quá giới hạn thời gian)
+Chương trình chạy lâu hơn thời gian tối đa cho phép của bài tập (ví dụ: bị lặp vô hạn hoặc thuật toán có độ phức tạp quá lớn).
 
-If you see this, it means either the judge encountered an error or the problemsetter's configuration is incorrect.
+---
+
+## 8. IE - Internal Error (Lỗi hệ thống)
+Mã lỗi này xảy ra khi máy chấm gặp lỗi nội bộ hoặc cấu hình bộ test case của bài tập bị sai (ví dụ: thiếu file test đầu ra `.ans` / `.out`). Nếu gặp lỗi này, giáo viên hoặc quản trị viên hệ thống cần kiểm tra lại cấu hình bài tập.

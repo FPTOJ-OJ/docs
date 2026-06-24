@@ -1,50 +1,74 @@
-# User data downloads
+# Tải xuống dữ liệu người dùng (GDPR Compliance)
 
-The DMOJ allows users to download their data. At the time of writing, only user comments and submission data can be downloaded.
+FPTOJ cung cấp tính năng cho phép người dùng tải xuống toàn bộ dữ liệu cá nhân của họ (bao gồm lịch sử bình luận, mã nguồn các bài nộp cũ) để tuân thủ quyền riêng tư dữ liệu.
 
-By default, this feature is disabled. To enable, uncomment the relevant settings in `local_settings.py`.
+Mặc định tính năng này bị tắt. Để kích hoạt, bạn thực hiện cấu hình theo các bước sau:
+
+---
+
+## 1. Cấu hình local_settings.py
+
+Mở file `dmoj/local_settings.py` và cấu hình các thông số sau:
 
 ```python
-## Data download settings.
-# Uncomment to allow users to download their data.
+import datetime
+
+# Kích hoạt tính năng tải dữ liệu
 DMOJ_USER_DATA_DOWNLOAD = True
 
-# Directory to cache user data downloads.
-# It is the administrator's responsibility to clean up old files.
-DMOJ_USER_DATA_CACHE = '/home/dmoj-uwsgi/datacache'
+# Thư mục lưu trữ tạm thời các file zip dữ liệu tải về
+# (Quản trị viên cần tự cấu hình dọn dẹp các file cũ)
+DMOJ_USER_DATA_CACHE = '/home/<username>/site/userdata/datacache'
 
-# Path to use for nginx's X-Accel-Redirect feature.
-# Should be an internal location mapped to the above directory.
+# Đường dẫn nội bộ cho tính năng X-Accel-Redirect của Nginx
 DMOJ_USER_DATA_INTERNAL = '/datacache'
 
-# How often a user can download their data.
+# Giới hạn tần suất tải dữ liệu của mỗi người dùng (ví dụ: tối đa 1 lần/ngày)
 DMOJ_USER_DATA_DOWNLOAD_RATELIMIT = datetime.timedelta(days=1)
 ```
 
-Also, uncomment the relevant section in your Nginx configuration if you wish to take
-advantage of Nginx's [X-Accel-Redirect](https://www.nginx.com/resources/wiki/start/topics/examples/x-accel/#x-accel-redirect)
-feature.
+Tạo thư mục đệm và phân quyền:
+```bash
+mkdir -p /home/<username>/site/userdata/datacache
+chmod -R 775 /home/<username>/site/userdata/datacache
+```
+
+---
+
+## 2. Cấu hình Nginx để phục vụ file nhanh hơn
+
+Để Nginx trực tiếp gửi file nén cho người dùng (thay vì chạy qua Django uWSGI chậm chạp), thêm cấu hình sau vào block `server` trong cấu hình Nginx của bạn:
 
 ```nginx
-# Uncomment if you are allowing user data downloads and want to serve it faster.
-# This location name should be set to DMOJ_USER_DATA_INTERNAL.
+# Cấu hình cache phục vụ tải dữ liệu người dùng
 location /datacache {
     internal;
-    root <path to data cache directory, without the final /datacache>;
-    # Default from local_settings.py:
-    #root /home/dmoj-uwsgi/;
+    # Trỏ đến thư mục cha của thư mục datacache (không ghi /datacache ở cuối)
+    root /home/<username>/site/userdata;
 }
 ```
 
-These data files are not cleaned up automatically. Although each user can have at most one data file
-stored on the server at a time, you may want to clean up old files. A cron job should suffice:
-
+Kiểm tra và tải lại Nginx:
+```bash
+sudo nginx -t
+sudo systemctl reload nginx
 ```
-0 */4 * * * find /home/dmoj-uwsgi/datacache/ -type f -mtime 2 -delete
+
+---
+
+## 3. Cấu hình tự động dọn dẹp dữ liệu cũ (Cron job)
+
+Hệ thống không tự động xóa các file dữ liệu đã nén sau khi người dùng tải xong. Hãy thiết lập một tác vụ tự động (Cron job) để dọn dẹp các file cũ hơn 2 ngày:
+
+```bash
+# Mở bảng cấu hình cron job
+crontab -e
 ```
 
-This cron job will delete files older than 2 days every 4 hours. You are recommended to tweak these
-values according to your ratelimit.
+Thêm dòng sau vào cuối file cấu hình:
+```cron
+0 */4 * * * find /home/<username>/site/userdata/datacache/ -type f -mtime 2 -delete
+```
+*(Tác vụ này sẽ quét thư mục cache mỗi 4 giờ một lần và xóa các file có tuổi thọ trên 2 ngày).*
 
-You should now find a link on your _Edit profile_ that allows you to download your data,
-along with various configuration options.
+Sau khi hoàn tất cài đặt, người dùng sẽ thấy nút **"Tải dữ liệu của tôi"** xuất hiện trong phần **Chỉnh sửa hồ sơ** cá nhân trên trang web.

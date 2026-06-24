@@ -1,65 +1,52 @@
-# Contest formats
+# Các loại Thể lệ Kỳ thi (Contest Formats)
 
-The DMOJ ships with 6 contest formats by default: Default, IOI, Codechef IOI Ranklist (henceforth shortened to simply Legacy IOI), ECOO, AtCoder, and ICPC.
+FPTOJ hỗ trợ nhiều thể lệ tính điểm thi đấu khác nhau, phù hợp cho các kỳ thi tin học phổ biến trong nước và quốc tế.
 
-## Default
+---
 
-The `Default` contest format is what all contests ran on pre-April 23, 2019.
+## 1. Thể lệ Themis (Độc quyền FPTOJ)
+- **Mô tả**: Được thiết kế riêng để giả lập hoàn toàn các kỳ thi chấm bằng công cụ **Themis** ngoại tuyến tại Việt Nam.
+- **Tính điểm**: Hỗ trợ nộp bài thi bằng file ZIP chứa nhiều bài làm của học sinh. Có các tùy chọn khống chế chỉ cho phép nộp 1 lần duy nhất, tự động đăng ký dự thi, tài khoản dự phòng khi upload và chế độ thi thật ẩn điểm số.
+- **Chi tiết cấu hình**: Xem thêm tại [Tài liệu Kỳ thi Themis](site/themis_contest.md).
 
-The score is the sum of the highest-scoring submission on each problem, and ties are broken by adding the time of the last submission to each problem with a non-zero maximum score.
+---
 
-Note that *any* submission will increase time penalty, not just score-changing submissions.
+## 2. Thể lệ Mặc định (Default)
+- **Tính điểm**: Tổng điểm của thí sinh bằng tổng điểm lớn nhất đạt được của mỗi bài tập.
+- **Phân định hòa (Tiebreak)**: Nếu bằng điểm, hệ thống tính tổng thời gian nộp bài của các bài có điểm lớn hơn 0.
+- **Lưu ý**: *Mọi* lượt nộp bài (kể cả nộp sai hay nộp không thay đổi điểm) đều cộng thêm thời gian phạt (penalty time).
 
-There are no additional options that can be configured for this contest format.
+---
 
-## IOI
+## 3. Thể lệ IOI (Olympic Tin học Quốc tế)
+- **Tính điểm**: Tổng điểm là tổng điểm các bài tập. Với mỗi bài tập, điểm số được tính bằng tổng điểm lớn nhất của từng **Subtask (Bài tập con)** đạt được qua toàn bộ các lần nộp.
+- **Ví dụ**: Bài tập có 2 Subtask. Lần nộp 1 đạt Subtask 1 (30đ), trượt Subtask 2 (10đ). Lần nộp 2 trượt Subtask 1 (0đ), đạt Subtask 2 (40đ). Điểm chung cuộc bài đó là 30 + 40 = 70 điểm.
+- **Phân định hòa**: Mặc định thể lệ IOI không phân định hòa. Tuy nhiên, nếu cấu hình JSON `cumtime` là `true`, hệ thống sẽ tính tổng thời gian của lượt nộp đầu tiên vượt qua mỗi Subtask để phân định khi bằng điểm.
 
-The `IOI` contest format emulates the scoring used by IOI.
+---
 
-The score is equal to the sum of the final score on each problem, where the final score for a problem is the maximum score for each subtask across all submissions, and by default, ties are not broken.
-For example, consider a contestant that makes two submissions on a task with two subtasks. The first gets 30 points on the first subtask and 10 points on the second subtask. The second gets 0 points on the first subtask and 40 points on the second subtask. The final score for this problem will be 70.
+## 4. Thể lệ Legacy IOI (IOI kiểu cũ)
+- **Tính điểm**: Điểm của bài là điểm cao nhất trong số các lần nộp của bài đó.
+- **Phân định hòa**: Mặc định không phân định hòa. Nếu cấu hình `cumtime` là `true`, hệ thống tính tổng thời gian của lần nộp gần nhất làm thay đổi điểm số.
 
-The `cumtime` option can be set to `true` within the JSON configuration. This will break ties by summing the submission times of the first submissions that pass each subtask.
+---
 
-## Legacy IOI
+## 5. Thể lệ ICPC (Kỳ thi Lập trình Sinh viên Quốc tế)
+- **Tính điểm**: Xếp hạng dựa trên **số lượng bài làm đúng (AC)** nhiều nhất.
+- **Phân định hòa**: Bằng số bài thì tính tổng thời gian phạt (penalty). Thời gian phạt của một bài bằng thời gian từ lúc bắt đầu contest đến lúc nộp AC bài đó, cộng thêm 20 phút phạt cho mỗi lần nộp sai trước đó.
+- **Cấu hình**: Có thể thay đổi số phút phạt thông qua trường `penalty` trong cấu hình JSON (mặc định là 20).
 
-The `Legacy IOI` contest format emulates the scoring used by Codechef's IOI Ranklist.
+---
 
-The score is equal to the sum of the highest-scoring submission on each problem, and by default, ties are not broken.
+## 6. Thể lệ AtCoder
+- **Tính điểm**: Tổng điểm của các bài nộp đạt điểm cao nhất.
+- **Phân định hòa**: Tính thời gian nộp bài cuối cùng có điểm cao nhất cộng thêm thời gian phạt cho các lần nộp sai trước đó (mỗi lần phạt 5 phút).
+- **Cấu hình**: Thay đổi thời gian phạt qua trường `penalty` trong cấu hình JSON (mặc định là 5 phút).
 
-The `cumtime` option can be set to `true` within the JSON configuration. This will break ties by summing the submission times of the most recent total score-changing submissions.
+---
 
-## ECOO
-
-The `ECOO` contest format is based on the scoring system used by the ECOO contest.
-
-The score is equal to the sum of scores of the last submission to each problem.
-By default, ties are not broken, however, setting `cumtime` to `true` will sum the times of the last submission to each problem, and use that for tiebreaking.
-
-The `first_ac_bonus` field, as suggested by the name, will add the specified number of points to a problem's score if it is solved on the first attempt, excluding compile errors and internal errors.
-This field defaults to 10.
-
-The `time_bonus` field awards a bonus for solving problems faster.
-The field is in minutes, and for each such interval of time before the contest ends, any submission with a non-zero score will have a bonus point added. This field defaults to 5.
-Note that specifying 0 will disable this bonus.
-
-For example, say a submission with a score of 50/100 is submitted 23 minutes before the contest ends. <math><mo>&lfloor;</mo><mfrac><mn>23</mn><mn>5</mn></mfrac><mo>&rfloor;</mo><mo>=</mo><mn>4</mn></math>, so 4 bonus points are awarded, giving a total score of <math><mn>50</mn><mo>+</mo><mn>4</mn><mo>=</mo><mn>54</mn></math> for that problem.
-
-## AtCoder
-
-The `AtCoder` contest format is based on the contest format used by AtCoder.
-
-The score is equal to the sum of the highest-scoring submission on each problem, and ties are broken based on the time of the last score-changing submission plus the penalty.
-
-The penalty is specified by the `penalty` field, and defaults to 5 minutes.
-The penalty is equal to the total number of incorrect submissions prior to the highest-scoring submission on each solved problem, multiplied by the specified value, in minutes, and is added to the cumulative time.
-
-## ICPC
-
-The `ICPC` contest format is based on the contest format used by the ICPC.
-
-The score is equal to the number of problems solved, and ties are broken firstly based on the sum of the elapsed time that a correct submission was submitted to each problem plus the penalty, and secondly based on the time of the last score-changing submission.
-
-The penalty is specified by the `penalty` field, and defaults to 20 minutes.
-The penalty is equal to the number of incorrect submissions prior to the first correct submission, multiplied by the specified value, in minutes, and is added to the cumulative time.
-Note that the time penalty is applied to all problems with a non-zero score (this format will not automatically disable partial points).
+## 7. Thể lệ ECOO
+- **Tính điểm**: Điểm số bằng điểm của lần nộp bài **cuối cùng** cho mỗi bài tập.
+- **Cấu hình đặc biệt**:
+  - `first_ac_bonus`: Điểm thưởng nếu giải đúng bài ngay từ lần nộp đầu tiên (mặc định 10 điểm).
+  - `time_bonus`: Điểm thưởng khi nộp bài sớm trước khi kết thúc contest.

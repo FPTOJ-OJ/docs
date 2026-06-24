@@ -1,53 +1,43 @@
-# Generators
+# Trình sinh bộ Test tự động (Generators)
 
-When there is a large amount of test data, a generator file can be used instead of input and output files.
-A generator is a program that takes command line arguments for each case, and outputs the input and output data for each case.
+Khi bài tập có dữ liệu test rất lớn (ví dụ: test case lên tới vài chục MB), việc tải lên file nén ZIP chứa các file văn bản phẳng sẽ rất chậm và tốn tài nguyên đĩa cứng. 
 
-## The `generator` node
+FPTOJ hỗ trợ tính năng **Generator (Trình sinh test)**. Thay vì tải lên các file test tĩnh, giáo viên chỉ cần tải lên một file mã nguồn sinh test (ví dụ: viết bằng C++ sử dụng thư viện `testlib.h`). Trình chấm sẽ tự động biên dịch và chạy file này với các tham số khác nhau để sinh ra dữ liệu test case ngay tại thời điểm chấm bài.
 
-The `generator` node can contain either:
+---
 
-- a single value, the name of the generator file.
-- an array, in which case the first element is the source file (in either C or C++), and the remaining elements are auxiliary files, such as header files.
-- a YAML associative array that can contain the following keys:
-  - `source`: either a single string: the name of generator file, or an array, in which case the first file is the generator source, and the remaining files are auxiliary files (e.g. header files).
-  - `language`: the language the generator is written in. If empty, the judge tries to infer the language from `source`.
-  - `flags`: additional flags to pass to the compiler. It defaults to `[]`.
-  - `compiler_time_limit`: the compiler time limit for the generator. It defaults to `env.compiler_time_limit`, as defined in `dmoj/judgeenv.py`. It is recommended to set this value to 60 seconds if using `testlib.h`.
-  - `time_limit`: the time limit allocated to the generator. It defaults to `env.time_limit`, as defined in `dmoj/judgeenv.py`.
-  - `memory_limit`: the memory limit allocated to the generator. It defaults to `env.memory_limit`, as defined in `dmoj/judgeenv.py`.
+## 1. Cấu hình `generator` trong init.yml
 
-Additionally, it is possible to specify this node in each test case, so several generators can be used for a single problem.
+Khóa `generator` trong file `init.yml` có thể nhận các giá trị:
 
-## Generator arguments
+- **Tên file nguồn**: Ví dụ `gen.cpp`.
+- **Mảng các file**: Nếu file sinh test cần thêm file header phụ trợ (ví dụ: `[gen.cpp, testlib.h]`).
+- **Khối cấu hình chi tiết (YAML Map)**:
+  - `source`: Tên file nguồn sinh test (hoặc mảng các file).
+  - `language`: Ngôn ngữ lập trình của file sinh test (nếu trống, hệ thống tự nhận dạng qua đuôi file).
+  - `compiler_time_limit`: Giới hạn thời gian biên dịch file sinh test (nên đặt là 60 giây nếu sử dụng `testlib.h`).
+  - `time_limit`: Giới hạn thời gian chạy của trình sinh test để sinh ra 1 test case.
+  - `memory_limit`: Giới hạn bộ nhớ RAM cấp cho trình sinh test.
 
-The `generator_args` node contains a list of arguments that will be cast to a Python `str`, then passed to the compiled generator. `generator_args` can be specified as a top-level node, or more commonly, as a key in a test case node. For example, consider:
+---
 
-```yaml
-generator: gen.cpp
-test_cases:
-- {generator_args: [false, 123, "a b\nc"], points: 10}
-- {points: 20}
-```
+## 2. Tham số sinh test (generator_args)
 
-For the first test case, the generator will receive 4 arguments: `"_aux_file"`, `"False"`, `"123"`, `"a b\nc"`.
-For the second test case, `generator_args` defaults to `[]`, so the generator will receive 1 argument: `"_aux_file"`.
+Trình sinh test nhận các tham số dòng lệnh (`arguments`) để sinh ra các test case khác nhau (ví dụ: sinh test nhỏ, sinh test lớn, sinh test ngẫu nhiên).
 
-The generator should output the test case's input data to `stdout`, and the output data to `stderr`.
-
-It is also possible to mix generators with regular test cases. For example,
+Cấu hình tham số được khai báo trong trường `generator_args` của mỗi test case:
 
 ```yaml
-generator: gen.cpp
+generator: [gen.cpp, testlib.h]
 test_cases:
-- {generator_args: [1], points: 1}
-- {in: 1.in, points: 1}
-- {in: 1.out, out: 2.out, points: 1}
-- {out: 3.out, points: 1}
+- {generator_args: [1, 100], points: 10}   # Sinh test 1: n=100
+- {generator_args: [2, 10000], points: 20} # Sinh test 2: n=10000
+- {generator_args: [3, 100000], points: 70} # Sinh test 3: n=100000 (test lớn)
 ```
 
-In the first case, the generator will run with 2 arguments: `"_aux_file"`, `"1"`.
-For the following three test cases, the generator will not be run.
-
-For compatibility with legacy generators, it is possible to specify an input file for generators via `generator_in`,
-however this is not recommended outside of backwards compatibility.
+### Nguyên lý hoạt động:
+1. Máy chấm sẽ biên dịch `gen.cpp` thành file thực thi.
+2. Với test case 1, máy chấm gọi chạy: `./gen 1 100`.
+3. Trình sinh test phải ghi dữ liệu **đầu vào (Input)** ra luồng xuất chuẩn `stdout`.
+4. Trình sinh test phải ghi dữ liệu **đầu ra mẫu (Output/Answer)** ra luồng lỗi tiêu chuẩn `stderr`.
+5. Máy chấm thu thập `stdout` làm file đầu vào và `stderr` làm đáp án mẫu để đối chiếu với bài làm của học sinh.

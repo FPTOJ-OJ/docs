@@ -1,37 +1,63 @@
-# Updating the site
+# Cập nhật hệ thống FPTOJ
 
-The DMOJ is under active development, so occasionally you may wish to update. This is a fairly simple process.
+FPTOJ được phát triển và cập nhật liên tục các tính năng mới cũng như sửa các lỗi bảo mật. Quá trình cập nhật hệ thống rất đơn giản và an toàn nếu bạn làm theo các bước sau.
 
-!>  The DMOJ development team makes no commitment to backwards compatibility. An update migration
-    might add, change, or delete data from your install. Always back up before attempting an update. <br> <br>
-    If in doubt, feel free to [contact us on Discord](https://dmoj.ca/about/discord/).
+> [!IMPORTANT]  
+> Các bản cập nhật lớn có thể thay đổi cấu trúc cơ sở dữ liệu. **Hãy luôn sao lưu (backup) cơ sở dữ liệu MariaDB trước khi thực hiện cập nhật.**
 
-First, switch to the site virtual environment, and pull the latest changes.
+---
 
-```shell-session
-(dmojsite) $ git pull origin master
+## Các bước cập nhật hệ thống
+
+Thực hiện các lệnh sau dưới tài khoản quản trị viên và kích hoạt môi trường ảo `dmojsite`:
+
+```bash
+# Truy cập thư mục code và kích hoạt môi trường ảo
+cd <thư mục_fptoj_site>
+source dmojsite/bin/activate
+
+# Tải mã nguồn mới nhất từ kho lưu trữ FPTOJ
+# Thay bằng git URL của FPTOJ nếu bạn có cấu hình riêng
+git pull origin master
 ```
 
-Dependencies may have changed since the last time you updated, so install any missing ones now.
+### 1. Cập nhật các thư viện Python
+Có thể bản cập nhật mới yêu cầu thêm một số thư viện Python, chạy lệnh sau để bổ sung:
 
-```shell-session
-(dmojsite) $ pip3 install -r requirements.txt
+```bash
+(dmojsite) pip install -r requirements.txt
 ```
 
-The database schema might also have changed, so update it.
+### 2. Cập nhật Cơ sở dữ liệu (Database Migrations)
+Cập nhật cấu trúc bảng dữ liệu để tương thích với mã nguồn mới:
 
-```shell-session
-(dmojsite) $ python3 manage.py migrate
-(dmojsite) $ python3 manage.py check
+```bash
+(dmojsite) python3 manage.py migrate
+(dmojsite) python3 manage.py check
 ```
 
-Finally, update any static files that may have changed.
+### 3. Biên dịch lại giao diện và file tĩnh (Static Files)
+Biên dịch lại mã CSS/JS và nén các file tĩnh:
 
-```shell-session
-(dmojsite) $ ./make_style.sh
-(dmojsite) $ python3 manage.py collectstatic
-(dmojsite) $ python3 manage.py compilemessages
-(dmojsite) $ python3 manage.py compilejsi18n
+```bash
+# Biên dịch giao diện CSS (Sass)
+(dmojsite) ./make_style.sh
+
+# Thu thập file tĩnh mới
+(dmojsite) python3 manage.py collectstatic --no-input
+
+# Biên dịch lại các file ngôn ngữ và JS đa ngôn ngữ
+(dmojsite) python3 manage.py compilemessages
+(dmojsite) python3 manage.py compilejsi18n
 ```
 
-That's it! You may wish to condense the above steps into a script you can run at a later time.
+### 4. Khởi động lại dịch vụ
+Khởi động lại các tiến trình thông qua Supervisor để áp dụng mã nguồn mới:
+
+```bash
+sudo supervisorctl restart site
+sudo supervisorctl restart bridged
+sudo supervisorctl restart celery
+```
+
+Hoàn thành! Bạn đã cập nhật FPTOJ lên phiên bản mới nhất thành công.

@@ -1,44 +1,80 @@
-# SSL proxying for user content
+# SSL Proxy cho Nội dung Người dùng (Github Camo)
 
-User-generated content (e.g., comments) poses a threat to site security, and can cause mixed-content warnings. If your site is served over HTTPS, this may be suboptimal - routing user content through a secure server can help.
+Nội dung do người dùng tự tải lên (ví dụ: liên kết ảnh trong bình luận) có thể gây ra cảnh báo bảo mật "Mixed Content" (nội dung hỗn hợp) nếu trang web của bạn chạy HTTPS nhưng ảnh của người dùng lại trỏ tới một liên kết HTTP không bảo mật.
 
-The DMOJ site provides support for this through the [Github Camo](https://github.com/atmos/camo) project, which requires CoffeeScript to be installed (`apt install coffeescript`).
+Để khắc phục điều này, FPTOJ hỗ trợ định tuyến và proxy lại toàn bộ hình ảnh của người dùng thông qua dự án **[Github Camo](https://github.com/atmos/camo)** chạy bằng Node.js / CoffeeScript.
 
-!>  Setting up Camo on the same server as your site can leave you open to attacks, even if you are set up behind Cloudflare: a
-    malicious user can link an image to their domain, have Camo access it, and then view their server logs to see the requesting
-    IP (allowing them to attack you behind e.g. Cloudflare). <br> <br>
-    If this is important in your scenario, consider running Camo on a separate server.
+> [!WARNING]  
+> Việc cài đặt Camo trên cùng một máy chủ vật lý với Site chính có thể làm lộ địa chỉ IP thật của máy chủ (nếu bạn sử dụng dịch vụ ẩn IP như Cloudflare). Đối với các hệ thống lớn, hãy cân nhắc chạy Camo trên một VPS/Server riêng biệt.
 
-## Installing Camo to `/code`
+---
 
-```shell-session
-$ cd /code
-$ git clone https://github.com/atmos/camo.git camo
+## 1. Cài đặt Camo
+
+Cài đặt NodeJS/CoffeeScript và tải mã nguồn Camo về máy chủ:
+
+```bash
+sudo apt install -y coffeescript
+git clone https://github.com/atmos/camo.git /home/<username>/camo
+cd /home/<username>/camo
+npm install
 ```
 
-Now, Camo may be started by running `/code/camo/server.coffee`.
+Kiểm tra khởi chạy Camo bằng lệnh:
 
-```shell-session
-$ PORT="<port>" CAMO_KEY="<key>" coffee /code/camo/server.coffee
+```bash
+PORT="8081" CAMO_KEY="your_camo_secret_key" coffee server.coffee
+```
+- **PORT**: Cổng dịch vụ Camo sẽ lắng nghe (ví dụ: `8081`).
+- **CAMO_KEY**: Khóa HMAC bí mật tự chọn dùng để mã hóa URL ảnh.
+
+---
+
+## 2. Cấu hình chạy ngầm bằng Supervisor
+
+Tạo file cấu hình `/etc/supervisor/conf.d/camo.conf` để tự động chạy Camo:
+
+```ini
+[program:camo]
+command=coffee server.coffee
+directory=/home/<username>/camo
+environment=PORT="8081",CAMO_KEY="your_camo_secret_key"
+user=<username>
+autostart=true
+autorestart=true
+stdout_logfile=/home/<username>/camo/stdout.log
+stderr_logfile=/home/<username>/camo/stderr.log
 ```
 
-- Camo will listen on `<port>`.
-- `<key>` is the HMAC secret key used for digests. Set it to anything you want. This is used for cache-busting purposes, so it does not need to be secure.
+Nạp cấu hình cho Supervisor:
+```bash
+sudo supervisorctl update
+sudo supervisorctl status camo
+```
 
-## Configuring DMOJ to use Camo
+---
 
-To enable the use of Camo in the DMOJ site, you need to specify a couple of variables in your `local_settings.py`.
+## 3. Cấu hình FPTOJ sử dụng Camo
+
+Mở file `dmoj/local_settings.py` trên thư mục Web và cấu hình các biến sau:
 
 ```python
-# The URL on which Camo is listening
-DMOJ_CAMO_URL = "https://example.com[:port]"
-# The key you specified for running Camo
-DMOJ_CAMO_KEY = "<key>"
-# Domains to exclude from Camo proxying. Typically, these would be your own domains which you use
-# for content delivery, and you know to already be secure.
-DMOJ_CAMO_EXCLUDE = ("https://dmoj.ml", "https://dmoj.ca")
-# Whether Camo should use HTTPS for protocol neutral URIs (you probably want this)
+# Đường dẫn URL chạy dịch vụ Camo của bạn
+DMOJ_CAMO_URL = "https://yourdomain.com:8081"
+
+# Khóa bí mật đã cấu hình ở bước trên
+DMOJ_CAMO_KEY = "your_camo_secret_key"
+
+# Các tên miền loại trừ (không cần qua proxy vì đã có HTTPS bảo mật sẵn)
+DMOJ_CAMO_EXCLUDE = ("https://fptoj.com", "https://yourdomain.com")
+
+# Bắt buộc Camo dùng giao thức HTTPS
 DMOJ_CAMO_HTTPS = True
 ```
 
-Restart DMOJ for the changes to take effect. After restarting, you may have to purge Django's cache before seeing any changes.
+Khởi động lại FPTOJ:
+```bash
+sudo supervisorctl restart site
+```
+
+*(Lưu ý: Sau khi bật, bạn có thể cần xóa bộ nhớ đệm Cache của Django để hệ thống cập nhật lại các ảnh cũ sang link proxy Camo).*

@@ -1,280 +1,169 @@
-# Installing the site
+# Hướng dẫn cài đặt FPTOJ (Phần Site)
 
-## Installing the prerequisites
+Tài liệu này hướng dẫn cách cài đặt giao diện và hệ thống quản lý trung tâm (Site) của FPTOJ. Phù hợp cho các quản trị viên mới bắt đầu (admin non-tech).
 
-```shell-session
-$ apt update
-$ apt install git gcc g++ make python3-dev python3-pip libxml2-dev libxslt1-dev zlib1g-dev gettext curl redis-server
-$ curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash -
-$ apt install nodejs
-$ npm install -g sass postcss-cli postcss autoprefixer
+---
+
+## 1. Cài đặt các thư viện hệ thống cần thiết
+
+Chạy các lệnh sau để cài đặt công cụ biên dịch, cơ sở dữ liệu, NodeJS (để dịch giao diện) và Redis:
+
+```bash
+sudo apt update
+sudo apt install -y git gcc g++ make python3-dev python3-pip libxml2-dev libxslt1-dev zlib1g-dev gettext curl redis-server supervisor nginx
+
+# Cài đặt NodeJS 18.x
+curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+sudo apt install -y nodejs
+
+# Cài đặt công cụ biên dịch CSS/Sass
+sudo npm install -g sass postcss-cli postcss autoprefixer
 ```
 
-## Creating the database
+---
 
-Next, we will set up the database using MariaDB. The DMOJ is only tested to work with MySQL, and it is unlikely to work with anything else. Please visit [the MariaDB site](https://mariadb.org/download/?t=repo-config) and follow the download instructions.
+## 2. Tạo Cơ sở dữ liệu (MariaDB / MySQL)
 
-When asked, you should select the latest MariaDB version.
+FPTOJ hoạt động tối ưu nhất trên MariaDB hoặc MySQL.
 
-```shell-session
-$ apt update
-$ apt install mariadb-server libmysqlclient-dev
+```bash
+# Cài đặt MariaDB Server
+sudo apt install -y mariadb-server libmysqlclient-dev
+
+# Khởi động dịch vụ MariaDB
+sudo systemctl enable mariadb
+sudo systemctl start mariadb
+
+# Cấu hình CSDL
+sudo mariadb
 ```
 
-The next step is to set up the database itself. You should execute the commands listed below to create the necessary database and user.
+Trong dấu nhắc lệnh của MariaDB, nhập các lệnh sau (thay thế `<password>` bằng mật khẩu của bạn):
 
-```shell-session
-$ sudo mariadb
-MariaDB [(none)]> CREATE DATABASE dmoj DEFAULT CHARACTER SET utf8mb4 DEFAULT COLLATE utf8mb4_general_ci;
-MariaDB [(none)]> GRANT ALL PRIVILEGES ON dmoj.* TO 'dmoj'@'localhost' IDENTIFIED BY '<mariadb user password>';
-MariaDB [(none)]> exit
-$ mariadb-tzinfo-to-sql /usr/share/zoneinfo | sudo mariadb -u root mysql  # Add time zone data to the database. A few pages require this.
+```sql
+CREATE DATABASE dmoj DEFAULT CHARACTER SET utf8mb4 DEFAULT COLLATE utf8mb4_general_ci;
+GRANT ALL PRIVILEGES ON dmoj.* TO 'dmoj'@'localhost' IDENTIFIED BY '<password>';
+FLUSH PRIVILEGES;
+EXIT;
 ```
 
-## Installing prerequisites
-
-Now that you are done, you can start installing the site. First, create a virtual environment and activate it. Here, we'll create a virtual environment named `dmojsite`.
-
-```shell-session
-$ python3 -m venv dmojsite
-$ . dmojsite/bin/activate
+Cập nhật múi giờ cho database để các truy vấn thời gian hoạt động đúng:
+```bash
+mariadb-tzinfo-to-sql /usr/share/zoneinfo | sudo mariadb -u root mysql
 ```
 
-You should see `(dmojsite)` prepended to your shell. Henceforth, `(dmojsite)` commands assume you are in the code directory, with the virtual environment active.
+---
 
-?> The virtual environment will help keep the modules needed separate from the system package manager, and save you many headaches when updating. Read more about virtual environments [here](https://docs.python.org/3/tutorial/venv.html).
+## 3. Cài đặt mã nguồn và môi trường ảo Python
 
-Now, fetch the site source code. If you plan to install a judge [from PyPI](https://pypi.org/project/dmoj/), check out a matching version of the site repository. For example, for judge v4.0.0:
+Chúng ta sẽ tạo một môi trường ảo (virtual environment) tên là `dmojsite` để cài đặt các thư viện Python, tránh xung đột hệ thống.
 
-```shell-session
-(dmojsite) $ git clone https://github.com/DMOJ/site.git
-(dmojsite) $ cd site
-(dmojsite) $ git checkout v4.0.0  # only if planning to install a judge from PyPI, otherwise skip this step
-(dmojsite) $ git submodule init
-(dmojsite) $ git submodule update
+```bash
+# Tạo thư mục dự án và tải mã nguồn (ví dụ thư mục /home/<username>/site)
+git clone https://github.com/FPTOJ-OJ/online-judge.git site
+cd site
+git submodule init
+git submodule update
+
+# Tạo môi trường ảo
+python3 -m venv dmojsite
+source dmojsite/bin/activate
 ```
 
-Install Python dependencies into the virtual environment.
+Khi môi trường ảo hoạt động, bạn sẽ thấy `(dmojsite)` ở đầu dòng lệnh. Từ đây, cài đặt các thư viện Python:
 
-```shell-session
-(dmojsite) $ pip3 install -r requirements.txt
-(dmojsite) $ pip3 install mysqlclient
+```bash
+(dmojsite) pip install --upgrade pip
+(dmojsite) pip install -r requirements.txt
+(dmojsite) pip install mysqlclient uwsgi
 ```
 
-You will now need to configure `dmoj/local_settings.py`. You should make a copy of [this sample settings file](https://github.com/DMOJ/docs/blob/master/sample_files/local_settings.py) and read through it, making changes as necessary. Most importantly, you will want to update MariaDB credentials.
+---
 
-?>  Leave debug mode on for now; we'll disable it later after we've verified that the site works. <br> <br>
-    Generally, it's recommended that you add your settings in `dmoj/local_settings.py` rather than modifying `dmoj/settings.py` directly. `settings.py` will automatically read `local_settings.py` and load it, so write your configuration there.
+## 4. Cấu hình file `local_settings.py`
 
-Now, you should verify that everything is going according to plan.
+Sao chép file cấu hình mẫu để bắt đầu chỉnh sửa:
+```bash
+(dmojsite) cp dmoj/local_settings.py.example dmoj/local_settings.py
+```
+Hoặc bạn có thể sử dụng mẫu cấu hình tối giản đã chuẩn bị sẵn tại:
+[Mẫu local_settings.py](../../sample_files/local_settings.py)
 
-```shell-session
-(dmojsite) $ python3 manage.py check
+Các trường thông tin quan trọng cần cập nhật trong `dmoj/local_settings.py`:
+- **DATABASES**: Nhập thông tin kết nối MariaDB (User: `dmoj`, Password đã tạo ở bước 2).
+- **CELERY_BROKER_URL** & **CELERY_RESULT_BACKEND**: Bỏ dấu chú thích (`#`) và trỏ về Redis `redis://127.0.0.1:6379/0`.
+- **DMOJ_SYSCON_TITLE**: Tên trang web Online Judge của bạn.
+
+---
+
+## 5. Dịch giao diện và biên dịch Assets
+
+```bash
+# Biên dịch giao diện CSS (Sass)
+(dmojsite) ./make_style.sh
+
+# Thu thập các file tĩnh (CSS/JS/Hình ảnh) vào thư mục static
+(dmojsite) python3 manage.py collectstatic --no-input
+
+# Tạo file ngôn ngữ (đa ngôn ngữ)
+(dmojsite) python3 manage.py compilemessages
+(dmojsite) python3 manage.py compilejsi18n
 ```
 
-## Compiling assets
+---
 
-The DMOJ uses `sass` and `autoprefixer` to generate the site stylesheets. The DMOJ comes with a `make_style.sh` script that may be run to compile and optimize the stylesheets.
+## 6. Khởi tạo Cơ sở dữ liệu và Tài khoản Admin
 
-```shell-session
-(dmojsite) $ ./make_style.sh
+```bash
+# Tạo các bảng cơ sở dữ liệu
+(dmojsite) python3 manage.py migrate
+
+# Nạp dữ liệu mẫu ban đầu (thanh menu, ngôn ngữ lập trình cơ bản)
+(dmojsite) python3 manage.py loaddata navbar
+(dmojsite) python3 manage.py loaddata language_small
+(dmojsite) python3 manage.py loaddata demo
+
+# Tạo tài khoản quản trị tối cao (Superuser)
+(dmojsite) python3 manage.py createsuperuser
+```
+*(Lưu ý: Fixture `demo` sẽ tạo một tài khoản admin mặc định với thông tin đăng nhập là `admin` / `admin`. Hãy đổi mật khẩu này ngay lập tức trong bảng Admin để bảo mật).*
+
+---
+
+## 7. Cấu hình và chạy các tiến trình nền bằng Supervisord
+
+Để chạy FPTOJ trên môi trường Production, chúng ta sử dụng `uWSGI` chạy web, `supervisord` để quản lý các tiến trình nền tự động khởi chạy khi Server reset.
+
+Sao chép các file cấu hình mẫu từ thư mục `sample_files` vào thư mục cấu hình của hệ thống:
+
+1. **uWSGI**: [uwsgi.ini](../../sample_files/uwsgi.ini) - cấu hình cách chạy Django qua socket.
+2. **Supervisor**:
+   - Web Site: [site.conf](../../sample_files/site.conf) chuyển vào `/etc/supervisor/conf.d/site.conf`
+   - Bridge kết nối Judge: [bridged.conf](../../sample_files/bridged.conf) chuyển vào `/etc/supervisor/conf.d/bridged.conf`
+   - Celery xử lý chấm điểm/tác vụ nền: [celery.conf](../../sample_files/celery.conf) chuyển vào `/etc/supervisor/conf.d/celery.conf`
+   - Event server cập nhật trực tiếp: [wsevent.conf](../../sample_files/wsevent.conf) chuyển vào `/etc/supervisor/conf.d/wsevent.conf`
+
+Cập nhật đường dẫn thư mục dự án của bạn (ví dụ `<thư mục_fptoj_site>`) trong các file cấu hình này trước khi lưu.
+
+Chạy lệnh sau để tải cấu hình vào Supervisor:
+```bash
+sudo supervisorctl update
+sudo supervisorctl status
+```
+Tất cả các tiến trình phải có trạng thái `RUNNING`.
+
+---
+
+## 8. Cấu hình Nginx và SSL (HTTPS)
+
+Sao chép file cấu hình mẫu [nginx.conf](../../sample_files/nginx.conf) vào `/etc/nginx/sites-available/fptoj` và tạo link liên kết sang `/etc/nginx/sites-enabled/`.
+
+Thay đổi `server_name` thành tên miền của bạn và cấu hình đường dẫn `root` chỉ tới thư mục chứa code tĩnh của bạn.
+
+Kiểm tra cú pháp Nginx và khởi động lại:
+```bash
+sudo nginx -t
+sudo systemctl restart nginx
 ```
 
-Now, collect static files into `STATIC_ROOT` as specified in `dmoj/local_settings.py`.
-
-```shell-session
-(dmojsite) $ python3 manage.py collectstatic
-```
-
-You will also need to generate internationalization files.
-
-```shell-session
-(dmojsite) $ python3 manage.py compilemessages
-(dmojsite) $ python3 manage.py compilejsi18n
-```
-
-## Setting up database tables
-
-We must generate the schema for the database, since it is currently empty.
-
-```shell-session
-(dmojsite) $ python3 manage.py migrate
-```
-
-Next, load some initial data so that your install is not entirely blank.
-
-```shell-session
-(dmojsite) $ python3 manage.py loaddata navbar
-(dmojsite) $ python3 manage.py loaddata language_small
-(dmojsite) $ python3 manage.py loaddata demo
-
-# If you want more languages and are running the runtimes-tier3
-# version of the Docker image, load them with:
-(dmojsite) $ python3 manage.py loaddata language_all
-```
-
-!>  Keep in mind that the `demo` fixture creates a superuser account with a username and password of `admin`. If your
-    site is exposed to others, you should change the user's password or remove the user entirely.
-
-You should create an admin account with which to log in initially.
-
-```shell-session
-(dmojsite) $ python3 manage.py createsuperuser
-```
-
-## Setting up Celery
-
-The DMOJ uses Celery workers to perform most of its heavy lifting, such as batch rescoring submissions. We will use Redis as its broker, though note that other brokers that Celery supports will work as well.
-
-Start up the Redis server, which is needed by the Celery workers.
-
-```shell-session
-$ service redis-server start
-```
-
-Configure `local_settings.py` by uncommenting `CELERY_BROKER_URL` and `CELERY_RESULT_BACKEND`. By default, Redis listens on localhost port 6379, which is reflected in `local_settings.py`. You will need to update the addresses if you changed Redis's settings.
-
-We will test that Celery works soon.
-
-## Running the server
-
-At this point, you should attempt to run the server, and see if it all works.
-
-```shell-session
-(dmojsite) $ python3 manage.py runserver 0.0.0.0:8000
-```
-
-You should Ctrl-C to exit after verifying.
-
-!>  **Do not use `runserver` in production!** <br> <br>
-    We will set up a proper webserver using nginx and uWSGI soon.
-
-You should also test to see if `bridged` runs.
-
-```shell-session
-(dmojsite) $ python3 manage.py runbridged
-```
-
-If there are no errors after about 10 seconds, it probably works.
-You should Ctrl-C to exit.
-
-Next, test that the Celery workers run.
-
-```shell-session
-(dmojsite) $ celery -A dmoj_celery worker
-```
-
-You can Ctrl-C to exit.
-
-## Setting up uWSGI
-
-`runserver` is insecure and not meant for production workloads, and should not be used beyond testing.
-In the rest of this guide, we will be installing `uwsgi` and `nginx` to serve the site, using `supervisord`
-to keep `site` and `bridged` running. It's likely other configurations may work, but they are unsupported.
-
-First, copy our `uwsgi.ini` ([link](https://github.com/DMOJ/docs/blob/master/sample_files/uwsgi.ini)). You should change the paths to reflect your install.
-
-You need to install `uwsgi`.
-
-```shell-session
-(dmojsite) $ pip3 install uwsgi
-```
-
-To test, run:
-
-```shell-session
-(dmojsite) $ uwsgi --ini uwsgi.ini
-```
-
-If it says workers are spawned, it probably works.
-You should Ctrl-C to exit.
-
-## Setting up supervisord
-
-You should now install `supervisord` and configure it.
-
-```shell-session
-$ apt install supervisor
-```
-
-Copy our `site.conf` ([link](https://github.com/DMOJ/docs/blob/master/sample_files/site.conf)) to `/etc/supervisor/conf.d/site.conf`, `bridged.conf` ([link](https://github.com/DMOJ/docs/blob/master/sample_files/bridged.conf)) to `/etc/supervisor/conf.d/bridged.conf`, `celery.conf` ([link](https://github.com/DMOJ/docs/blob/master/sample_files/celery.conf)) to `/etc/supervisor/conf.d/celery.conf` and fill in the fields.
-
-Next, reload `supervisord` and check that the site, bridged, and celery have started.
-
-```shell-session
-$ supervisorctl update
-$ supervisorctl status
-```
-
-If all three processes are running, everything is good! Otherwise, peek at the logs and see what's wrong.
-
-## Setting up nginx
-
-Now, it's time to set up `nginx`.
-
-```shell-session
-$ apt install nginx
-```
-
-You should copy the sample `nginx.conf` ([link](https://github.com/DMOJ/docs/blob/master/sample_files/nginx.conf)), edit it and place it in wherever it is supposed to be for your nginx install.
-
-?>  Typically, `nginx` site files are located in `/etc/nginx/conf.d`.
-    Some installations might place it at `/etc/nginx/sites-available` and require a symlink in `/etc/nginx/sites-enabled`.
-
-Next, check if there are any issues with your nginx setup.
-
-```shell-session
-$ nginx -t
-```
-
-If not, reload the `nginx` configuration.
-
-```shell-session
-$ service nginx reload
-```
-
-You should be good to go. Visit the site at where you set it up to verify.
-
-If it does not work, check `nginx` logs and `uwsgi` log `stdout`/`stderr` for details.
-
-?> Now that your site is installed, remember to set `DEBUG` to `False` in `local_settings`. Leaving it `True` is a security risk.
-
-## Configuration of event server
-
-Create `config.js`. This assumes you use `nginx`, or there be dragons.
-You may need to shuffle ports if they are already used.
-
-```shell-session
-(dmojsite) $ cat > websocket/config.js
-module.exports = {
-    get_host: '127.0.0.1',
-    get_port: 15100,
-    post_host: '127.0.0.1',
-    post_port: 15101,
-    http_host: '127.0.0.1',
-    http_port: 15102,
-    long_poll_timeout: 29000,
-};
-```
-
-`get_port` should be the same as the port for `/event/` in `nginx.conf`.
-`http_port` should be the same as the port for `/channels/` in `nginx.conf`.
-`post_port` should be the same as the port in `EVENT_DAEMON_POST` in `local_settings`.
-You need to configure `EVENT_DAEMON_GET` and `EVENT_DAEMON_POLL`.
-You need to uncomment the relevant section in the `nginx` configuration.
-
-Need to install the dependencies.
-
-```shell-session
-(dmojsite) $ npm install qu ws simplesets
-(dmojsite) $ pip3 install websocket-client
-```
-
-Now copy `wsevent.conf` ([link](https://github.com/DMOJ/docs/blob/master/sample_files/wsevent.conf)) to `/etc/supervisor/conf.d/wsevent.conf`, changing paths, and then update supervisor and nginx.
-
-```shell-session
-$ supervisorctl update
-$ supervisorctl restart bridged
-$ supervisorctl restart site
-$ service nginx restart
-```
+Chúc mừng! Bạn đã hoàn thành cài đặt FPTOJ Site. Tiếp theo, hãy đọc tài liệu cài đặt Judge và cấu hình dịch vụ xuất PDF độc quyền.

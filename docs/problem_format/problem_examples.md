@@ -1,11 +1,15 @@
-# Problem examples
+# Các bài tập mẫu tham khảo
 
-| Grading | Implemented Problem |
-|---------|---------------------|
-| [Standard Grading (IO-based)](https://github.com/DMOJ/docs/tree/master/problem_examples/standard/aplusb) | <https://dmoj.ca/problem/aplusb> |
-| [Batched Standard Grading (IO-based)](https://github.com/DMOJ/docs/tree/master/problem_examples/batched/hungry) | <https://dmoj.ca/problem/hungry> |
-| [Custom Grading](https://github.com/DMOJ/docs/tree/master/problem_examples/grader/shortest1) | <https://dmoj.ca/problem/shortest1> |
-| [Interactive Grading (conditional IO-based)](https://github.com/DMOJ/docs/tree/master/problem_examples/interactive/seed2) | <https://dmoj.ca/problem/seed2> |
-| [Native Interactive Grading (conditional IO-based)](https://github.com/DMOJ/docs/tree/master/problem_examples/interactive/seed2native) | <https://dmoj.ca/problem/seed2> |
-| [Signature Grading (IOI-style)](https://github.com/DMOJ/docs/tree/master/problem_examples/signature/fastbit) | <https://dmoj.ca/problem/fastbit> |
-| [Generating IO Data on the Fly (large test case generation)](https://github.com/DMOJ/docs/tree/master/problem_examples/generator/ds3) | <https://dmoj.ca/problem/ds3> |
+Thư mục mẫu bài tập chứa các cấu hình chuẩn cho nhiều loại bài tập khác nhau (đọc ghi chuẩn, chấm theo nhóm, checker tùy biến, tương tác). Bạn có thể tham khảo trực tiếp mã nguồn cấu hình mẫu trong repo này.
+
+---
+
+| Loại hình chấm | Bài tập ví dụ trong Repo |
+| :--- | :--- |
+| **Chấm điểm chuẩn (Standard - So khớp Input/Output)** | [aplusb (A + B)](https://github.com/FPTOJ-OJ/judge-server/tree/master/problem_examples/standard/aplusb) |
+| **Chấm theo nhóm (Batched Standard - Subtasks)** | [hungry](https://github.com/FPTOJ-OJ/judge-server/tree/master/problem_examples/batched/hungry) |
+| **Trình chấm tùy biến (Custom Grader)** | [shortest1](https://github.com/FPTOJ-OJ/judge-server/tree/master/problem_examples/grader/shortest1) |
+| **Bài tập tương tác (Interactive - Trình chấm giao tiếp với Code học sinh)** | [seed2](https://github.com/FPTOJ-OJ/judge-server/tree/master/problem_examples/interactive/seed2) |
+| **Bài tập tương tác thuần bản địa (Native Interactive)** | [seed2native](https://github.com/FPTOJ-OJ/judge-server/tree/master/problem_examples/interactive/seed2native) |
+| **Chấm hàm/Thư viện (Signature - Kiểu IOI)** | [fastbit](https://github.com/FPTOJ-OJ/judge-server/tree/master/problem_examples/signature/fastbit) |
+| **Tự động sinh bộ Test trực tiếp (Generator)** | [ds3](https://github.com/FPTOJ-OJ/judge-server/tree/master/problem_examples/generator/ds3) |

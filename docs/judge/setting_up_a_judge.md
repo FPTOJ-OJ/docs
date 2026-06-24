@@ -1,135 +1,100 @@
-# Setting up a judge
+# Hướng dẫn thiết lập Máy chấm (Judge Server)
 
-This guide goes through the process of installing a judge and connecting it to
-the site. It is intended for Linux-based machines (WSL included); Windows is
-not supported.
+Tài liệu này hướng dẫn bạn quy trình cài đặt và kết nối một máy chấm bài (Judge Server) độc lập đến trang web FPTOJ chính. Máy chấm có thể nằm cùng máy chủ với Site hoặc trên một máy chủ riêng biệt.
 
-It is assumed that the site installation instructions have been followed, and
-that a bridge instance is running.
+Hệ thống sử dụng dự án máy chấm độc quyền: **[FPTOJ Judge Server](https://github.com/FPTOJ-OJ/judge-server)**.
 
-## Site-side setup
+---
 
-First, add a judge on the admin page, located under
-[/admin/judge/](https://dmoj.ca/admin/judge/). Provide the
-name of the judge and the authentication key for the judge. You may use the
-`Regenerate` button to generate an authentication key.
+## 1. Chuẩn bị phía Giao diện Web (Site)
 
-In `local_settings.py`, find the `BRIDGED_JUDGE_ADDRESS`. This is the address
-you will be connecting a judge to. By default, this should be `localhost:9999`.
-If you are connecting from a different machine, you will need to change
-`localhost` to an actual IP. Also, ensure that this port is **open**, or you
-will receive cryptic error messages when attempting to connect a judge.
+Trước khi kết nối máy chấm, bạn cần đăng ký máy chấm đó trên giao diện quản trị Admin của trang Web:
 
-Finally, ensure the bridge is running. You should see something similar to the
-following lines.
+1. Đăng nhập trang Admin (`/admin/`).
+2. Tìm tới mục **Judges** (Trình chấm) và bấm **Add judge** (Thêm trình chấm).
+3. Nhập **Name** (Tên máy chấm, ví dụ: `judge-01`) và tạo một khóa xác thực bí mật bằng cách bấm nút **Regenerate** cạnh trường **Auth key**. Lưu lại tên và Auth key này để khai báo trên máy chấm.
+4. Kiểm tra cổng kết nối: Trong file `dmoj/local_settings.py` phía Web Site, kiểm tra cấu hình `BRIDGED_JUDGE_ADDRESS`. Mặc định cổng kết nối là `localhost:9999` (nếu chạy cùng Server) hoặc có thể đổi IP máy để nhận kết nối từ Server máy chấm bên ngoài. Đảm bảo cổng này đã được mở trên tường lửa (Firewall).
 
-```shell-session
-$ supervisorctl status
-bridged RUNNING pid <pid>, uptime <uptime>
-```
+---
 
-## Judge-side setup
+## 2. Thiết lập phía Máy chấm (Judge-side Setup)
 
-The DMOJ supports installing judges through Docker and a PyPI package. We
-recommend the Docker installation if you are able to use Docker, since we have
-dealt with the hard problem of getting many runtimes co-existing on the same
-machine and keeping them up-to-date. The PyPI package is also supported, and
-may give you more control at the expense of more administrative complexity.
+Có hai phương pháp cài đặt máy chấm: sử dụng **Docker** (Khuyến khích) hoặc cài đặt trực tiếp qua **PyPI/pip** (Thủ công).
 
-### With Docker
+---
 
-We maintain Docker images with all runtimes we support in the
-[runtimes-docker](https://github.com/DMOJ/runtimes-docker) project.
+### Phương pháp A: Cài đặt qua Docker (Khuyến khích & Nhanh gọn)
 
-Runtimes are split into three tiers of decreasing support. Tier 1 includes
-Python 2/3, C/C++ (GCC only), Java 8, and Pascal. Tier 3 contains all the
-runtimes we run on [dmoj.ca](https://dmoj.ca). Tier 2 contains some in-between
-mix; read the `Dockerfile` for each tier for details. These images are rebuilt
-and tested every week to contain the latest runtime versions.
+Sử dụng Docker giúp bạn có ngay toàn bộ các trình biên dịch (C++, Python, Java, Pascal, Go,...) đã được đóng gói sẵn và bảo mật cao mà không lo xung đột môi trường.
 
-The session below starts a CLI instance you can use to test the judge before
-connecting it to the site. It expects problems to be placed on the host under
-`/mnt/problems`, and judge-specific configuration to be in
-`/mnt/problems/judge.yml`.
+1. Tải mã nguồn của máy chấm:
+   ```bash
+   git clone --recursive https://github.com/FPTOJ-OJ/judge-server.git /home/<username>/judge-server
+   cd /home/<username>/judge-server/.docker
+   ```
 
-```shell-session
-$ git clone --recursive https://github.com/DMOJ/judge.git
-$ cd judge/.docker
-$ make judge-tier1
-$ docker run \
-    -v /mnt/problems:/problems \
-    --cap-add=SYS_PTRACE \
-    dmoj/judge-tier1:latest \
-    cli -c /problems/judge.yml
-```
+2. Tạo file cấu hình máy chấm `judge.yml` và lưu tại `/home/<username>/problems/judge.yml` (Tạo thư mục `/home/<username>/problems` nếu chưa có). Mẫu file cấu hình:
+   ```yaml
+   id: judge-01                # Trùng với Name đã khai báo trên Admin Site
+   key: "your_auth_key_here"  # Trùng với Auth key đã tạo trên Admin Site
+   problem_storage_globs:
+     - /problems/*
+   ```
 
-The session below spawns a tier 1 judge image. It expects the relevant
-environment variables to be set, and the network device to be `enp1s0`. You can
-modify this to suit your installation requirements.
+3. Biên dịch và khởi chạy Docker máy chấm (sử dụng gói cơ bản `judge-tier1` chứa C/C++, Python, Pascal, Java):
+   ```bash
+   make judge-tier1
+   ```
 
-```shell-session
-$ docker run \
-    --name judge \
-    -p "$(ip addr show dev enp1s0 | perl -ne 'm@inet (.*)/.*@ and print$1 and exit')":9998:9998 \
-    -v /mnt/problems:/problems \
-    --cap-add=SYS_PTRACE \
-    -d \
-    --restart=always \
-    dmoj/judge-tier1:latest \
-    run -p "$PORT" -c /problems/judge.yml \
-    "$IP" "$JUDGE_NAME" "$JUDGE_AUTHENTICATION_KEY"
-```
+4. Khởi chạy Docker Container chạy ngầm:
+   ```bash
+   docker run \
+       --name judge-server \
+       -v /home/<username>/problems:/problems \
+       --cap-add=SYS_PTRACE \
+       -d \
+       --restart=always \
+       dmoj/judge-tier1:latest \
+       run -p 9999 -c /problems/judge.yml \
+       127.0.0.1 judge-01 your_auth_key_here
+   ```
+   *(Lưu ý: Thay `127.0.0.1` bằng IP của Web Site nếu máy chấm nằm ở Server khác và `9999` bằng cổng kết nối của Bridge).*
 
-`$PORT` and `$IP` should be the port and IP that was specified in
-`BRIDGED_JUDGE_ADDRESS` of the site's `local_settings.py`.
+---
 
-`$JUDGE_NAME` is the judge name as specified in the site, and
-`$JUDGE_AUTHENTICATION_KEY` is the judge authentication key.
+### Phương pháp B: Cài đặt thủ công bằng Python Pip (Tùy biến cao)
 
-### Through PyPI
+Nếu không sử dụng Docker, bạn có thể tự cài đặt trên hệ điều hành Ubuntu/Linux:
 
-#### Installing the prerequisites
+1. Cài đặt các gói phụ thuộc hệ thống:
+   ```bash
+   sudo apt update
+   sudo apt install -y python3-dev python3-pip build-essential libseccomp-dev
+   ```
 
-```shell-session
-$ apt install python3-dev python3-pip build-essential libseccomp-dev
-$ pip3 install dmoj
-```
+2. Cài đặt gói `dmoj` máy chấm:
+   ```bash
+   sudo pip3 install dmoj
+   ```
 
-#### Configuring the judge
+3. Cấu hình tự động nhận diện ngôn ngữ lập trình trên máy:
+   ```bash
+   dmoj-autoconf
+   ```
+   Lệnh trên sẽ in ra danh sách các ngôn ngữ có trên hệ thống của bạn dạng YAML block. Hãy copy nội dung đó và tạo file `judge.yml` như sau:
+   ```yaml
+   id: judge-01
+   key: "your_auth_key_here"
+   problem_storage_globs:
+     - /path/to/problems/*
+   runtime:
+     # Dán toàn bộ block ngôn ngữ đã copy từ lệnh dmoj-autoconf vào đây
+   ```
 
-Start by taking the `runtime` block from the output of the command
-`dmoj-autoconf` and put it in a new file `judge.yml`. Next, add a
-`problem_storage_globs` node where you specify where your problem data is
-located. Your `judge.yml` file should look something like below.
+   Bạn có thể xem file cấu hình mẫu đầy đủ tại đây: [Mẫu cấu hình judge_conf.yml](../../sample_files/judge_conf.yml)
 
-```yaml
-id: <judge name>
-key: <judge authentication key>
-problem_storage_globs:
-  - /mnt/problems/*
-runtime:
-   ...
-```
-
-You should now be able to run `dmoj-cli -c judge.yml` to enter a CLI
-environment for the judge. For additional configuration options, an [example
-configuration
-file](https://github.com/DMOJ/docs/blob/master/sample_files/judge_conf.yml) is
-provided.
-
-You should now be able to connect the judge to the site.
-
-```shell-session
-$ dmoj -c judge.yml -p "$PORT" "$IP"
-```
-
-`$PORT` and `$IP` should be the port and IP that was specified in
-`BRIDGED_JUDGE_ADDRESS` of the site's `local_settings.py`. If the port is 9999,
-you can exclude the `-p PORT` argument, as the judge will default to port 9999.
-
-If you are using the defaults in `local_settings.py`, the following command
-should suffice.
-
-```shell-session
-$ dmoj -c judge.yml localhost
-```
+4. Chạy kiểm tra máy chấm bằng dòng lệnh:
+   ```bash
+   dmoj -c judge.yml localhost
+   ```
+   Nếu màn hình hiển thị trạng thái kết nối thành công và không báo lỗi, máy chấm đã sẵn sàng nhận bài chấm. Nhấn `Ctrl + C` để thoát và cấu hình chạy ngầm bằng Supervisord hoặc systemd.
