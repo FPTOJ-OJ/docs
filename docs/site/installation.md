@@ -1,40 +1,69 @@
 # Hướng dẫn cài đặt FPTOJ (Phần Site)
 
-Tài liệu này hướng dẫn cách cài đặt giao diện và hệ thống quản lý trung tâm (Site) của FPTOJ. Phù hợp cho các quản trị viên mới bắt đầu (admin non-tech).
+Tài liệu này hướng dẫn cách cài đặt giao diện và hệ thống quản lý trung tâm (Site) của FPTOJ. Phù hợp cho cả quản trị viên mới bắt đầu (admin non-tech) và các kỹ sư hệ thống muốn tùy biến thủ công.
 
 ---
 
-## 1. Cài đặt các thư viện hệ thống cần thiết
+## ⚡ CÁCH 1: Cài đặt tự động bằng Script (Khuyến khích - Dễ như ăn bánh)
 
-Chạy các lệnh sau để cài đặt công cụ biên dịch, cơ sở dữ liệu, NodeJS (để dịch giao diện) và Redis:
+Hệ thống cung cấp một công cụ cài đặt tự động cực kỳ thông minh nằm ngay tại `/home/kien/site/setup_fptoj.sh`. Script này sẽ:
+1. **Kiểm tra phần cứng:** Tự động tối ưu số lượng tiến trình và tài nguyên theo CPU/RAM của máy chủ.
+2. **Quét dịch vụ hiện có:** Tự động phát hiện xem MySQL, Redis, Nginx, hoặc Supervisor đã được cài đặt và đang chạy trên máy Host chưa. Nếu có, hệ thống sẽ sử dụng trực tiếp để tránh xung đột; nếu chưa, hệ thống sẽ đề xuất tự động cấu hình qua Docker hoặc cài đặt trực tiếp.
+3. **Hướng dẫn trực quan:** Tương tác với người dùng qua giao diện dòng lệnh để điền các biến cấu hình quan trọng (Site Name, Domain, Email SMTP, Admin account) và tự động nạp cấu hình cũ làm mặc định.
+4. **Tự động cấu hình & Khởi chạy:** Tự động sinh `local_settings.py`, thiết lập Virtualenv, cài đặt dependencies, biên dịch Styles/CSS, dịch ngôn ngữ, tạo cấu hình Supervisor & Nginx, và khởi chạy toàn bộ hệ thống.
+5. **Cài đặt các dịch vụ độc quyền:** Tự động tải, cấu hình và chạy dịch vụ xuất PDF (`html-to-pdf-flask`) và máy chấm (`judge-server` qua Docker).
+
+### Các bước thực hiện:
+```bash
+# Di chuyển tới thư mục site
+cd /home/kien/site
+
+# Chạy script cài đặt tự động (script sẽ tự nâng cấp quyền sudo)
+./setup_fptoj.sh
+```
+Làm theo các hướng dẫn hiện trên màn hình, điền mật khẩu và tài khoản mong muốn. Khi hoàn tất, trang web của bạn sẽ hoạt động ngay lập tức tại cổng 80 (HTTP).
+
+---
+
+## 🛠 CÁCH 2: Cài đặt thủ công từng bước (Dành cho kỹ sư hệ thống)
+
+Nếu bạn muốn tự quản lý cấu trúc hoặc tùy biến sâu, hãy làm theo các bước dưới đây:
+
+### 1. Cài đặt các thư viện hệ thống cần thiết
+
+Chạy lệnh sau để cài đặt các công cụ biên dịch, thư viện hệ thống cho Python, công cụ biên dịch giao diện và các dịch vụ nền:
 
 ```bash
 sudo apt update
-sudo apt install -y git gcc g++ make python3-dev python3-pip libxml2-dev libxslt1-dev zlib1g-dev gettext curl redis-server supervisor nginx
+sudo apt install -y git gcc g++ make python3-dev python3-pip python3-venv libxml2-dev libxslt1-dev zlib1g-dev gettext curl redis-server supervisor nginx wkhtmltopdf lsof
+```
 
+**Cài đặt Node.js và các công cụ CSS/Sass:**
+FPTOJ sử dụng Sass và PostCSS để biên dịch giao diện.
+```bash
 # Cài đặt NodeJS 18.x
 curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash -
 sudo apt install -y nodejs
 
-# Cài đặt công cụ biên dịch CSS/Sass
+# Cài đặt các công cụ đóng gói CSS toàn cục
 sudo npm install -g sass postcss-cli postcss autoprefixer
 ```
 
 ---
 
-## 2. Tạo Cơ sở dữ liệu (MariaDB / MySQL)
+### 2. Thiết lập Cơ sở dữ liệu (MariaDB / MySQL)
 
-FPTOJ hoạt động tối ưu nhất trên MariaDB hoặc MySQL.
+FPTOJ hoạt động tối ưu nhất trên MariaDB hoặc MySQL 8.0.
 
 ```bash
-# Cài đặt MariaDB Server
+# Cài đặt MariaDB Server (nếu chưa có trên Host)
 sudo apt install -y mariadb-server libmysqlclient-dev
 
 # Khởi động dịch vụ MariaDB
 sudo systemctl enable mariadb
 sudo systemctl start mariadb
 
-# Cấu hình CSDL
+# Cấu hình bảo mật và truy cập CSDL
 sudo mariadb
 ```
 
@@ -42,26 +71,27 @@ Trong dấu nhắc lệnh của MariaDB, nhập các lệnh sau (thay thế `<pa
 
 ```sql
 CREATE DATABASE dmoj DEFAULT CHARACTER SET utf8mb4 DEFAULT COLLATE utf8mb4_general_ci;
-GRANT ALL PRIVILEGES ON dmoj.* TO 'dmoj'@'localhost' IDENTIFIED BY '<password>';
+GRANT ALL PRIVILEGES ON dmoj.* TO 'dmoj'@'127.0.0.1' IDENTIFIED BY '<password>';
 FLUSH PRIVILEGES;
 EXIT;
 ```
 
-Cập nhật múi giờ cho database để các truy vấn thời gian hoạt động đúng:
+**Quan trọng:** Cập nhật múi giờ cho database để các truy vấn thời gian hoạt động đúng:
 ```bash
 mariadb-tzinfo-to-sql /usr/share/zoneinfo | sudo mariadb -u root mysql
 ```
 
 ---
 
-## 3. Cài đặt mã nguồn và môi trường ảo Python
+### 3. Cài đặt mã nguồn và môi trường ảo Python
 
-Chúng ta sẽ tạo một môi trường ảo (virtual environment) tên là `dmojsite` để cài đặt các thư viện Python, tránh xung đột hệ thống.
+Tạo môi trường ảo `dmojsite` để cài đặt các thư viện Python nhằm tránh xung đột hệ thống:
 
 ```bash
-# Tạo thư mục dự án và tải mã nguồn (ví dụ thư mục /home/<username>/site)
-git clone https://github.com/FPTOJ-OJ/online-judge.git site
-cd site
+# Di chuyển tới thư mục dự án
+cd /home/kien/site
+
+# Khởi tạo submodules
 git submodule init
 git submodule update
 
@@ -70,100 +100,117 @@ python3 -m venv dmojsite
 source dmojsite/bin/activate
 ```
 
-Khi môi trường ảo hoạt động, bạn sẽ thấy `(dmojsite)` ở đầu dòng lệnh. Từ đây, cài đặt các thư viện Python:
+Khi môi trường ảo được kích hoạt `(dmojsite)`, cài đặt các thư viện Python:
 
 ```bash
 (dmojsite) pip install --upgrade pip
 (dmojsite) pip install -r requirements.txt
-(dmojsite) pip install mysqlclient uwsgi
+(dmojsite) pip install mysqlclient uwsgi pymysql
 ```
 
 ---
 
-## 4. Cấu hình file `local_settings.py`
+### 4. Cấu hình file `local_settings.py`
 
-Sao chép file cấu hình mẫu để bắt đầu chỉnh sửa:
+Sao chép file cấu hình mẫu để chỉnh sửa hoặc tự viết:
 ```bash
 (dmojsite) cp dmoj/local_settings.py.example dmoj/local_settings.py
 ```
-Hoặc bạn có thể sử dụng mẫu cấu hình tối giản đã chuẩn bị sẵn tại:
-[Mẫu local_settings.py](../../sample_files/local_settings.py)
 
 Các trường thông tin quan trọng cần cập nhật trong `dmoj/local_settings.py`:
-- **DATABASES**: Nhập thông tin kết nối MariaDB (User: `dmoj`, Password đã tạo ở bước 2).
-- **CELERY_BROKER_URL** & **CELERY_RESULT_BACKEND**: Bỏ dấu chú thích (`#`) và trỏ về Redis `redis://127.0.0.1:6379/0`.
-- **DMOJ_SYSCON_TITLE**: Tên trang web Online Judge của bạn.
+* **DATABASES:** Điền thông tin kết nối MariaDB (User: `dmoj`, Password đã tạo ở bước 2).
+* **CELERY_BROKER_URL** & **CELERY_RESULT_BACKEND:** Trỏ về Redis `redis://127.0.0.1:6379/0`.
+* **SITE_NAME:** Tên thương hiệu trang web của bạn (ví dụ: `FPTOJ`).
+* **DMOJ_PDF_PDFOID_URL:** Trỏ về dịch vụ PDF độc quyền `http://localhost:8888`.
 
 ---
 
-## 5. Dịch giao diện và biên dịch Assets
+### 5. Dịch giao diện và biên dịch Assets
 
 ```bash
 # Biên dịch giao diện CSS (Sass)
 (dmojsite) ./make_style.sh
 
 # Thu thập các file tĩnh (CSS/JS/Hình ảnh) vào thư mục static
-(dmojsite) python3 manage.py collectstatic --no-input
+(dmojsite) python manage.py collectstatic --no-input
 
-# Tạo file ngôn ngữ (đa ngôn ngữ)
-(dmojsite) python3 manage.py compilemessages
-(dmojsite) python3 manage.py compilejsi18n
+# Tạo file ngôn ngữ (tiếng Việt / đa ngôn ngữ)
+(dmojsite) python manage.py compilemessages
+(dmojsite) python manage.py compilejsi18n
 ```
 
 ---
 
-## 6. Khởi tạo Cơ sở dữ liệu và Tài khoản Admin
+### 6. Khởi tạo Cơ sở dữ liệu và Tài khoản Admin
 
 ```bash
 # Tạo các bảng cơ sở dữ liệu
-(dmojsite) python3 manage.py migrate
+(dmojsite) python manage.py migrate
 
-# Nạp dữ liệu mẫu ban đầu (thanh menu, ngôn ngữ lập trình cơ bản)
-(dmojsite) python3 manage.py loaddata navbar
-(dmojsite) python3 manage.py loaddata language_small
-(dmojsite) python3 manage.py loaddata demo
+# Nạp dữ liệu cấu hình ban đầu
+(dmojsite) python manage.py loaddata navbar
+(dmojsite) python manage.py loaddata language_small
+(dmojsite) python manage.py loaddata demo
 
 # Tạo tài khoản quản trị tối cao (Superuser)
-(dmojsite) python3 manage.py createsuperuser
+(dmojsite) python manage.py createsuperuser
 ```
-*(Lưu ý: Fixture `demo` sẽ tạo một tài khoản admin mặc định với thông tin đăng nhập là `admin` / `admin`. Hãy đổi mật khẩu này ngay lập tức trong bảng Admin để bảo mật).*
 
 ---
 
-## 7. Cấu hình và chạy các tiến trình nền bằng Supervisord
+### 7. Cấu hình và chạy các tiến trình nền bằng Supervisord
 
-Để chạy FPTOJ trên môi trường Production, chúng ta sử dụng `uWSGI` chạy web, `supervisord` để quản lý các tiến trình nền tự động khởi chạy khi Server reset.
+Sao chép hoặc ghi cấu hình dịch vụ vào thư mục `/etc/supervisor/conf.d/`:
 
-Sao chép các file cấu hình mẫu từ thư mục `sample_files` vào thư mục cấu hình của hệ thống:
+* **Web Site (`/etc/supervisor/conf.d/site.conf`):**
+```ini
+[program:site]
+command=/home/kien/site/dmojsite/bin/uwsgi --ini uwsgi.ini
+directory=/home/kien/site
+stopsignal=QUIT
+stdout_logfile=/tmp/site.stdout.log
+stderr_logfile=/tmp/site.stderr.log
+autorestart=true
+```
 
-1. **uWSGI**: [uwsgi.ini](../../sample_files/uwsgi.ini) - cấu hình cách chạy Django qua socket.
-2. **Supervisor**:
-   - Web Site: [site.conf](../../sample_files/site.conf) chuyển vào `/etc/supervisor/conf.d/site.conf`
-   - Bridge kết nối Judge: [bridged.conf](../../sample_files/bridged.conf) chuyển vào `/etc/supervisor/conf.d/bridged.conf`
-   - Celery xử lý chấm điểm/tác vụ nền: [celery.conf](../../sample_files/celery.conf) chuyển vào `/etc/supervisor/conf.d/celery.conf`
-   - Event server cập nhật trực tiếp: [wsevent.conf](../../sample_files/wsevent.conf) chuyển vào `/etc/supervisor/conf.d/wsevent.conf`
+* **Bridge kết nối Judge (`/etc/supervisor/conf.d/bridged.conf`):**
+```ini
+[program:bridged]
+command=/home/kien/site/dmojsite/bin/python manage.py runbridged
+directory=/home/kien/site
+stopsignal=INT
+user=kien
+group=kien
+stdout_logfile=/tmp/bridge.stdout.log
+stderr_logfile=/tmp/bridge.stderr.log
+autorestart=true
+```
 
-Cập nhật đường dẫn thư mục dự án của bạn (ví dụ `<thư mục_fptoj_site>`) trong các file cấu hình này trước khi lưu.
+* **Event server cập nhật real-time (`/etc/supervisor/conf.d/wsevent.conf`):**
+```ini
+[program:wsevent]
+command=/usr/bin/node /home/kien/site/websocket/daemon.js
+environment=NODE_PATH="/home/kien/site/node_modules"
+user=kien
+group=kien
+stdout_logfile=/tmp/wsevent.stdout.log
+stderr_logfile=/tmp/wsevent.stderr.log
+autorestart=true
+```
 
-Chạy lệnh sau để tải cấu hình vào Supervisor:
+Nạp cấu hình và khởi chạy các dịch vụ:
 ```bash
 sudo supervisorctl update
 sudo supervisorctl status
 ```
-Tất cả các tiến trình phải có trạng thái `RUNNING`.
 
 ---
 
-## 8. Cấu hình Nginx và SSL (HTTPS)
+### 8. Cấu hình Nginx và Khởi động
 
-Sao chép file cấu hình mẫu [nginx.conf](../../sample_files/nginx.conf) vào `/etc/nginx/sites-available/fptoj` và tạo link liên kết sang `/etc/nginx/sites-enabled/`.
-
-Thay đổi `server_name` thành tên miền của bạn và cấu hình đường dẫn `root` chỉ tới thư mục chứa code tĩnh của bạn.
-
-Kiểm tra cú pháp Nginx và khởi động lại:
+Ghi file cấu hình `/etc/nginx/sites-available/fptoj` và tạo liên kết:
 ```bash
-sudo nginx -t
+sudo ln -sf /etc/nginx/sites-available/fptoj /etc/nginx/sites-enabled/fptoj
+sudo rm -f /etc/nginx/sites-enabled/default # Xóa site mặc định
 sudo systemctl restart nginx
 ```
-
-Chúc mừng! Bạn đã hoàn thành cài đặt FPTOJ Site. Tiếp theo, hãy đọc tài liệu cài đặt Judge và cấu hình dịch vụ xuất PDF độc quyền.

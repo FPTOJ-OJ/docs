@@ -325,3 +325,7 @@ LOGGING = {
 ## ======== Custom Configuration ========
 # You may add whatever Django configuration you would like here.
 # Do try to keep it separate so you can quickly patch in new settings.
+# TURNSTILE_SITEKEY = ''
+# TURNSTILE_SECRET = ''
+LOGIN_URL = '/accounts/login/'
+DATA_UPLOAD_MAX_NUMBER_FIELDS = 2000

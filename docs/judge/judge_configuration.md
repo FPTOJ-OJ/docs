@@ -6,52 +6,59 @@ Xem file mẫu cấu hình đầy đủ: [Mẫu cấu hình judge_conf.yml](../.
 
 ---
 
-## 1. Cấu hình định danh (id) và khóa bí mật (key)
+## 1. Các trường cấu hình cơ bản
 
-Đây là hai trường quan trọng nhất để xác thực và kết nối máy chấm tới trang web chính của bạn.
-
-- **id**: Tên định danh của máy chấm. Trường này phải khớp chính xác với trường **Name** được tạo trong mục **Judges** ở trang Admin.
-- **key**: Khóa xác thực bí mật. Phải khớp chính xác với **Auth key** trong trang Admin.
-
+* **id**: Tên định danh duy nhất của máy chấm. Trường này phải khớp chính xác với trường **Name** được tạo trong mục **Judges** ở trang Admin.
+* **key**: Khóa xác thực bí mật để kết nối. Phải khớp chính xác với **Auth key** trong trang Admin.
+* **problem_storage_globs**: Định nghĩa đường dẫn chứa bộ test đề bài của hệ thống. Máy chấm sẽ dựa vào đây để định vị thư mục bài tập và đọc dữ liệu test.
+  
 Ví dụ:
 ```yaml
 id: judge-01
 key: "your_secret_auth_key"
-```
-
----
-
-## 2. Cấu hình thư mục chứa dữ liệu bài tập (problem_storage_globs)
-
-Trình chấm cần biết các bài tập được lưu trữ ở đâu trên đĩa cứng để tải dữ liệu test case khi chấm bài. Cấu hình này sử dụng cú pháp glob (đường dẫn đại diện) của Python.
-
-Bất kỳ thư mục con nào khớp với quy luật glob này và chứa file cấu hình `init.yml` đều được coi là một thư mục bài tập hợp lệ.
-
-Ví dụ:
-```yaml
 problem_storage_globs:
-  # Khớp với toàn bộ các thư mục con cấp 1 nằm trong /home/<username>/problems/
-  - /home/<username>/problems/*
-  
-  # Khớp đệ quy mọi thư mục con ở tất cả các cấp trong /home/<username>/problems/
-  - /home/<username>/problems/**/
+  # Quét toàn bộ thư mục con cấp 1 trong /problems
+  - /problems/*
+  # Quét đệ quy mọi thư mục con ở tất cả các cấp
+  - /problems/**/
 ```
 
 ---
 
-## 3. Cấu hình các trình biên dịch (runtime)
+## 2. Cấu hình các trình biên dịch (runtime)
 
-Khối `runtime` định nghĩa đường dẫn đến trình biên dịch/thực thi của các ngôn ngữ trên máy chấm.
+Khối `runtime` định nghĩa đường dẫn đến trình biên dịch hoặc trình thực thi của các ngôn ngữ lập trình được hỗ trợ trên máy chấm.
 
-Hầu hết các ngôn ngữ sẽ được tự động cấu hình và điền bởi lệnh `dmoj-autoconf`. Tuy nhiên, nếu bạn cài đặt trình biên dịch ở một thư mục không nằm trong biến môi trường `$PATH` của hệ thống, bạn cần cấu hình thủ công trong file `judge.yml`.
+Hầu hết các ngôn ngữ sẽ được tự động điền bởi lệnh `dmoj-autoconf`. Tuy nhiên, nếu bạn cài đặt trình biên dịch tùy biến hoặc chạy trong Docker, bạn có thể chỉnh sửa cấu hình này để tối ưu hóa cờ biên dịch (compiler flags).
 
-Ví dụ cấu hình cho Python 3 và GCC C++:
+Ví dụ cấu hình cờ tối ưu hóa cho C++20 và Python 3:
 ```yaml
 runtime:
-  py3:
-    - /usr/bin/python3
   c++20:
     - /usr/bin/g++
     - -O3
     - -std=c++20
+  py3:
+    - /usr/bin/python3
 ```
+
+---
+
+## 3. Khắc phục lỗi kết nối thường gặp (Troubleshooting)
+
+Khi khởi chạy máy chấm, nếu gặp các lỗi sau, hãy kiểm tra các nguyên nhân tương ứng:
+
+### Lỗi 1: `Handshake failed: Invalid key`
+* **Nguyên nhân:** Khóa `key` khai báo trong `judge.yml` không trùng khớp với **Auth key** được tạo trên Admin Site.
+* **Khắc phục:** Copy lại chính xác Auth key từ trang Admin Site và dán vào file `judge.yml`.
+
+### Lỗi 2: `Connection refused` hoặc `Connection timeout`
+* **Nguyên nhân:** Máy chấm không thể kết nối tới cổng của Bridge trên Web Site (mặc định là `9999`).
+* **Khắc phục:** 
+  1. Đảm bảo cổng `9999` đã được mở trên tường lửa của máy chủ Web Site.
+  2. Kiểm tra xem tiến trình `bridged` trên Web Site đang chạy hay đã bị dừng (`sudo supervisorctl status bridged`).
+  3. Khai báo chính xác IP công khai hoặc IP mạng nội bộ của Web Site thay vì `localhost` nếu máy chấm nằm ở một máy chủ riêng biệt.
+
+### Lỗi 3: `Syscall disallowed` hoặc lỗi liên quan đến Sandbox
+* **Nguyên nhân:** Khi chạy không có quyền root hoặc thiếu cấu hình nhân Linux, cơ chế Sandbox bảo mật của DMOJ không thể kích hoạt seccomp filter.
+* **Khắc phục:** Nếu chạy trong Docker, hãy đảm bảo bạn đã thêm cờ `--cap-add=SYS_PTRACE` khi chạy lệnh `docker run`. Cờ này cho phép container thực hiện các cuộc gọi syscall giám sát bảo mật.
