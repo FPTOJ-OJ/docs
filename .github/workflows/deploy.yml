@@ -1,4 +1,4 @@
-name: Deploy Docsify to GitHub Pages
+name: Deploy MkDocs to GitHub Pages
 
 on:
   push:
@@ -20,9 +20,23 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          pip install mkdocs-material
+
+      - name: Build MkDocs
+        run: |
+          mkdocs build
+
       - name: Deploy to gh-pages branch
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: docs
+          folder: site
           branch: gh-pages
+
 
