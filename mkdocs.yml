@@ -53,6 +53,8 @@ nav:
     - Proxy SSL cho nội dung: site/ssl_content_proxy.md
     - Tải dữ liệu người dùng: site/user_data_download.md
     - Tài liệu API: site/api.md
+    - CLI cho AI Agents: site/cli_for_agents.md
+    - Quản lý đề thi (Quiz/Exam): site/managing_quizzes.md
   - Trình chấm (Judge):
     - Cài đặt Judge: judge/setting_up_a_judge.md
     - Cấu hình Judge: judge/judge_configuration.md
