@@ -23,8 +23,8 @@ sudo apt install -y wkhtmltopdf
 ### Clone và thiết lập mã nguồn dịch vụ:
 ```bash
 # Clone mã nguồn dịch vụ
-git clone https://github.com/FPTOJ-OJ/html-to-pdf-flask.git /home/kien/html-to-pdf-flask
-cd /home/kien/html-to-pdf-flask
+git clone https://github.com/FPTOJ-OJ/html-to-pdf-flask.git ~/html-to-pdf-flask
+cd ~/html-to-pdf-flask
 
 # Tạo môi trường ảo riêng cho dịch vụ PDF
 python3 -m venv env
@@ -70,15 +70,15 @@ Tạo file `/etc/supervisor/conf.d/html-to-pdf-flask.conf` (xem thêm
 
 ```ini
 [program:html-to-pdf-flask]
-command=/home/kien/html-to-pdf-flask/env/bin/uwsgi --ini uwsgi.ini
-directory=/home/kien/html-to-pdf-flask
+command=~/html-to-pdf-flask/env/bin/uwsgi --ini uwsgi.ini
+directory=~/html-to-pdf-flask
 stopsignal=QUIT
 stdout_logfile=/tmp/html-to-pdf-flask_log.log
 stderr_logfile=/tmp/html-to-pdf-flask.log
 autorestart=true
 stopasgroup=true
 killasgroup=true
-environment=BASE_PATH="/home/kien/site"
+environment=BASE_PATH="~/site"
 ```
 
 Sau đó nạp cấu hình và khởi động dịch vụ:

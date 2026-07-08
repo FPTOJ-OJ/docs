@@ -12,7 +12,7 @@ FPTOJ được cập nhật liên tục để sửa các lỗi bảo mật, tố
 Nếu bạn đã cài đặt bằng script `setup_fptoj.sh`, bạn có thể chạy lại script này bất kỳ lúc nào để tự động cập nhật hệ thống:
 
 ```bash
-cd /home/kien/site
+cd ~/site
 
 # Cập nhật mã nguồn mới nhất từ kho lưu trữ
 git pull origin main
@@ -30,7 +30,7 @@ Nếu bạn tự quản trị thủ công, hãy kích hoạt môi trường ảo
 
 ### 1. Tải mã nguồn mới nhất
 ```bash
-cd /home/kien/site
+cd ~/site
 source dmojsite/bin/activate
 
 # Lấy mã nguồn mới nhất từ nhánh main
