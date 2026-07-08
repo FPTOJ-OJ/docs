@@ -2154,8 +2154,8 @@
 <h3 id="phuong-phap-a-cai-at-qua-docker-khuyen-khich-nhanh-gon">Phương pháp A: Cài đặt qua Docker (Khuyến khích &amp; Nhanh gọn)</h3>
 <p>Sử dụng Docker giúp cô lập tốt các tiến trình của thí sinh, đồng thời đóng gói đầy đủ các trình biên dịch (C++, Python, Java, Pascal, Go,...) mà không sợ xung đột hay tốn công cấu hình.</p>
 <h4 id="buoc-1-tai-ma-nguon-may-cham">Bước 1: Tải mã nguồn máy chấm</h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>git<span class="w"> </span>clone<span class="w"> </span>--recursive<span class="w"> </span>https://github.com/FPTOJ-OJ/judge-server.git<span class="w"> </span>/home/kien/judge
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">cd</span><span class="w"> </span>/home/kien/judge
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>git<span class="w"> </span>clone<span class="w"> </span>--recursive<span class="w"> </span>https://github.com/FPTOJ-OJ/judge-server.git<span class="w"> </span>~/judge
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">cd</span><span class="w"> </span>~/judge
 </code></pre></div>
 <h4 id="buoc-2-tao-cau-hinh-judgeyml">Bước 2: Tạo cấu hình <code>judge.yml</code></h4>
 <p>Tạo file cấu hình máy chấm và lưu tại <code>/data/problems/judge.yml</code>:
@@ -2166,7 +2166,7 @@
 </code></pre></div></p>
 <h4 id="buoc-3-bien-dich-docker-image">Bước 3: Biên dịch Docker Image</h4>
 <p>Chúng ta biên dịch gói <code>judge-tier1</code> (bao gồm các ngôn ngữ cơ bản: C/C++, Python, Pascal, Java):
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">cd</span><span class="w"> </span>/home/kien/judge/.docker
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">cd</span><span class="w"> </span>~/judge/.docker
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>docker<span class="w"> </span>build<span class="w"> </span>--build-arg<span class="w"> </span><span class="nv">TAG</span><span class="o">=</span><span class="s2">&quot;master&quot;</span><span class="w"> </span>-t<span class="w"> </span>dmoj/judge-tier1<span class="w"> </span>-t<span class="w"> </span>dmoj/judge-tier1:latest<span class="w"> </span>./tier1
 </code></pre></div></p>
 <h4 id="buoc-4-khoi-chay-may-cham-docker">Bước 4: Khởi chạy Máy chấm Docker</h4>

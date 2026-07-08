@@ -534,6 +534,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#truoc-khi-bat-au-clone-ma-nguon" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Trước khi bắt đầu: Clone mã nguồn
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cach-1-cai-at-tu-ong-bang-script-khuyen-khich-de-nhu-an-banh" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1997,6 +2008,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#truoc-khi-bat-au-clone-ma-nguon" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Trước khi bắt đầu: Clone mã nguồn
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cach-1-cai-at-tu-ong-bang-script-khuyen-khich-de-nhu-an-banh" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2224,9 +2246,17 @@
 <h1 id="huong-dan-cai-at-fptoj-phan-site">Hướng dẫn cài đặt FPTOJ (Phần Site)</h1>
 <p>Tài liệu này hướng dẫn cách cài đặt giao diện và hệ thống quản lý trung tâm (Site) của FPTOJ. Phù hợp cho cả quản trị viên mới bắt đầu (admin non-tech) và các kỹ sư hệ thống muốn tùy biến thủ công.</p>
 <hr />
+<h3 id="truoc-khi-bat-au-clone-ma-nguon">Trước khi bắt đầu: Clone mã nguồn</h3>
+<p>Tất cả các cách cài đặt bên dưới đều yêu cầu bạn phải có mã nguồn của FPTOJ Site trên máy chủ:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git<span class="w"> </span>clone<span class="w"> </span>--recursive<span class="w"> </span>https://github.com/FPTOJ-OJ/online-judge.git<span class="w"> </span>~/site
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">cd</span><span class="w"> </span>~/site
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>git<span class="w"> </span>submodule<span class="w"> </span>init
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>git<span class="w"> </span>submodule<span class="w"> </span>update
+</code></pre></div>
+<hr />
 <h2 id="cach-1-cai-at-tu-ong-bang-script-khuyen-khich-de-nhu-an-banh">⚡ CÁCH 1: Cài đặt tự động bằng Script (Khuyến khích - Dễ như ăn bánh)</h2>
 <p>Hệ thống cung cấp một công cụ cài đặt tự động cực kỳ thông minh nằm ngay tại
-<code>/home/kien/site/setup_fptoj.sh</code>. Script này sẽ:</p>
+<code>~/site/setup_fptoj.sh</code>. Script này sẽ:</p>
 <ol>
 <li><strong>Kiểm tra phần cứng:</strong> Tự động tối ưu số lượng tiến trình và tài nguyên
    theo CPU/RAM của máy chủ.</li>
@@ -2250,11 +2280,11 @@ Nếu bạn sử dụng hệ điều hành khác (CentOS, Debian, macOS...), hã
 phương pháp <strong>Docker Compose</strong> (CÁCH 3) để triển khai thay vì chạy script trực tiếp.</p>
 </blockquote>
 <h3 id="cac-buoc-thuc-hien">Các bước thực hiện:</h3>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Di chuyển tới thư mục site</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">cd</span><span class="w"> </span>/home/kien/site
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># Chạy script cài đặt tự động (script sẽ tự nâng cấp quyền sudo)</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>./setup_fptoj.sh
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Di chuyển tới thư mục site</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">cd</span><span class="w"> </span>~/site
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># Chạy script cài đặt tự động (script sẽ tự nâng cấp quyền sudo)</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>./setup_fptoj.sh
 </code></pre></div>
 Làm theo các hướng dẫn hiện trên màn hình, điền mật khẩu và tài khoản mong muốn. Khi hoàn tất, trang web của bạn sẽ hoạt động ngay lập tức tại cổng 80 (HTTP).</p>
 <hr />
@@ -2262,93 +2292,93 @@ Làm theo các hướng dẫn hiện trên màn hình, điền mật khẩu và 
 <p>Nếu bạn muốn tự quản lý cấu trúc hoặc tùy biến sâu, hãy làm theo các bước dưới đây:</p>
 <h3 id="1-cai-at-cac-thu-vien-he-thong-can-thiet">1. Cài đặt các thư viện hệ thống cần thiết</h3>
 <p>Chạy lệnh sau để cài đặt các công cụ biên dịch, thư viện hệ thống cho Python, công cụ biên dịch giao diện và các dịch vụ nền:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>git<span class="w"> </span>gcc<span class="w"> </span>g++<span class="w"> </span>make<span class="w"> </span>python3-dev<span class="w"> </span>python3-pip<span class="w"> </span>python3-venv<span class="w"> </span>libxml2-dev<span class="w"> </span>libxslt1-dev<span class="w"> </span>zlib1g-dev<span class="w"> </span>gettext<span class="w"> </span>curl<span class="w"> </span>redis-server<span class="w"> </span>supervisor<span class="w"> </span>nginx<span class="w"> </span>wkhtmltopdf<span class="w"> </span>lsof
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>git<span class="w"> </span>gcc<span class="w"> </span>g++<span class="w"> </span>make<span class="w"> </span>python3-dev<span class="w"> </span>python3-pip<span class="w"> </span>python3-venv<span class="w"> </span>libxml2-dev<span class="w"> </span>libxslt1-dev<span class="w"> </span>zlib1g-dev<span class="w"> </span>gettext<span class="w"> </span>curl<span class="w"> </span>redis-server<span class="w"> </span>supervisor<span class="w"> </span>nginx<span class="w"> </span>wkhtmltopdf<span class="w"> </span>lsof
 </code></pre></div>
 <p><strong>Cài đặt Node.js và các công cụ CSS/Sass:</strong>
 FPTOJ sử dụng Sass và PostCSS để biên dịch giao diện.
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Cài đặt NodeJS 18.x</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>curl<span class="w"> </span>-sL<span class="w"> </span>https://deb.nodesource.com/setup_18.x<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>-E<span class="w"> </span>bash<span class="w"> </span>-
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>nodejs
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="c1"># Cài đặt các công cụ đóng gói CSS toàn cục</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>sudo<span class="w"> </span>npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>sass<span class="w"> </span>postcss-cli<span class="w"> </span>postcss<span class="w"> </span>autoprefixer
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Cài đặt NodeJS 18.x</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>curl<span class="w"> </span>-sL<span class="w"> </span>https://deb.nodesource.com/setup_18.x<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>-E<span class="w"> </span>bash<span class="w"> </span>-
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>nodejs
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="c1"># Cài đặt các công cụ đóng gói CSS toàn cục</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>sudo<span class="w"> </span>npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>sass<span class="w"> </span>postcss-cli<span class="w"> </span>postcss<span class="w"> </span>autoprefixer
 </code></pre></div></p>
 <hr />
 <h3 id="2-thiet-lap-co-so-du-lieu-mariadb-mysql">2. Thiết lập Cơ sở dữ liệu (MariaDB / MySQL)</h3>
 <p>FPTOJ hoạt động tối ưu nhất trên MariaDB hoặc MySQL 8.0.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Cài đặt MariaDB Server (nếu chưa có trên Host)</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>mariadb-server<span class="w"> </span>libmysqlclient-dev
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1"># Khởi động dịch vụ MariaDB</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>mariadb
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>mariadb
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="c1"># Cấu hình bảo mật và truy cập CSDL</span>
-<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>sudo<span class="w"> </span>mariadb
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Cài đặt MariaDB Server (nếu chưa có trên Host)</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>mariadb-server<span class="w"> </span>libmysqlclient-dev
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1"># Khởi động dịch vụ MariaDB</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>mariadb
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>mariadb
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="c1"># Cấu hình bảo mật và truy cập CSDL</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>sudo<span class="w"> </span>mariadb
 </code></pre></div>
 <p>Trong dấu nhắc lệnh của MariaDB, nhập các lệnh sau (thay thế <code>&lt;password&gt;</code> bằng mật khẩu của bạn):</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">dmoj</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="nb">CHARACTER</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">utf8mb4</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">COLLATE</span><span class="w"> </span><span class="n">utf8mb4_general_ci</span><span class="p">;</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="k">GRANT</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">dmoj</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s1">&#39;dmoj&#39;</span><span class="o">@</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="w"> </span><span class="n">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;&lt;password&gt;&#39;</span><span class="p">;</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">FLUSH</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="p">;</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="n">EXIT</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">dmoj</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="nb">CHARACTER</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">utf8mb4</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">COLLATE</span><span class="w"> </span><span class="n">utf8mb4_general_ci</span><span class="p">;</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="k">GRANT</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">dmoj</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s1">&#39;dmoj&#39;</span><span class="o">@</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="w"> </span><span class="n">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;&lt;password&gt;&#39;</span><span class="p">;</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">FLUSH</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="p">;</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="n">EXIT</span><span class="p">;</span>
 </code></pre></div>
 <p><strong>Quan trọng:</strong> Cập nhật múi giờ cho database để các truy vấn thời gian hoạt động đúng:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>mariadb-tzinfo-to-sql<span class="w"> </span>/usr/share/zoneinfo<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>mariadb<span class="w"> </span>-u<span class="w"> </span>root<span class="w"> </span>mysql
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>mariadb-tzinfo-to-sql<span class="w"> </span>/usr/share/zoneinfo<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>mariadb<span class="w"> </span>-u<span class="w"> </span>root<span class="w"> </span>mysql
 </code></pre></div></p>
 <hr />
 <h3 id="3-cai-at-ma-nguon-va-moi-truong-ao-python">3. Cài đặt mã nguồn và môi trường ảo Python</h3>
 <p>Tạo môi trường ảo <code>dmojsite</code> để cài đặt các thư viện Python nhằm tránh xung đột hệ thống:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Di chuyển tới thư mục dự án</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nb">cd</span><span class="w"> </span>/home/kien/site
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1"># Khởi tạo submodules</span>
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>git<span class="w"> </span>submodule<span class="w"> </span>init
-<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>git<span class="w"> </span>submodule<span class="w"> </span>update
-<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>
-<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="c1"># Tạo môi trường ảo</span>
-<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>dmojsite
-<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="nb">source</span><span class="w"> </span>dmojsite/bin/activate
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Di chuyển tới thư mục dự án</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nb">cd</span><span class="w"> </span>~/site
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="c1"># Khởi tạo submodules</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>git<span class="w"> </span>submodule<span class="w"> </span>init
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>git<span class="w"> </span>submodule<span class="w"> </span>update
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="c1"># Tạo môi trường ảo</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>dmojsite
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="nb">source</span><span class="w"> </span>dmojsite/bin/activate
 </code></pre></div>
 <p>Khi môi trường ảo được kích hoạt <code>(dmojsite)</code>, cài đặt các thư viện Python:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="o">(</span>dmojsite<span class="o">)</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>pip
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="o">(</span>dmojsite<span class="o">)</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="o">(</span>dmojsite<span class="o">)</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>mysqlclient<span class="w"> </span>uwsgi<span class="w"> </span>pymysql
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="o">(</span>dmojsite<span class="o">)</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>pip
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="o">(</span>dmojsite<span class="o">)</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="o">(</span>dmojsite<span class="o">)</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>mysqlclient<span class="w"> </span>uwsgi<span class="w"> </span>pymysql
 </code></pre></div>
 <hr />
 <h3 id="4-cau-hinh-file-local_settingspy">4. Cấu hình file <code>local_settings.py</code></h3>
 <p>Sao chép file cấu hình mẫu để chỉnh sửa hoặc tự viết:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="o">(</span>dmojsite<span class="o">)</span><span class="w"> </span>cp<span class="w"> </span>dmoj/local_settings.py.example<span class="w"> </span>dmoj/local_settings.py
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="o">(</span>dmojsite<span class="o">)</span><span class="w"> </span>cp<span class="w"> </span>dmoj/local_settings.py.example<span class="w"> </span>dmoj/local_settings.py
 </code></pre></div></p>
 <p>Các trường thông tin quan trọng cần cập nhật trong <code>dmoj/local_settings.py</code>:
 * <strong>DATABASES:</strong> Điền thông tin kết nối MariaDB (User: <code>dmoj</code>, Password đã tạo ở bước 2).
-* <strong>CELERY_BROKER_URL:</strong> URL Redis cho Celery broker (<code>redis://127.0.0.1:6379/0</code>). <code>result_backend</code> được suy ra tự động từ cùng URL này trong <code>dmoj/celery.py</code> (dòng <code>app.conf.result_backend = redis_url</code>). <strong>Không</strong> cần <code>CELERY_RESULT_BACKEND</code>. Secret override dùng <code>CELERY_BROKER_URL_SECRET</code> / <code>CELERY_RESULT_BACKEND_SECRET</code>.
+* <strong>CELERY_BROKER_URL:</strong> URL Redis cho Celery broker (<code>redis://127.0.0.1:6379/0</code>). <code>result_backend</code> được suy ra tự động từ cùng URL này trong <code>dmoj/celery.py</code> (dòng <code>app.conf.result_backend = app.conf.broker_url</code>). <strong>Không</strong> cần <code>CELERY_RESULT_BACKEND</code>. Secret override dùng <code>CELERY_BROKER_URL_SECRET</code> / <code>CELERY_RESULT_BACKEND_SECRET</code>.
 * <strong>SITE_NAME:</strong> Tên thương hiệu trang web của bạn (ví dụ: <code>FPTOJ</code>).
 * <strong>DMOJ_PDF_PDFOID_URL:</strong> Trỏ về dịch vụ PDF độc quyền <code>http://localhost:8888</code>.</p>
 <hr />
 <h3 id="5-dich-giao-dien-va-bien-dich-assets">5. Dịch giao diện và biên dịch Assets</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># Biên dịch giao diện CSS (Sass)</span>
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="o">(</span>dmojsite<span class="o">)</span><span class="w"> </span>./make_style.sh
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
-<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c1"># Thu thập các file tĩnh (CSS/JS/Hình ảnh) vào thư mục static</span>
-<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="o">(</span>dmojsite<span class="o">)</span><span class="w"> </span>python<span class="w"> </span>manage.py<span class="w"> </span>collectstatic<span class="w"> </span>--no-input
-<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>
-<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="c1"># Tạo file ngôn ngữ (tiếng Việt / đa ngôn ngữ)</span>
-<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="o">(</span>dmojsite<span class="o">)</span><span class="w"> </span>python<span class="w"> </span>manage.py<span class="w"> </span>compilemessages
-<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="o">(</span>dmojsite<span class="o">)</span><span class="w"> </span>python<span class="w"> </span>manage.py<span class="w"> </span>compilejsi18n
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Biên dịch giao diện CSS (Sass)</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="o">(</span>dmojsite<span class="o">)</span><span class="w"> </span>./make_style.sh
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="c1"># Thu thập các file tĩnh (CSS/JS/Hình ảnh) vào thư mục static</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="o">(</span>dmojsite<span class="o">)</span><span class="w"> </span>python<span class="w"> </span>manage.py<span class="w"> </span>collectstatic<span class="w"> </span>--no-input
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="c1"># Tạo file ngôn ngữ (tiếng Việt / đa ngôn ngữ)</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="o">(</span>dmojsite<span class="o">)</span><span class="w"> </span>python<span class="w"> </span>manage.py<span class="w"> </span>compilemessages
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="o">(</span>dmojsite<span class="o">)</span><span class="w"> </span>python<span class="w"> </span>manage.py<span class="w"> </span>compilejsi18n
 </code></pre></div>
 <hr />
 <h3 id="6-khoi-tao-co-so-du-lieu-va-tai-khoan-admin">6. Khởi tạo Cơ sở dữ liệu và Tài khoản Admin</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Tạo các bảng cơ sở dữ liệu</span>
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="o">(</span>dmojsite<span class="o">)</span><span class="w"> </span>python<span class="w"> </span>manage.py<span class="w"> </span>migrate
-<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
-<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="c1"># Nạp dữ liệu cấu hình ban đầu</span>
-<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="o">(</span>dmojsite<span class="o">)</span><span class="w"> </span>python<span class="w"> </span>manage.py<span class="w"> </span>loaddata<span class="w"> </span>navbar
-<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="o">(</span>dmojsite<span class="o">)</span><span class="w"> </span>python<span class="w"> </span>manage.py<span class="w"> </span>loaddata<span class="w"> </span>language_small
-<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="o">(</span>dmojsite<span class="o">)</span><span class="w"> </span>python<span class="w"> </span>manage.py<span class="w"> </span>loaddata<span class="w"> </span>demo
-<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>
-<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="c1"># Tạo tài khoản quản trị tối cao (Superuser)</span>
-<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="o">(</span>dmojsite<span class="o">)</span><span class="w"> </span>python<span class="w"> </span>manage.py<span class="w"> </span>createsuperuser
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># Tạo các bảng cơ sở dữ liệu</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="o">(</span>dmojsite<span class="o">)</span><span class="w"> </span>python<span class="w"> </span>manage.py<span class="w"> </span>migrate
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="c1"># Nạp dữ liệu cấu hình ban đầu</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="o">(</span>dmojsite<span class="o">)</span><span class="w"> </span>python<span class="w"> </span>manage.py<span class="w"> </span>loaddata<span class="w"> </span>navbar
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="o">(</span>dmojsite<span class="o">)</span><span class="w"> </span>python<span class="w"> </span>manage.py<span class="w"> </span>loaddata<span class="w"> </span>language_small
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="o">(</span>dmojsite<span class="o">)</span><span class="w"> </span>python<span class="w"> </span>manage.py<span class="w"> </span>loaddata<span class="w"> </span>demo
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="c1"># Tạo tài khoản quản trị tối cao (Superuser)</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="o">(</span>dmojsite<span class="o">)</span><span class="w"> </span>python<span class="w"> </span>manage.py<span class="w"> </span>createsuperuser
 </code></pre></div>
 <hr />
 <h3 id="7-cau-hinh-va-chay-cac-tien-trinh-nen-bang-supervisord">7. Cấu hình và chạy các tiến trình nền bằng Supervisord</h3>
@@ -2356,103 +2386,99 @@ FPTOJ sử dụng Sass và PostCSS để biên dịch giao diện.
 <ul>
 <li>
 <p><strong>Web Site (<code>/etc/supervisor/conf.d/site.conf</code>):</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">[program:site]</span>
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="na">command</span><span class="o">=</span><span class="s">/home/kien/site/dmojsite/bin/uwsgi --ini uwsgi.ini</span>
-<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="na">directory</span><span class="o">=</span><span class="s">/home/kien/site</span>
-<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="na">stopsignal</span><span class="o">=</span><span class="s">QUIT</span>
-<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="na">stdout_logfile</span><span class="o">=</span><span class="s">/tmp/site.stdout.log</span>
-<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="na">stderr_logfile</span><span class="o">=</span><span class="s">/tmp/site.stderr.log</span>
-<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="na">autorestart</span><span class="o">=</span><span class="s">true</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">[program:site]</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="na">command</span><span class="o">=</span><span class="s">~/site/dmojsite/bin/uwsgi --ini uwsgi.ini</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="na">directory</span><span class="o">=</span><span class="s">~/site</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="na">stopsignal</span><span class="o">=</span><span class="s">QUIT</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="na">stdout_logfile</span><span class="o">=</span><span class="s">/tmp/site.stdout.log</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="na">stderr_logfile</span><span class="o">=</span><span class="s">/tmp/site.stderr.log</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="na">autorestart</span><span class="o">=</span><span class="s">true</span>
 </code></pre></div></p>
 </li>
 <li>
 <p><strong>Bridge kết nối Judge (<code>/etc/supervisor/conf.d/bridged.conf</code>):</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">[program:bridged]</span>
-<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="na">command</span><span class="o">=</span><span class="s">/home/kien/site/dmojsite/bin/python manage.py runbridged</span>
-<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="na">directory</span><span class="o">=</span><span class="s">/home/kien/site</span>
-<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="na">stopsignal</span><span class="o">=</span><span class="s">INT</span>
-<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="na">user</span><span class="o">=</span><span class="s">kien</span>
-<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="na">group</span><span class="o">=</span><span class="s">kien</span>
-<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="na">stdout_logfile</span><span class="o">=</span><span class="s">/tmp/bridge.stdout.log</span>
-<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="na">stderr_logfile</span><span class="o">=</span><span class="s">/tmp/bridge.stderr.log</span>
-<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="na">autorestart</span><span class="o">=</span><span class="s">true</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">[program:bridged]</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="na">command</span><span class="o">=</span><span class="s">~/site/dmojsite/bin/python manage.py runbridged</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="na">directory</span><span class="o">=</span><span class="s">~/site</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="na">stopsignal</span><span class="o">=</span><span class="s">INT</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="na">stdout_logfile</span><span class="o">=</span><span class="s">/tmp/bridge.stdout.log</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="na">stderr_logfile</span><span class="o">=</span><span class="s">/tmp/bridge.stderr.log</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="na">autorestart</span><span class="o">=</span><span class="s">true</span>
 </code></pre></div></p>
 </li>
 <li>
 <p><strong>Event server cập nhật real-time (<code>/etc/supervisor/conf.d/wsevent.conf</code>):</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">[program:wsevent]</span>
-<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="na">command</span><span class="o">=</span><span class="s">/usr/bin/node /home/kien/site/websocket/daemon.js</span>
-<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="na">environment=NODE_PATH</span><span class="o">=</span><span class="s">&quot;/home/kien/site/node_modules&quot;</span>
-<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="na">user</span><span class="o">=</span><span class="s">kien</span>
-<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="na">group</span><span class="o">=</span><span class="s">kien</span>
-<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="na">stdout_logfile</span><span class="o">=</span><span class="s">/tmp/wsevent.stdout.log</span>
-<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="na">stderr_logfile</span><span class="o">=</span><span class="s">/tmp/wsevent.stderr.log</span>
-<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="na">autorestart</span><span class="o">=</span><span class="s">true</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">[program:wsevent]</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="na">command</span><span class="o">=</span><span class="s">/usr/bin/node ~/site/websocket/daemon.js</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="na">environment=NODE_PATH</span><span class="o">=</span><span class="s">&quot;~/site/node_modules&quot;</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="na">stdout_logfile</span><span class="o">=</span><span class="s">/tmp/wsevent.stdout.log</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="na">stderr_logfile</span><span class="o">=</span><span class="s">/tmp/wsevent.stderr.log</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="na">autorestart</span><span class="o">=</span><span class="s">true</span>
 </code></pre></div></p>
 </li>
 </ul>
 <p>Nạp cấu hình và khởi chạy các dịch vụ:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>sudo<span class="w"> </span>supervisorctl<span class="w"> </span>update
-<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>sudo<span class="w"> </span>supervisorctl<span class="w"> </span>status
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>sudo<span class="w"> </span>supervisorctl<span class="w"> </span>update
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>sudo<span class="w"> </span>supervisorctl<span class="w"> </span>status
 </code></pre></div></p>
 <hr />
 <h3 id="8-cau-hinh-nginx-va-khoi-ong">8. Cấu hình Nginx và Khởi động</h3>
 <p>Ghi file cấu hình <code>/etc/nginx/sites-available/fptoj</code> và tạo liên kết:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>sudo<span class="w"> </span>ln<span class="w"> </span>-sf<span class="w"> </span>/etc/nginx/sites-available/fptoj<span class="w"> </span>/etc/nginx/sites-enabled/fptoj
-<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>sudo<span class="w"> </span>rm<span class="w"> </span>-f<span class="w"> </span>/etc/nginx/sites-enabled/default<span class="w"> </span><span class="c1"># Xóa site mặc định</span>
-<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>nginx
-<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>
-<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>---
-<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>
-<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="c1">## 🐳 CÁCH 3: Triển khai toàn bộ hệ thống bằng Docker Compose</span>
-<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>
-<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>Phương<span class="w"> </span>pháp<span class="w"> </span>này<span class="w"> </span>phù<span class="w"> </span>hợp<span class="w"> </span>khi<span class="w"> </span>bạn<span class="w"> </span>muốn<span class="w"> </span>triển<span class="w"> </span>khai<span class="w"> </span>nhanh<span class="w"> </span>mà<span class="w"> </span>không<span class="w"> </span>cần<span class="w"> </span>cài<span class="w"> </span>đặt<span class="w"> </span>từng
-<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a>dịch<span class="w"> </span>vụ<span class="w"> </span>thủ<span class="w"> </span>công,<span class="w"> </span>hoặc<span class="w"> </span>khi<span class="w"> </span>bạn<span class="w"> </span>dùng<span class="w"> </span>hệ<span class="w"> </span>điều<span class="w"> </span>hành<span class="w"> </span>khác<span class="w"> </span>ngoài<span class="w"> </span>Ubuntu.
-<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a>
-<a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a>&gt;<span class="w"> </span><span class="o">[</span>!NOTE<span class="o">]</span>
-<a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a>&gt;<span class="w"> </span>Các<span class="w"> </span>file<span class="w"> </span>cấu<span class="w"> </span>hình<span class="w"> </span>Docker<span class="w"> </span>nằm<span class="w"> </span>tại<span class="w"> </span>thư<span class="w"> </span>mục<span class="w"> </span><span class="sb">`</span>docker/<span class="sb">`</span><span class="w"> </span>trong<span class="w"> </span>mã<span class="w"> </span>nguồn<span class="w"> </span>Site
-<a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a>&gt;<span class="w"> </span><span class="o">(</span><span class="sb">`</span>/home/kien/site/docker/<span class="sb">`</span><span class="o">)</span>.
-<a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a>
-<a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a><span class="c1">### Cấu trúc dịch vụ</span>
-<a id="__codelineno-15-17" name="__codelineno-15-17" href="#__codelineno-15-17"></a>
-<a id="__codelineno-15-18" name="__codelineno-15-18" href="#__codelineno-15-18"></a>Hệ<span class="w"> </span>thống<span class="w"> </span>gồm<span class="w"> </span><span class="m">8</span><span class="w"> </span>container<span class="w"> </span>chạy<span class="w"> </span>đồng<span class="w"> </span>thời:
-<a id="__codelineno-15-19" name="__codelineno-15-19" href="#__codelineno-15-19"></a>
-<a id="__codelineno-15-20" name="__codelineno-15-20" href="#__codelineno-15-20"></a><span class="p">|</span><span class="w"> </span>Container<span class="w"> </span><span class="p">|</span><span class="w"> </span>Chức<span class="w"> </span>năng<span class="w"> </span><span class="p">|</span>
-<a id="__codelineno-15-21" name="__codelineno-15-21" href="#__codelineno-15-21"></a><span class="p">|</span>---<span class="p">|</span>---<span class="p">|</span>
-<a id="__codelineno-15-22" name="__codelineno-15-22" href="#__codelineno-15-22"></a><span class="p">|</span><span class="w"> </span><span class="sb">`</span>fptoj-db<span class="sb">`</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>MariaDB<span class="w"> </span><span class="m">10</span>.11<span class="w"> </span>-<span class="w"> </span>Cơ<span class="w"> </span>sở<span class="w"> </span>dữ<span class="w"> </span>liệu<span class="w"> </span><span class="p">|</span>
-<a id="__codelineno-15-23" name="__codelineno-15-23" href="#__codelineno-15-23"></a><span class="p">|</span><span class="w"> </span><span class="sb">`</span>fptoj-redis<span class="sb">`</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>Redis<span class="w"> </span><span class="m">7</span><span class="w"> </span>-<span class="w"> </span>Cache<span class="w"> </span><span class="p">&amp;</span><span class="w"> </span>hàng<span class="w"> </span>đợi<span class="w"> </span>Celery<span class="w"> </span><span class="p">|</span>
-<a id="__codelineno-15-24" name="__codelineno-15-24" href="#__codelineno-15-24"></a><span class="p">|</span><span class="w"> </span><span class="sb">`</span>fptoj-web<span class="sb">`</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>uWSGI<span class="w"> </span>Django<span class="w"> </span>-<span class="w"> </span>Web<span class="w"> </span>application<span class="w"> </span><span class="p">|</span>
-<a id="__codelineno-15-25" name="__codelineno-15-25" href="#__codelineno-15-25"></a><span class="p">|</span><span class="w"> </span><span class="sb">`</span>fptoj-celery<span class="sb">`</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>Celery<span class="w"> </span>worker<span class="w"> </span>-<span class="w"> </span>Xử<span class="w"> </span>lý<span class="w"> </span>tác<span class="w"> </span>vụ<span class="w"> </span>nền<span class="w"> </span><span class="p">|</span>
-<a id="__codelineno-15-26" name="__codelineno-15-26" href="#__codelineno-15-26"></a><span class="p">|</span><span class="w"> </span><span class="sb">`</span>fptoj-wsevent<span class="sb">`</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>Node.js<span class="w"> </span>-<span class="w"> </span>WebSocket<span class="w"> </span>event<span class="w"> </span>server<span class="w"> </span><span class="p">|</span>
-<a id="__codelineno-15-27" name="__codelineno-15-27" href="#__codelineno-15-27"></a><span class="p">|</span><span class="w"> </span><span class="sb">`</span>fptoj-bridged<span class="sb">`</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>Bridge<span class="w"> </span>server<span class="w"> </span>-<span class="w"> </span>Kết<span class="w"> </span>nối<span class="w"> </span>máy<span class="w"> </span>chấm<span class="w"> </span><span class="p">|</span>
-<a id="__codelineno-15-28" name="__codelineno-15-28" href="#__codelineno-15-28"></a><span class="p">|</span><span class="w"> </span><span class="sb">`</span>fptoj-nginx<span class="sb">`</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>Nginx<span class="w"> </span>-<span class="w"> </span>Reverse<span class="w"> </span>proxy<span class="w"> </span><span class="o">(</span>cổng<span class="w"> </span><span class="m">80</span><span class="o">)</span><span class="w"> </span><span class="p">|</span>
-<a id="__codelineno-15-29" name="__codelineno-15-29" href="#__codelineno-15-29"></a><span class="p">|</span><span class="w"> </span><span class="sb">`</span>fptoj-judge<span class="sb">`</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>Judge<span class="w"> </span>server<span class="w"> </span>-<span class="w"> </span>Máy<span class="w"> </span>chấm<span class="w"> </span>bài<span class="w"> </span><span class="p">|</span>
-<a id="__codelineno-15-30" name="__codelineno-15-30" href="#__codelineno-15-30"></a>
-<a id="__codelineno-15-31" name="__codelineno-15-31" href="#__codelineno-15-31"></a><span class="c1">### Hồ sơ tài nguyên (Tiers)</span>
-<a id="__codelineno-15-32" name="__codelineno-15-32" href="#__codelineno-15-32"></a>
-<a id="__codelineno-15-33" name="__codelineno-15-33" href="#__codelineno-15-33"></a>Tuỳ<span class="w"> </span>theo<span class="w"> </span>cấu<span class="w"> </span>hình<span class="w"> </span>máy<span class="w"> </span>chủ,<span class="w"> </span>chọn<span class="w"> </span>một<span class="w"> </span>trong<span class="w"> </span>ba<span class="w"> </span>hồ<span class="w"> </span>sơ<span class="w"> </span>sau:
-<a id="__codelineno-15-34" name="__codelineno-15-34" href="#__codelineno-15-34"></a>
-<a id="__codelineno-15-35" name="__codelineno-15-35" href="#__codelineno-15-35"></a><span class="p">|</span><span class="w"> </span>Hồ<span class="w"> </span>sơ<span class="w"> </span><span class="p">|</span><span class="w"> </span>Tài<span class="w"> </span>nguyên<span class="w"> </span><span class="p">|</span><span class="w"> </span>uWSGI<span class="w"> </span>workers<span class="w"> </span><span class="p">|</span><span class="w"> </span>Celery<span class="w"> </span><span class="p">|</span><span class="w"> </span>Số<span class="w"> </span>máy<span class="w"> </span>chấm<span class="w"> </span><span class="p">|</span>
-<a id="__codelineno-15-36" name="__codelineno-15-36" href="#__codelineno-15-36"></a><span class="p">|</span>---<span class="p">|</span>---<span class="p">|</span>---<span class="p">|</span>---<span class="p">|</span>---<span class="p">|</span>
-<a id="__codelineno-15-37" name="__codelineno-15-37" href="#__codelineno-15-37"></a><span class="p">|</span><span class="w"> </span>**Tier<span class="w"> </span><span class="m">1</span>**<span class="w"> </span><span class="p">|</span><span class="w"> </span>Tối<span class="w"> </span>thiểu<span class="w"> </span><span class="o">(</span><span class="m">1</span>-2<span class="w"> </span>CPU,<span class="w"> </span><span class="m">2</span>-4GB<span class="w"> </span>RAM<span class="o">)</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="p">|</span>
-<a id="__codelineno-15-38" name="__codelineno-15-38" href="#__codelineno-15-38"></a><span class="p">|</span><span class="w"> </span>**Tier<span class="w"> </span><span class="m">2</span>**<span class="w"> </span><span class="p">|</span><span class="w"> </span>Trung<span class="w"> </span>bình<span class="w"> </span><span class="o">(</span><span class="m">4</span>-8<span class="w"> </span>CPU,<span class="w"> </span><span class="m">8</span>-16GB<span class="w"> </span>RAM<span class="o">)</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="p">|</span>
-<a id="__codelineno-15-39" name="__codelineno-15-39" href="#__codelineno-15-39"></a><span class="p">|</span><span class="w"> </span>**Tier<span class="w"> </span><span class="m">3</span>**<span class="w"> </span><span class="p">|</span><span class="w"> </span>Cao<span class="w"> </span>cấp<span class="w"> </span><span class="o">(</span><span class="m">8</span>-16<span class="w"> </span>CPU,<span class="w"> </span><span class="m">16</span>-32GB<span class="w"> </span>RAM<span class="o">)</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="p">|</span>
-<a id="__codelineno-15-40" name="__codelineno-15-40" href="#__codelineno-15-40"></a>
-<a id="__codelineno-15-41" name="__codelineno-15-41" href="#__codelineno-15-41"></a><span class="c1">### Các bước triển khai</span>
-<a id="__codelineno-15-42" name="__codelineno-15-42" href="#__codelineno-15-42"></a>
-<a id="__codelineno-15-43" name="__codelineno-15-43" href="#__codelineno-15-43"></a><span class="c1">#### Bước 1: Cài đặt Docker &amp; Docker Compose</span>
-<a id="__codelineno-15-44" name="__codelineno-15-44" href="#__codelineno-15-44"></a>
-<a id="__codelineno-15-45" name="__codelineno-15-45" href="#__codelineno-15-45"></a><span class="sb">```</span>bash
-<a id="__codelineno-15-46" name="__codelineno-15-46" href="#__codelineno-15-46"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
-<a id="__codelineno-15-47" name="__codelineno-15-47" href="#__codelineno-15-47"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>docker.io<span class="w"> </span>docker-compose-v2
-<a id="__codelineno-15-48" name="__codelineno-15-48" href="#__codelineno-15-48"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>docker
-<a id="__codelineno-15-49" name="__codelineno-15-49" href="#__codelineno-15-49"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>docker
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>sudo<span class="w"> </span>ln<span class="w"> </span>-sf<span class="w"> </span>/etc/nginx/sites-available/fptoj<span class="w"> </span>/etc/nginx/sites-enabled/fptoj
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>sudo<span class="w"> </span>rm<span class="w"> </span>-f<span class="w"> </span>/etc/nginx/sites-enabled/default<span class="w"> </span><span class="c1"># Xóa site mặc định</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>nginx
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>---
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="c1">## 🐳 CÁCH 3: Triển khai toàn bộ hệ thống bằng Docker Compose</span>
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>Phương<span class="w"> </span>pháp<span class="w"> </span>này<span class="w"> </span>phù<span class="w"> </span>hợp<span class="w"> </span>khi<span class="w"> </span>bạn<span class="w"> </span>muốn<span class="w"> </span>triển<span class="w"> </span>khai<span class="w"> </span>nhanh<span class="w"> </span>mà<span class="w"> </span>không<span class="w"> </span>cần<span class="w"> </span>cài<span class="w"> </span>đặt<span class="w"> </span>từng
+<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a>dịch<span class="w"> </span>vụ<span class="w"> </span>thủ<span class="w"> </span>công,<span class="w"> </span>hoặc<span class="w"> </span>khi<span class="w"> </span>bạn<span class="w"> </span>dùng<span class="w"> </span>hệ<span class="w"> </span>điều<span class="w"> </span>hành<span class="w"> </span>khác<span class="w"> </span>ngoài<span class="w"> </span>Ubuntu.
+<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a>
+<a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a>&gt;<span class="w"> </span><span class="o">[</span>!NOTE<span class="o">]</span>
+<a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a>&gt;<span class="w"> </span>Các<span class="w"> </span>file<span class="w"> </span>cấu<span class="w"> </span>hình<span class="w"> </span>Docker<span class="w"> </span>nằm<span class="w"> </span>tại<span class="w"> </span>thư<span class="w"> </span>mục<span class="w"> </span><span class="sb">`</span>docker/<span class="sb">`</span><span class="w"> </span>trong<span class="w"> </span>mã<span class="w"> </span>nguồn<span class="w"> </span>Site
+<a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a>&gt;<span class="w"> </span><span class="o">(</span><span class="sb">`</span>~/site/docker/<span class="sb">`</span><span class="o">)</span>.
+<a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a>
+<a id="__codelineno-16-16" name="__codelineno-16-16" href="#__codelineno-16-16"></a><span class="c1">### Cấu trúc dịch vụ</span>
+<a id="__codelineno-16-17" name="__codelineno-16-17" href="#__codelineno-16-17"></a>
+<a id="__codelineno-16-18" name="__codelineno-16-18" href="#__codelineno-16-18"></a>Hệ<span class="w"> </span>thống<span class="w"> </span>gồm<span class="w"> </span><span class="m">8</span><span class="w"> </span>container<span class="w"> </span>chạy<span class="w"> </span>đồng<span class="w"> </span>thời:
+<a id="__codelineno-16-19" name="__codelineno-16-19" href="#__codelineno-16-19"></a>
+<a id="__codelineno-16-20" name="__codelineno-16-20" href="#__codelineno-16-20"></a><span class="p">|</span><span class="w"> </span>Container<span class="w"> </span><span class="p">|</span><span class="w"> </span>Chức<span class="w"> </span>năng<span class="w"> </span><span class="p">|</span>
+<a id="__codelineno-16-21" name="__codelineno-16-21" href="#__codelineno-16-21"></a><span class="p">|</span>---<span class="p">|</span>---<span class="p">|</span>
+<a id="__codelineno-16-22" name="__codelineno-16-22" href="#__codelineno-16-22"></a><span class="p">|</span><span class="w"> </span><span class="sb">`</span>fptoj-db<span class="sb">`</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>MariaDB<span class="w"> </span><span class="m">10</span>.11<span class="w"> </span>-<span class="w"> </span>Cơ<span class="w"> </span>sở<span class="w"> </span>dữ<span class="w"> </span>liệu<span class="w"> </span><span class="p">|</span>
+<a id="__codelineno-16-23" name="__codelineno-16-23" href="#__codelineno-16-23"></a><span class="p">|</span><span class="w"> </span><span class="sb">`</span>fptoj-redis<span class="sb">`</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>Redis<span class="w"> </span><span class="m">7</span><span class="w"> </span>-<span class="w"> </span>Cache<span class="w"> </span><span class="p">&amp;</span><span class="w"> </span>hàng<span class="w"> </span>đợi<span class="w"> </span>Celery<span class="w"> </span><span class="p">|</span>
+<a id="__codelineno-16-24" name="__codelineno-16-24" href="#__codelineno-16-24"></a><span class="p">|</span><span class="w"> </span><span class="sb">`</span>fptoj-web<span class="sb">`</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>uWSGI<span class="w"> </span>Django<span class="w"> </span>-<span class="w"> </span>Web<span class="w"> </span>application<span class="w"> </span><span class="p">|</span>
+<a id="__codelineno-16-25" name="__codelineno-16-25" href="#__codelineno-16-25"></a><span class="p">|</span><span class="w"> </span><span class="sb">`</span>fptoj-celery<span class="sb">`</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>Celery<span class="w"> </span>worker<span class="w"> </span>-<span class="w"> </span>Xử<span class="w"> </span>lý<span class="w"> </span>tác<span class="w"> </span>vụ<span class="w"> </span>nền<span class="w"> </span><span class="p">|</span>
+<a id="__codelineno-16-26" name="__codelineno-16-26" href="#__codelineno-16-26"></a><span class="p">|</span><span class="w"> </span><span class="sb">`</span>fptoj-wsevent<span class="sb">`</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>Node.js<span class="w"> </span>-<span class="w"> </span>WebSocket<span class="w"> </span>event<span class="w"> </span>server<span class="w"> </span><span class="p">|</span>
+<a id="__codelineno-16-27" name="__codelineno-16-27" href="#__codelineno-16-27"></a><span class="p">|</span><span class="w"> </span><span class="sb">`</span>fptoj-bridged<span class="sb">`</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>Bridge<span class="w"> </span>server<span class="w"> </span>-<span class="w"> </span>Kết<span class="w"> </span>nối<span class="w"> </span>máy<span class="w"> </span>chấm<span class="w"> </span><span class="p">|</span>
+<a id="__codelineno-16-28" name="__codelineno-16-28" href="#__codelineno-16-28"></a><span class="p">|</span><span class="w"> </span><span class="sb">`</span>fptoj-nginx<span class="sb">`</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>Nginx<span class="w"> </span>-<span class="w"> </span>Reverse<span class="w"> </span>proxy<span class="w"> </span><span class="o">(</span>cổng<span class="w"> </span><span class="m">80</span><span class="o">)</span><span class="w"> </span><span class="p">|</span>
+<a id="__codelineno-16-29" name="__codelineno-16-29" href="#__codelineno-16-29"></a><span class="p">|</span><span class="w"> </span><span class="sb">`</span>fptoj-judge<span class="sb">`</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>Judge<span class="w"> </span>server<span class="w"> </span>-<span class="w"> </span>Máy<span class="w"> </span>chấm<span class="w"> </span>bài<span class="w"> </span><span class="p">|</span>
+<a id="__codelineno-16-30" name="__codelineno-16-30" href="#__codelineno-16-30"></a>
+<a id="__codelineno-16-31" name="__codelineno-16-31" href="#__codelineno-16-31"></a><span class="c1">### Hồ sơ tài nguyên (Tiers)</span>
+<a id="__codelineno-16-32" name="__codelineno-16-32" href="#__codelineno-16-32"></a>
+<a id="__codelineno-16-33" name="__codelineno-16-33" href="#__codelineno-16-33"></a>Tuỳ<span class="w"> </span>theo<span class="w"> </span>cấu<span class="w"> </span>hình<span class="w"> </span>máy<span class="w"> </span>chủ,<span class="w"> </span>chọn<span class="w"> </span>một<span class="w"> </span>trong<span class="w"> </span>ba<span class="w"> </span>hồ<span class="w"> </span>sơ<span class="w"> </span>sau:
+<a id="__codelineno-16-34" name="__codelineno-16-34" href="#__codelineno-16-34"></a>
+<a id="__codelineno-16-35" name="__codelineno-16-35" href="#__codelineno-16-35"></a><span class="p">|</span><span class="w"> </span>Hồ<span class="w"> </span>sơ<span class="w"> </span><span class="p">|</span><span class="w"> </span>Tài<span class="w"> </span>nguyên<span class="w"> </span><span class="p">|</span><span class="w"> </span>uWSGI<span class="w"> </span>workers<span class="w"> </span><span class="p">|</span><span class="w"> </span>Celery<span class="w"> </span><span class="p">|</span><span class="w"> </span>Số<span class="w"> </span>máy<span class="w"> </span>chấm<span class="w"> </span><span class="p">|</span>
+<a id="__codelineno-16-36" name="__codelineno-16-36" href="#__codelineno-16-36"></a><span class="p">|</span>---<span class="p">|</span>---<span class="p">|</span>---<span class="p">|</span>---<span class="p">|</span>---<span class="p">|</span>
+<a id="__codelineno-16-37" name="__codelineno-16-37" href="#__codelineno-16-37"></a><span class="p">|</span><span class="w"> </span>**Tier<span class="w"> </span><span class="m">1</span>**<span class="w"> </span><span class="p">|</span><span class="w"> </span>Tối<span class="w"> </span>thiểu<span class="w"> </span><span class="o">(</span><span class="m">1</span>-2<span class="w"> </span>CPU,<span class="w"> </span><span class="m">2</span>-4GB<span class="w"> </span>RAM<span class="o">)</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="p">|</span>
+<a id="__codelineno-16-38" name="__codelineno-16-38" href="#__codelineno-16-38"></a><span class="p">|</span><span class="w"> </span>**Tier<span class="w"> </span><span class="m">2</span>**<span class="w"> </span><span class="p">|</span><span class="w"> </span>Trung<span class="w"> </span>bình<span class="w"> </span><span class="o">(</span><span class="m">4</span>-8<span class="w"> </span>CPU,<span class="w"> </span><span class="m">8</span>-16GB<span class="w"> </span>RAM<span class="o">)</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="p">|</span>
+<a id="__codelineno-16-39" name="__codelineno-16-39" href="#__codelineno-16-39"></a><span class="p">|</span><span class="w"> </span>**Tier<span class="w"> </span><span class="m">3</span>**<span class="w"> </span><span class="p">|</span><span class="w"> </span>Cao<span class="w"> </span>cấp<span class="w"> </span><span class="o">(</span><span class="m">8</span>-16<span class="w"> </span>CPU,<span class="w"> </span><span class="m">16</span>-32GB<span class="w"> </span>RAM<span class="o">)</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="p">|</span>
+<a id="__codelineno-16-40" name="__codelineno-16-40" href="#__codelineno-16-40"></a>
+<a id="__codelineno-16-41" name="__codelineno-16-41" href="#__codelineno-16-41"></a><span class="c1">### Các bước triển khai</span>
+<a id="__codelineno-16-42" name="__codelineno-16-42" href="#__codelineno-16-42"></a>
+<a id="__codelineno-16-43" name="__codelineno-16-43" href="#__codelineno-16-43"></a><span class="c1">#### Bước 1: Cài đặt Docker &amp; Docker Compose</span>
+<a id="__codelineno-16-44" name="__codelineno-16-44" href="#__codelineno-16-44"></a>
+<a id="__codelineno-16-45" name="__codelineno-16-45" href="#__codelineno-16-45"></a><span class="sb">```</span>bash
+<a id="__codelineno-16-46" name="__codelineno-16-46" href="#__codelineno-16-46"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
+<a id="__codelineno-16-47" name="__codelineno-16-47" href="#__codelineno-16-47"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>docker.io<span class="w"> </span>docker-compose-v2
+<a id="__codelineno-16-48" name="__codelineno-16-48" href="#__codelineno-16-48"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>docker
+<a id="__codelineno-16-49" name="__codelineno-16-49" href="#__codelineno-16-49"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>docker
 </code></pre></div></p>
 <h4 id="buoc-2-tao-cau-hinh-moi-truong">Bước 2: Tạo cấu hình môi trường</h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="nb">cd</span><span class="w"> </span>/home/kien/site/docker
-<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>cp<span class="w"> </span>.env.example<span class="w"> </span>.env
-<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="c1"># Sửa file .env với các thông tin của bạn</span>
-<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>nano<span class="w"> </span>.env
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="nb">cd</span><span class="w"> </span>~/site/docker
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>cp<span class="w"> </span>.env.example<span class="w"> </span>.env
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="c1"># Sửa file .env với các thông tin của bạn</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>nano<span class="w"> </span>.env
 </code></pre></div>
 <p>Các biến quan trọng cần cập nhật trong <code>.env</code>:</p>
 <table>
@@ -2494,18 +2520,18 @@ FPTOJ sử dụng Sass và PostCSS để biên dịch giao diện.
 </tbody>
 </table>
 <h4 id="buoc-3-xay-dung-docker-image-cho-site">Bước 3: Xây dựng Docker image cho Site</h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="nb">cd</span><span class="w"> </span>/home/kien/site
-<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>docker<span class="w"> </span>compose<span class="w"> </span>-f<span class="w"> </span>docker/docker-compose.tier1.yml<span class="w"> </span>build
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="nb">cd</span><span class="w"> </span>~/site
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>docker<span class="w"> </span>compose<span class="w"> </span>-f<span class="w"> </span>docker/docker-compose.tier1.yml<span class="w"> </span>build
 </code></pre></div>
 <h4 id="buoc-4-khoi-chay-toan-bo-he-thong">Bước 4: Khởi chạy toàn bộ hệ thống</h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="nb">cd</span><span class="w"> </span>/home/kien/site/docker
-<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>docker<span class="w"> </span>compose<span class="w"> </span>-f<span class="w"> </span>docker-compose.tier1.yml<span class="w"> </span>up<span class="w"> </span>-d
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="nb">cd</span><span class="w"> </span>~/site/docker
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>docker<span class="w"> </span>compose<span class="w"> </span>-f<span class="w"> </span>docker-compose.tier1.yml<span class="w"> </span>up<span class="w"> </span>-d
 </code></pre></div>
 <p>Kiểm tra các container đã chạy:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>docker<span class="w"> </span>compose<span class="w"> </span>-f<span class="w"> </span>docker-compose.tier1.yml<span class="w"> </span>ps
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>docker<span class="w"> </span>compose<span class="w"> </span>-f<span class="w"> </span>docker-compose.tier1.yml<span class="w"> </span>ps
 </code></pre></div>
 <h4 id="buoc-5-tao-tai-khoan-admin">Bước 5: Tạo tài khoản Admin</h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>fptoj-web-tier1<span class="w"> </span>python<span class="w"> </span>manage.py<span class="w"> </span>createsuperuser
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>fptoj-web-tier1<span class="w"> </span>python<span class="w"> </span>manage.py<span class="w"> </span>createsuperuser
 </code></pre></div>
 <h4 id="buoc-6-cap-nhat-cau-hinh-judge-tren-admin-site">Bước 6: Cập nhật cấu hình Judge trên Admin Site</h4>
 <ol>
@@ -2517,9 +2543,9 @@ FPTOJ sử dụng Sass và PostCSS để biên dịch giao diện.
 </ol>
 <h4 id="nang-cap-len-ho-so-cao-hon">Nâng cấp lên hồ sơ cao hơn</h4>
 <p>Khi máy chủ có nhiều tài nguyên hơn, bạn có thể chuyển sang Tier 2 hoặc Tier 3:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="nb">cd</span><span class="w"> </span>/home/kien/site/docker
-<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>docker<span class="w"> </span>compose<span class="w"> </span>-f<span class="w"> </span>docker-compose.tier1.yml<span class="w"> </span>down
-<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>docker<span class="w"> </span>compose<span class="w"> </span>-f<span class="w"> </span>docker-compose.tier2.yml<span class="w"> </span>up<span class="w"> </span>-d
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="nb">cd</span><span class="w"> </span>~/site/docker
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>docker<span class="w"> </span>compose<span class="w"> </span>-f<span class="w"> </span>docker-compose.tier1.yml<span class="w"> </span>down
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>docker<span class="w"> </span>compose<span class="w"> </span>-f<span class="w"> </span>docker-compose.tier2.yml<span class="w"> </span>up<span class="w"> </span>-d
 </code></pre></div>
 <blockquote>
 <p>[!TIP]
