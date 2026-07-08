@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://docs.fptoj.com/site/themis_contest/">
+        <link rel="canonical" href="https://docs.fptoj.com/site/managing_quizzes/">
       
       
-        <link rel="prev" href="../contest_formats/">
+        <link rel="prev" href="../cli_for_agents/">
       
       
-        <link rel="next" href="../html-to-pdf-flask/">
+        <link rel="next" href="../../judge/setting_up_a_judge/">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>Định dạng Contest Themis - Tài liệu FPTOJ (FPT Online Judge)</title>
+        <title>Quản lý đề thi (Quiz/Exam) - Tài liệu FPTOJ (FPT Online Judge)</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#inh-dang-contest-kieu-themis-oc-quyen-fptoj" class="md-skip">
+        <a href="#quan-ly-e-thi-quiz-exam" class="md-skip">
           Bỏ qua
         </a>
       
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Định dạng Contest Themis
+              Quản lý đề thi (Quiz/Exam)
             
           </span>
         </div>
@@ -555,37 +555,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Định dạng Contest Themis
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../themis_contest/" class="md-nav__link">
         
   
   
@@ -601,137 +574,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Mục lục
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1-cach-tao-ky-thi-contest-kieu-themis-nhanh-chong" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. Cách tạo kỳ thi (Contest) kiểu Themis nhanh chóng
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="1. Cách tạo kỳ thi (Contest) kiểu Themis nhanh chóng">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#cac-buoc-thuc-hien" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Các bước thực hiện:
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-cau-truc-chuan-cua-file-zip-du-lieu-test" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. Cấu trúc chuẩn của File ZIP dữ liệu test
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-cac-tinh-nang-oc-quyen-danh-cho-giao-vien-va-hoc-sinh" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. Các tính năng độc quyền dành cho giáo viên và học sinh
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="3. Các tính năng độc quyền dành cho giáo viên và học sinh">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#31-chuc-nang-nop-bai-ho-cham-hang-loat-bulk-upload" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.1. Chức năng nộp bài hộ / Chấm hàng loạt (Bulk Upload)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#32-co-che-tai-khoan-du-phong-tu-ong-student-fallback" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.2. Cơ chế tài khoản dự phòng tự động (Student Fallback)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#33-tu-ong-ang-ky-tham-gia-auto-registration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.3. Tự động đăng ký tham gia (Auto-Registration)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#34-gioi-han-nop-bai-1-lan-one-time-submission-limit" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.4. Giới hạn nộp bài 1 lần (One-time Submission Limit)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#35-thi-that-an-iem-so-real-exam-hidden-scores" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.5. Thi thật ẩn điểm số (Real Exam / Hidden Scores)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1021,10 +863,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../managing_quizzes/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quản lý đề thi (Quiz/Exam)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1040,6 +909,159 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tong-quan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tổng quan
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-quan-ly-qua-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Quản lý qua CLI
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Quản lý qua CLI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tao-exam" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tạo exam
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#them-cau-hoi-trac-nghiem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thêm câu hỏi trắc nghiệm
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#them-cau-hoi-ungsai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thêm câu hỏi Đúng/Sai
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-he-thong-inh-huong-orientation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Hệ thống Định hướng (Orientation)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-bulk-import-tu-json" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Bulk Import từ JSON
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Bulk Import từ JSON">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CLI
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cau-truc-json" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cấu trúc JSON
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-xem-ket-qua" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Xem kết quả
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-giao-dien-web" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Giao diện Web
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1959,22 +1981,55 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-cach-tao-ky-thi-contest-kieu-themis-nhanh-chong" class="md-nav__link">
+  <a href="#tong-quan" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Cách tạo kỳ thi (Contest) kiểu Themis nhanh chóng
+        Tổng quan
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="1. Cách tạo kỳ thi (Contest) kiểu Themis nhanh chóng">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-quan-ly-qua-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Quản lý qua CLI
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Quản lý qua CLI">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#cac-buoc-thuc-hien" class="md-nav__link">
+  <a href="#tao-exam" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Các bước thực hiện:
+        Tạo exam
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#them-cau-hoi-trac-nghiem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thêm câu hỏi trắc nghiệm
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#them-cau-hoi-ungsai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thêm câu hỏi Đúng/Sai
       
     </span>
   </a>
@@ -1987,10 +2042,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-cau-truc-chuan-cua-file-zip-du-lieu-test" class="md-nav__link">
+  <a href="#3-he-thong-inh-huong-orientation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Cấu trúc chuẩn của File ZIP dữ liệu test
+        3. Hệ thống Định hướng (Orientation)
       
     </span>
   </a>
@@ -1998,22 +2053,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-cac-tinh-nang-oc-quyen-danh-cho-giao-vien-va-hoc-sinh" class="md-nav__link">
+  <a href="#4-bulk-import-tu-json" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Các tính năng độc quyền dành cho giáo viên và học sinh
+        4. Bulk Import từ JSON
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="3. Các tính năng độc quyền dành cho giáo viên và học sinh">
+    <nav class="md-nav" aria-label="4. Bulk Import từ JSON">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#31-chuc-nang-nop-bai-ho-cham-hang-loat-bulk-upload" class="md-nav__link">
+  <a href="#cli" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.1. Chức năng nộp bài hộ / Chấm hàng loạt (Bulk Upload)
+        CLI
       
     </span>
   </a>
@@ -2021,43 +2076,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#32-co-che-tai-khoan-du-phong-tu-ong-student-fallback" class="md-nav__link">
+  <a href="#cau-truc-json" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.2. Cơ chế tài khoản dự phòng tự động (Student Fallback)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#33-tu-ong-ang-ky-tham-gia-auto-registration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.3. Tự động đăng ký tham gia (Auto-Registration)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#34-gioi-han-nop-bai-1-lan-one-time-submission-limit" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.4. Giới hạn nộp bài 1 lần (One-time Submission Limit)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#35-thi-that-an-iem-so-real-exam-hidden-scores" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.5. Thi thật ẩn điểm số (Real Exam / Hidden Scores)
+        Cấu trúc JSON
       
     </span>
   </a>
@@ -2066,6 +2088,28 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-xem-ket-qua" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Xem kết quả
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-giao-dien-web" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Giao diện Web
+      
+    </span>
+  </a>
   
 </li>
       
@@ -2089,73 +2133,133 @@
   
 
 
-<h1 id="inh-dang-contest-kieu-themis-oc-quyen-fptoj">Định dạng Contest kiểu Themis (Độc quyền FPTOJ)</h1>
-<p>FPTOJ được tích hợp tính năng quản lý và tổ chức kỳ thi theo phong cách <strong>Themis</strong> - một công cụ chấm thi cực kỳ phổ biến tại các trường THPT và kỳ thi Học sinh giỏi ở Việt Nam. Tính năng này giúp giáo viên dễ dàng chuyển đổi từ hình thức chấm thi offline bằng Themis sang chấm thi online tự động mà không thay đổi thói quen tổ chức thi.</p>
+<h1 id="quan-ly-e-thi-quiz-exam">Quản lý Đề Thi (Quiz / Exam)</h1>
+<p>Hệ thống hỗ trợ tạo và quản lý các đề thi trắc nghiệm với hai loại câu hỏi: <strong>Trắc nghiệm (Multiple Choice)</strong> và <strong>Đúng/Sai (True/False Cluster)</strong>. Có thể quản lý qua giao diện web hoặc CLI.</p>
 <hr />
-<h2 id="1-cach-tao-ky-thi-contest-kieu-themis-nhanh-chong">1. Cách tạo kỳ thi (Contest) kiểu Themis nhanh chóng</h2>
-<p>Thay vì tạo thủ công từng bài tập và liên kết vào contest rất mất thời gian, FPTOJ cung cấp giao diện <strong>Tạo Contest Themis tự động</strong> từ File Zip dữ liệu đề.</p>
-<h3 id="cac-buoc-thuc-hien">Các bước thực hiện:</h3>
-<ol>
-<li>Đăng nhập trang quản trị Admin (<code>/admin/</code>).</li>
-<li>Vào mục <strong>Contests (Kỳ thi)</strong>.</li>
-<li>Bấm nút <strong>"Create Themis Contest"</strong> ở góc trên bên phải trang danh sách.</li>
-<li>Điền các thông tin:</li>
-<li><strong>Tên kỳ thi</strong>: Tên cuộc thi hiển thị trên trang chủ.</li>
-<li><strong>Thời gian bắt đầu / Kết thúc</strong>: Cấu hình thời gian chạy contest.</li>
-<li><strong>Vô hạn thời gian (Infinite Time)</strong>: Đánh dấu nếu muốn đây là một contest luyện tập không giới hạn thời gian.</li>
-<li><strong>Chế độ I/O đầy đủ (Full I/O Mode)</strong>: Tự động cấu hình đọc ghi file cho toàn bộ bài tập (ví dụ: file nguồn C++ phải đọc từ <code>&lt;PROBLEM&gt;.INP</code> và xuất ra <code>&lt;PROBLEM&gt;.OUT</code>).</li>
-<li><strong>Chỉ nộp 1 lần duy nhất (One-time Submission)</strong>: Học sinh chỉ được upload bài làm duy nhất 1 lần (không được nộp đè nhiều lần).</li>
-<li><strong>Ẩn điểm số với học sinh (Hide Scores)</strong>: Kỳ thi thật, học sinh nộp bài chỉ biết trạng thái đã nộp thành công, không thấy điểm số hay chi tiết các test case. Điểm số chỉ có Admin/Giáo viên nhìn thấy.</li>
-<li><strong>File ZIP dữ liệu test</strong>: Nén thư mục chứa các bài thi dưới cấu trúc chuẩn Themis và upload lên.</li>
-</ol>
+<h2 id="tong-quan">Tổng quan</h2>
+<ul>
+<li><strong>Exam (QuizSource)</strong>: Một đề thi hoàn chỉnh với thời gian làm bài, câu hỏi, tag định hướng</li>
+<li><strong>Question (QuizQuestion)</strong>: Câu hỏi thuộc đề thi, có thể loại choice hoặc tf</li>
+<li><strong>Option (QuizOption)</strong>: Lựa chọn/câu trả lời của câu hỏi</li>
+<li><strong>Tag (QuizTag)</strong>: Thẻ phân loại câu hỏi (ví dụ: KHMT, THUD)</li>
+<li><strong>Session (QuizSession)</strong>: Phiên làm bài của người dùng</li>
+</ul>
 <hr />
-<h2 id="2-cau-truc-chuan-cua-file-zip-du-lieu-test">2. Cấu trúc chuẩn của File ZIP dữ liệu test</h2>
-<p>File ZIP upload lên trang tạo contest phải tuân thủ cấu trúc thư mục sau:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>[Ten_Contest].zip
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>├── Bài 1 (Ví dụ: SUM)
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>│   ├── Test01
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>│   │   ├── SUM.INP
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>│   │   └── SUM.OUT (hoặc SUM.ANS)
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>│   ├── Test02
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>│   │   ├── SUM.INP
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>│   │   └── SUM.OUT
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>│   ...
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>└── Bài 2 (Ví dụ: SEQUENCE)
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    ├── Test01
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    │   ├── SEQUENCE.INP
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>    │   └── SEQUENCE.OUT (hoặc SEQUENCE.ANS)
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>    ...
+<h2 id="2-quan-ly-qua-cli">2. Quản lý qua CLI</h2>
+<p>Sử dụng lệnh <code>python manage.py quiz_cli</code> (xem chi tiết tại <a href="../cli_for_agents/">CLI cho AI Agents</a>).</p>
+<h3 id="tao-exam">Tạo exam</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>python<span class="w"> </span>manage.py<span class="w"> </span>quiz_cli<span class="w"> </span>exam<span class="w"> </span>create<span class="w"> </span><span class="s2">&quot;Kiểm Tra 1 Tiết&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span>--description<span class="w"> </span><span class="s2">&quot;Nội dung: Lập trình C++&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span>--duration<span class="w"> </span><span class="m">45</span><span class="w"> </span>--visible<span class="w"> </span>--login
 </code></pre></div>
-<p><em>Lưu ý:</em> Hệ thống hỗ trợ tự động tìm kiếm và nhận diện cấu trúc thư mục test, hỗ trợ cả định dạng đuôi viết thường <code>.inp</code>, <code>.out</code>, <code>.in</code>, <code>.ans</code>.</p>
-<hr />
-<h2 id="3-cac-tinh-nang-oc-quyen-danh-cho-giao-vien-va-hoc-sinh">3. Các tính năng độc quyền dành cho giáo viên và học sinh</h2>
-<h3 id="31-chuc-nang-nop-bai-ho-cham-hang-loat-bulk-upload">3.1. Chức năng nộp bài hộ / Chấm hàng loạt (Bulk Upload)</h3>
-<p>Trong giao diện contest phía người dùng, Giáo viên/Quản trị viên có chức năng <strong>Upload zip bài làm của học sinh</strong>. Cấu trúc file zip nộp bài:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Submissions.zip
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>├── [Username_HocSinh_1]
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>│   ├── SUM.cpp
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>│   └── SEQUENCE.pas
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>├── [Username_HocSinh_2]
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>│   ├── SUM.py
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>│   └── SEQUENCE.cpp
+<h3 id="them-cau-hoi-trac-nghiem">Thêm câu hỏi trắc nghiệm</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>python<span class="w"> </span>manage.py<span class="w"> </span>quiz_cli<span class="w"> </span>exam<span class="w"> </span>question<span class="w"> </span>add<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span>--content<span class="w"> </span><span class="s2">&quot;2 + 2 = ?&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span>--type<span class="w"> </span>choice<span class="w"> </span>--difficulty<span class="w"> </span>easy<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span>--option<span class="w"> </span><span class="s1">&#39;A:&quot;3&quot;:false&#39;</span><span class="w"> </span>--option<span class="w"> </span><span class="s1">&#39;B:&quot;4&quot;:true&#39;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span>--option<span class="w"> </span><span class="s1">&#39;C:&quot;5&quot;:false&#39;</span><span class="w"> </span>--option<span class="w"> </span><span class="s1">&#39;D:&quot;6&quot;:false&#39;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span>--tag<span class="w"> </span>khmt
 </code></pre></div>
-Khi giáo viên upload file zip này lên, hệ thống sẽ tự động bóc tách và chấm điểm cho từng học sinh tương ứng.</p>
-<h3 id="32-co-che-tai-khoan-du-phong-tu-ong-student-fallback">3.2. Cơ chế tài khoản dự phòng tự động (Student Fallback)</h3>
-<p>Khi giáo viên nộp bài hộ học sinh thông qua file zip chấm hàng loạt:
-- Nếu thư mục mang tên học sinh <code>hocsinh_01</code> nhưng tài khoản này <strong>không tồn tại</strong> trên hệ thống FPTOJ: Hệ thống sẽ <strong>không báo lỗi</strong>, thay vào đó sẽ tự động đứng tên chạy dưới tài khoản của giáo viên (Admin) đang thực hiện upload để tránh việc dừng tiến trình chấm.
-- Hệ thống sẽ hiển thị cảnh báo trên màn hình console logs:
-  <code>!! Student [hocsinh_01] not found in database. Submitted under admin [kien] instead.</code></p>
-<h3 id="33-tu-ong-ang-ky-tham-gia-auto-registration">3.3. Tự động đăng ký tham gia (Auto-Registration)</h3>
-<p>Khi nộp bài hộ, học sinh chưa đăng ký tham gia Contest đó sẽ được hệ thống tự động đăng ký tham gia (Contest Participation) mà không cần giáo viên phải duyệt hoặc học sinh phải bấm nút đăng ký trước đó.</p>
-<h3 id="34-gioi-han-nop-bai-1-lan-one-time-submission-limit">3.4. Giới hạn nộp bài 1 lần (One-time Submission Limit)</h3>
-<p>Nếu bật cấu hình này, khi học sinh thực hiện nộp bài (upload zip), hệ thống sẽ lưu vết thời gian. Kể từ lần nộp đầu tiên quá 120 giây (thời gian bù trừ độ trễ mạng), mọi lượt nộp bài sau đó đều bị chặn nhằm đảm bảo tính trung thực như thi thật trên giấy.</p>
-<h3 id="35-thi-that-an-iem-so-real-exam-hidden-scores">3.5. Thi thật ẩn điểm số (Real Exam / Hidden Scores)</h3>
-<p>Để tái lập kỳ thi quốc gia hoặc kỳ thi học sinh giỏi thực tế:
-- <strong>Bảng xếp hạng (Scoreboard)</strong>: Hiển thị ký tự <code>?</code> ở cột điểm và tổng điểm của các thí sinh khác đối với học sinh. Giáo viên và Admin vẫn xem được điểm đầy đủ theo thời gian thực.
-- <strong>Danh sách bài nộp</strong>: Ẩn các tag trạng thái (AC, WA, TLE, RTE), ẩn số điểm, CPU time, bộ nhớ sử dụng. Chỉ hiển thị trạng thái đơn giản là <code>Đã chấm</code> (Graded) hoặc <code>Đang chấm</code> (Grading).
-- <strong>Chi tiết bài nộp (Submission Detail)</strong>: Khi học sinh nhấn xem chi tiết bài nộp của mình, hệ thống sẽ ẩn toàn bộ danh sách test case và hiển thị thông báo:
-  <code>"Bài nộp của bạn đã được chấm xong. Kết quả chi tiết được ẩn đi cho đến khi kỳ thi kết thúc."</code>
-- <strong>Màn hình Console logs</strong>: Ẩn điểm số cập nhật thời gian thực khi đang chấm bài.</p>
+<h3 id="them-cau-hoi-ungsai">Thêm câu hỏi Đúng/Sai</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>python<span class="w"> </span>manage.py<span class="w"> </span>quiz_cli<span class="w"> </span>exam<span class="w"> </span>question<span class="w"> </span>add<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span>--content<span class="w"> </span><span class="s2">&quot;Các phát biểu sau đúng hay sai?&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span>--type<span class="w"> </span>tf<span class="w"> </span>--difficulty<span class="w"> </span>medium<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span>--option<span class="w"> </span><span class="s1">&#39;a:&quot;Phát biểu 1&quot;:true&#39;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span>--option<span class="w"> </span><span class="s1">&#39;b:&quot;Phát biểu 2&quot;:false&#39;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span>--option<span class="w"> </span><span class="s1">&#39;c:&quot;Phát biểu 3&quot;:true&#39;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span>--option<span class="w"> </span><span class="s1">&#39;d:&quot;Phát biểu 4&quot;:false&#39;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span>--explanation<span class="w"> </span><span class="s2">&quot;Giải thích chi tiết&quot;</span>
+</code></pre></div>
+<hr />
+<h2 id="3-he-thong-inh-huong-orientation">3. Hệ thống Định hướng (Orientation)</h2>
+<p>Hệ thống hỗ trợ <strong>định hướng chuyên ngành</strong> cho kỳ thi THPT:</p>
+<table>
+<thead>
+<tr>
+<th>Tag slug</th>
+<th>Tên</th>
+<th>Nội dung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>khmt</code></td>
+<td>Khoa học máy tính (CS)</td>
+<td>Các câu hỏi về thuật toán, cấu trúc dữ liệu, lập trình</td>
+</tr>
+<tr>
+<td><code>thud</code></td>
+<td>Tin học ứng dụng (IT)</td>
+<td>Các câu hỏi về mạng, CSDL, công nghệ thông tin</td>
+</tr>
+</tbody>
+</table>
+<p>Khi tham gia thi, thí sinh chọn 1 trong 2 định hướng và <strong>không thể thay đổi</strong> trong suốt bài thi. Chỉ các câu hỏi có tag phù hợp (hoặc tag <code>common</code>) mới được hiển thị và tính điểm.</p>
+<hr />
+<h2 id="4-bulk-import-tu-json">4. Bulk Import từ JSON</h2>
+<h3 id="cli">CLI</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>python<span class="w"> </span>manage.py<span class="w"> </span>quiz_cli<span class="w"> </span>bulk<span class="w"> </span>/path/to/exams.json
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>python<span class="w"> </span>manage.py<span class="w"> </span>quiz_cli<span class="w"> </span>bulk<span class="w"> </span>/path/to/exams.json<span class="w"> </span>--dry-run
+</code></pre></div>
+<h3 id="cau-truc-json">Cấu trúc JSON</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="p">{</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="nt">&quot;exams&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Bài Kiểm Tra Giữa Kỳ&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Kiến thức cơ bản về CS.&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">      </span><span class="nt">&quot;duration&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">      </span><span class="nt">&quot;visible&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">      </span><span class="nt">&quot;featured&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">      </span><span class="nt">&quot;login&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">      </span><span class="nt">&quot;tags&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">        </span><span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;KHMT&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;slug&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;khmt&quot;</span><span class="p">},</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">        </span><span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;THUD&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;slug&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;thud&quot;</span><span class="p">}</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">      </span><span class="p">],</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">      </span><span class="nt">&quot;questions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">        </span><span class="p">{</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">          </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Độ phức tạp của Quick Sort trong trường hợp xấu nhất là:&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;choice&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">          </span><span class="nt">&quot;difficulty&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;medium&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="w">          </span><span class="nt">&quot;tags&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;khmt&quot;</span><span class="p">],</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="w">          </span><span class="nt">&quot;options&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="w">            </span><span class="p">{</span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;A&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;O(n)&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;is_correct&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">},</span>
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="w">            </span><span class="p">{</span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;B&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;O(n log n)&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;is_correct&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">},</span>
+<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="w">            </span><span class="p">{</span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;C&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;O(n²)&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;is_correct&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">},</span>
+<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a><span class="w">            </span><span class="p">{</span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;D&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;O(log n)&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;is_correct&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">}</span>
+<a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a><span class="w">          </span><span class="p">]</span>
+<a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a><span class="w">        </span><span class="p">},</span>
+<a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a><span class="w">        </span><span class="p">{</span>
+<a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a><span class="w">          </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Xác định tính đúng/sai của các phát biểu:&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a><span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tf&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a><span class="w">          </span><span class="nt">&quot;difficulty&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;easy&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-31" name="__codelineno-4-31" href="#__codelineno-4-31"></a><span class="w">          </span><span class="nt">&quot;tags&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;thud&quot;</span><span class="p">],</span>
+<a id="__codelineno-4-32" name="__codelineno-4-32" href="#__codelineno-4-32"></a><span class="w">          </span><span class="nt">&quot;options&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-4-33" name="__codelineno-4-33" href="#__codelineno-4-33"></a><span class="w">            </span><span class="p">{</span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TCP có kết nối.&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;is_correct&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">},</span>
+<a id="__codelineno-4-34" name="__codelineno-4-34" href="#__codelineno-4-34"></a><span class="w">            </span><span class="p">{</span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;UDP đảm bảo thứ tự gói tin.&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;is_correct&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">}</span>
+<a id="__codelineno-4-35" name="__codelineno-4-35" href="#__codelineno-4-35"></a><span class="w">          </span><span class="p">]</span>
+<a id="__codelineno-4-36" name="__codelineno-4-36" href="#__codelineno-4-36"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-4-37" name="__codelineno-4-37" href="#__codelineno-4-37"></a><span class="w">      </span><span class="p">]</span>
+<a id="__codelineno-4-38" name="__codelineno-4-38" href="#__codelineno-4-38"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-4-39" name="__codelineno-4-39" href="#__codelineno-4-39"></a><span class="w">  </span><span class="p">]</span>
+<a id="__codelineno-4-40" name="__codelineno-4-40" href="#__codelineno-4-40"></a><span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="5-xem-ket-qua">5. Xem kết quả</h2>
+<ul>
+<li><strong>Review</strong>: Sau khi nộp bài, thí sinh xem lại kết quả từng câu</li>
+<li><strong>Điểm</strong>: Câu đúng được điểm, câu sai 0 điểm (câu thuộc định hướng khác không tính)</li>
+<li><strong>Giải thích</strong>: Nếu exam bật <code>show_explanations</code>, thí sinh thấy lời giải chi tiết</li>
+</ul>
+<hr />
+<h2 id="6-giao-dien-web">6. Giao diện Web</h2>
+<ul>
+<li><code>/quiz/</code> — Trang chủ quiz (luyện tập)</li>
+<li><code>/quiz/manage/</code> — Quản lý câu hỏi</li>
+<li><code>/quiz/manage/exams/</code> — Quản lý đề thi</li>
+<li><code>/admin/judge/quizsource/</code> — Admin exam</li>
+<li><code>/admin/judge/quizquestion/</code> — Admin questions</li>
+<li><code>/admin/judge/quiztag/</code> — Admin tags</li>
+</ul>
 
 
 
