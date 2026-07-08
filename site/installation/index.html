@@ -2322,7 +2322,7 @@ FPTOJ sử dụng Sass và PostCSS để biên dịch giao diện.
 </code></pre></div></p>
 <p>Các trường thông tin quan trọng cần cập nhật trong <code>dmoj/local_settings.py</code>:
 * <strong>DATABASES:</strong> Điền thông tin kết nối MariaDB (User: <code>dmoj</code>, Password đã tạo ở bước 2).
-* <strong>CELERY_BROKER_URL</strong> &amp; <strong>CELERY_RESULT_BACKEND:</strong> Trỏ về Redis <code>redis://127.0.0.1:6379/0</code>.
+* <strong>CELERY_BROKER_URL:</strong> URL Redis cho Celery broker (<code>redis://127.0.0.1:6379/0</code>). <code>result_backend</code> được suy ra tự động từ cùng URL này trong <code>dmoj/celery.py</code> (dòng <code>app.conf.result_backend = redis_url</code>). <strong>Không</strong> cần <code>CELERY_RESULT_BACKEND</code>. Secret override dùng <code>CELERY_BROKER_URL_SECRET</code> / <code>CELERY_RESULT_BACKEND_SECRET</code>.
 * <strong>SITE_NAME:</strong> Tên thương hiệu trang web của bạn (ví dụ: <code>FPTOJ</code>).
 * <strong>DMOJ_PDF_PDFOID_URL:</strong> Trỏ về dịch vụ PDF độc quyền <code>http://localhost:8888</code>.</p>
 <hr />
