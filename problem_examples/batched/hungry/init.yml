@@ -1,4 +1,5 @@
 archive: hungry.zip
+io_mode: std
 test_cases:
 - batched:
   - {in: hungry.1a.in, out: hungry.1a.out}

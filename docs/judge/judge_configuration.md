@@ -2,7 +2,7 @@
 
 Máy chấm của FPTOJ sử dụng một file định dạng YAML (thường đặt tên là `judge.yml`) để lưu trữ cấu hình về các trình biên dịch ngôn ngữ, thư mục chứa dữ liệu test của bài tập và các thông số xác thực khác.
 
-Xem file mẫu cấu hình đầy đủ: [Mẫu cấu hình judge_conf.yml](../../sample_files/judge_conf.yml)
+Xem file mẫu cấu hình đầy đủ: [Mẫu cấu hình judge_conf.yml](../sample_files/judge_conf.yml)
 
 ---
 

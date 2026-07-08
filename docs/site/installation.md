@@ -6,12 +6,28 @@ Tài liệu này hướng dẫn cách cài đặt giao diện và hệ thống q
 
 ## ⚡ CÁCH 1: Cài đặt tự động bằng Script (Khuyến khích - Dễ như ăn bánh)
 
-Hệ thống cung cấp một công cụ cài đặt tự động cực kỳ thông minh nằm ngay tại `/home/kien/site/setup_fptoj.sh`. Script này sẽ:
-1. **Kiểm tra phần cứng:** Tự động tối ưu số lượng tiến trình và tài nguyên theo CPU/RAM của máy chủ.
-2. **Quét dịch vụ hiện có:** Tự động phát hiện xem MySQL, Redis, Nginx, hoặc Supervisor đã được cài đặt và đang chạy trên máy Host chưa. Nếu có, hệ thống sẽ sử dụng trực tiếp để tránh xung đột; nếu chưa, hệ thống sẽ đề xuất tự động cấu hình qua Docker hoặc cài đặt trực tiếp.
-3. **Hướng dẫn trực quan:** Tương tác với người dùng qua giao diện dòng lệnh để điền các biến cấu hình quan trọng (Site Name, Domain, Email SMTP, Admin account) và tự động nạp cấu hình cũ làm mặc định.
-4. **Tự động cấu hình & Khởi chạy:** Tự động sinh `local_settings.py`, thiết lập Virtualenv, cài đặt dependencies, biên dịch Styles/CSS, dịch ngôn ngữ, tạo cấu hình Supervisor & Nginx, và khởi chạy toàn bộ hệ thống.
-5. **Cài đặt các dịch vụ độc quyền:** Tự động tải, cấu hình và chạy dịch vụ xuất PDF (`html-to-pdf-flask`) và máy chấm (`judge-server` qua Docker).
+Hệ thống cung cấp một công cụ cài đặt tự động cực kỳ thông minh nằm ngay tại
+`/home/kien/site/setup_fptoj.sh`. Script này sẽ:
+
+1. **Kiểm tra phần cứng:** Tự động tối ưu số lượng tiến trình và tài nguyên
+   theo CPU/RAM của máy chủ.
+2. **Quét dịch vụ hiện có:** Tự động phát hiện xem MySQL, Redis, Nginx, hoặc
+   Supervisor đã được cài đặt và đang chạy trên máy Host chưa. Nếu có, hệ thống
+   sẽ sử dụng trực tiếp để tránh xung đột; nếu chưa, hệ thống sẽ đề xuất tự
+   động cấu hình qua Docker hoặc cài đặt trực tiếp.
+3. **Hướng dẫn trực quan:** Tương tác với người dùng qua giao diện dòng lệnh
+   để điền các biến cấu hình quan trọng (Site Name, Domain, Email SMTP, Admin
+   account) và tự động nạp cấu hình cũ làm mặc định.
+4. **Tự động cấu hình & Khởi chạy:** Tự động sinh `local_settings.py`, thiết
+   lập Virtualenv, cài đặt dependencies, biên dịch Styles/CSS, dịch ngôn ngữ,
+   tạo cấu hình Supervisor & Nginx, và khởi chạy toàn bộ hệ thống.
+5. **Cài đặt các dịch vụ độc quyền:** Tự động tải, cấu hình và chạy dịch vụ
+   xuất PDF (`html-to-pdf-flask`) và máy chấm (`judge-server` qua Docker).
+
+> [!WARNING]
+> Script chỉ mới được kiểm tra và hoạt động ổn định trên **Ubuntu 20.04/22.04/24.04**.
+> Nếu bạn sử dụng hệ điều hành khác (CentOS, Debian, macOS...), hãy cân nhắc sử dụng
+> phương pháp **Docker Compose** (CÁCH 3) để triển khai thay vì chạy script trực tiếp.
 
 ### Các bước thực hiện:
 ```bash
@@ -213,4 +229,120 @@ Ghi file cấu hình `/etc/nginx/sites-available/fptoj` và tạo liên kết:
 sudo ln -sf /etc/nginx/sites-available/fptoj /etc/nginx/sites-enabled/fptoj
 sudo rm -f /etc/nginx/sites-enabled/default # Xóa site mặc định
 sudo systemctl restart nginx
+
+---
+
+## 🐳 CÁCH 3: Triển khai toàn bộ hệ thống bằng Docker Compose
+
+Phương pháp này phù hợp khi bạn muốn triển khai nhanh mà không cần cài đặt từng
+dịch vụ thủ công, hoặc khi bạn dùng hệ điều hành khác ngoài Ubuntu.
+
+> [!NOTE]
+> Các file cấu hình Docker nằm tại thư mục `docker/` trong mã nguồn Site
+> (`/home/kien/site/docker/`).
+
+### Cấu trúc dịch vụ
+
+Hệ thống gồm 8 container chạy đồng thời:
+
+| Container | Chức năng |
+|---|---|
+| `fptoj-db` | MariaDB 10.11 - Cơ sở dữ liệu |
+| `fptoj-redis` | Redis 7 - Cache & hàng đợi Celery |
+| `fptoj-web` | uWSGI Django - Web application |
+| `fptoj-celery` | Celery worker - Xử lý tác vụ nền |
+| `fptoj-wsevent` | Node.js - WebSocket event server |
+| `fptoj-bridged` | Bridge server - Kết nối máy chấm |
+| `fptoj-nginx` | Nginx - Reverse proxy (cổng 80) |
+| `fptoj-judge` | Judge server - Máy chấm bài |
+
+### Hồ sơ tài nguyên (Tiers)
+
+Tuỳ theo cấu hình máy chủ, chọn một trong ba hồ sơ sau:
+
+| Hồ sơ | Tài nguyên | uWSGI workers | Celery | Số máy chấm |
+|---|---|---|---|---|
+| **Tier 1** | Tối thiểu (1-2 CPU, 2-4GB RAM) | 2 | 1 | 1 |
+| **Tier 2** | Trung bình (4-8 CPU, 8-16GB RAM) | 4 | 2 | 2 |
+| **Tier 3** | Cao cấp (8-16 CPU, 16-32GB RAM) | 8 | 4 | 4 |
+
+### Các bước triển khai
+
+#### Bước 1: Cài đặt Docker & Docker Compose
+
+```bash
+sudo apt update
+sudo apt install -y docker.io docker-compose-v2
+sudo systemctl enable docker
+sudo systemctl start docker
+```
+
+#### Bước 2: Tạo cấu hình môi trường
+
+```bash
+cd /home/kien/site/docker
+cp .env.example .env
+# Sửa file .env với các thông tin của bạn
+nano .env
+```
+
+Các biến quan trọng cần cập nhật trong `.env`:
+
+| Biến | Mô tả |
+|---|---|
+| `SECRET_KEY` | Khóa bảo mật Django (tạo bằng `python3 -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'`) |
+| `ALLOWED_HOSTS` | Danh sách domain/IP được phép truy cập |
+| `MYSQL_ROOT_PASSWORD` | Mật khẩu root MariaDB |
+| `MYSQL_PASSWORD` | Mật khẩu user `dmoj` của MariaDB |
+| `JUDGE_ID` | Tên máy chấm (mặc định `judge-01`) |
+| `JUDGE_KEY` | Khóa bí mật của máy chấm (tạo ngẫu nhiên) |
+| `DATA_DIR` | Thư mục dữ liệu trên host (mặc định `/data`) |
+
+#### Bước 3: Xây dựng Docker image cho Site
+
+```bash
+cd /home/kien/site
+docker compose -f docker/docker-compose.tier1.yml build
+```
+
+#### Bước 4: Khởi chạy toàn bộ hệ thống
+
+```bash
+cd /home/kien/site/docker
+docker compose -f docker-compose.tier1.yml up -d
+```
+
+Kiểm tra các container đã chạy:
+
+```bash
+docker compose -f docker-compose.tier1.yml ps
+```
+
+#### Bước 5: Tạo tài khoản Admin
+
+```bash
+docker exec -it fptoj-web-tier1 python manage.py createsuperuser
+```
+
+#### Bước 6: Cập nhật cấu hình Judge trên Admin Site
+
+1. Vào trang `/admin/`, mục **Judges**.
+2. Bấm **Add judge**, nhập:
+   - **Name**: `judge-01` (khớp với `JUDGE_ID` trong `.env`).
+   - **Auth key**: Dán khóa đã tạo trong `.env`.
+3. Bấm **Save**.
+
+#### Nâng cấp lên hồ sơ cao hơn
+
+Khi máy chủ có nhiều tài nguyên hơn, bạn có thể chuyển sang Tier 2 hoặc Tier 3:
+
+```bash
+cd /home/kien/site/docker
+docker compose -f docker-compose.tier1.yml down
+docker compose -f docker-compose.tier2.yml up -d
+```
+
+> [!TIP]
+> Thư mục dữ liệu (CSDL, problems, pdfcache) được mount từ host (`DATA_DIR`)
+> nên dữ liệu sẽ được giữ nguyên khi chuyển đổi giữa các Tier.
 ```

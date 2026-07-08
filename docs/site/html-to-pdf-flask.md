@@ -2,7 +2,11 @@
 
 FPTOJ hỗ trợ xuất nội dung đề bài (bao gồm đầy đủ định dạng văn bản và công thức Toán LaTeX) ra định dạng PDF. Điều này cực kỳ hữu ích cho các kỳ thi offline để in ấn đề bài cho học sinh.
 
-Thay vì sử dụng dự án phức tạp `pdfoid` của DMOJ gốc (yêu cầu Chromium driver và Selenium rất nặng nề và dễ lỗi), FPTOJ sử dụng dự án độc quyền gọn nhẹ **[html-to-pdf-flask](https://github.com/FPTOJ-OJ/html-to-pdf-flask)** dựa trên Python Flask và `pdfkit` (sử dụng công cụ `wkhtmltopdf` làm nhân chuyển đổi) để xuất PDF nhanh chóng và chuẩn xác.
+Thay vì sử dụng dự án phức tạp `pdfoid` của DMOJ gốc (yêu cầu Chromium driver
+và Selenium rất nặng nề và dễ lỗi), FPTOJ sử dụng dự án độc quyền gọn nhẹ
+**[html-to-pdf-flask](https://github.com/FPTOJ-OJ/html-to-pdf-flask)** dựa trên
+Python Flask và `pdfkit` (sử dụng công cụ `wkhtmltopdf` làm nhân chuyển đổi) để
+xuất PDF nhanh chóng và chuẩn xác.
 
 ---
 
@@ -61,7 +65,8 @@ Dịch vụ hoạt động đúng sẽ trả về phản hồi JSON chứa file 
 
 Để dịch vụ PDF luôn chạy ngầm và tự khởi động lại cùng hệ thống, tạo file cấu hình cho Supervisor:
 
-Tạo file `/etc/supervisor/conf.d/html-to-pdf-flask.conf` với nội dung sau:
+Tạo file `/etc/supervisor/conf.d/html-to-pdf-flask.conf` (xem thêm
+[mẫu cấu hình](../sample_files/html-to-pdf-flask.conf)) với nội dung sau:
 
 ```ini
 [program:html-to-pdf-flask]

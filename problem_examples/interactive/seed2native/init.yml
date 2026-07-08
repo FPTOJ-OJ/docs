@@ -1,5 +1,6 @@
 unbuffered: True
 archive: seed2.zip
+io_mode: std
 interactive: {files: interactor.cpp, type: testlib}
 test_cases:
 - {in: seed2.1.in, points: 20}

@@ -19,8 +19,11 @@ Trước tiên, hãy đảm bảo biến cấu hình `DMOJ_PROBLEM_DATA_ROOT` tr
    - **Problem title (Tên bài tập)**: Tên hiển thị của bài tập (ví dụ: `Tính tổng A + B`).
    - **Authors (Tác giả)**: Hãy chọn tài khoản của chính bạn làm tác giả, nếu không bạn có thể bị khóa quyền chỉnh sửa bài tập này về sau.
 4. **Soạn thảo đề bài (Description)**:
-   - Sử dụng cú pháp **Markdown** kết hợp với công thức Toán **LaTeX** để viết đề bài sinh động.
-   - Bạn có thể xem và tham khảo mẫu đề bài chuẩn đầy đủ tính năng tại đây: [Mẫu Markdown đề bài](../../sample_files/problem_markdown_example.md.txt) (Hãy copy và dán thử vào trình soạn thảo để xem cách hoạt động).
+   - Sử dụng cú pháp **Markdown** kết hợp với công thức Toán **LaTeX** để viết
+     đề bài sinh động.
+   - Bạn có thể xem và tham khảo mẫu đề bài chuẩn đầy đủ tính năng tại đây:
+     [Mẫu Markdown đề bài](../sample_files/problem_markdown_example.md.txt)
+     (Hãy copy và dán thử vào trình soạn thảo để xem cách hoạt động).
 5. Cuối cùng, kéo xuống cuối trang và bấm **Save** (Lưu). Nhấp vào nút **View on site** ở góc trên để xem giao diện đề bài hiển thị cho học sinh.
 
 ---

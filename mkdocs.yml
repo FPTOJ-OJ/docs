@@ -42,7 +42,8 @@ nav:
   - Trang web (Site):
     - Cài đặt hệ thống: site/installation.md
     - Cập nhật hệ thống: site/updating.md
-    - Định dạng Contest & Themis: site/themis_contest.md
+    - Thể lệ kỳ thi (Contest Formats): site/contest_formats.md
+    - Định dạng Contest Themis: site/themis_contest.md
     - Cấu hình PDF (html-to-pdf-flask): site/html-to-pdf-flask.md
     - Hệ thống phân quyền: site/permission_system.md
     - Quản lý bài tập qua giao diện: site/managing_problems.md
@@ -64,5 +65,18 @@ nav:
     - Trình sinh test (Generator): problem_format/generator.md
     - Các bài tập mẫu: problem_format/problem_examples.md
     - Mẫu thiết lập bài tập C++: problem_format/cpp_psetting_templates.md
+  - Mẫu cấu hình:
+    - Tổng quan: sample_files/index.md
+    - local_settings.py: sample_files/local_settings.py
+    - nginx.conf: sample_files/nginx.conf
+    - judge_conf.yml: sample_files/judge_conf.yml
+    - problem_markdown_example.md.txt: sample_files/problem_markdown_example.md.txt
+    - uwsgi.ini: sample_files/uwsgi.ini
+    - site.conf: sample_files/site.conf
+    - bridged.conf: sample_files/bridged.conf
+    - html-to-pdf-flask.conf: sample_files/html-to-pdf-flask.conf
+    - celery.conf: sample_files/celery.conf
+    - wsevent.conf: sample_files/wsevent.conf
+    - Mẫu C++: sample_files/problem_setting/validator.cpp
   - Thông tin:
     - Bản quyền: about/LICENSE.md

@@ -101,7 +101,7 @@ runtime:
   # Dán toàn bộ block ngôn ngữ đã copy từ lệnh dmoj-autoconf vào đây
 ```
 
-Bạn có thể xem file cấu hình mẫu đầy đủ tại đây: [Mẫu cấu hình judge_conf.yml](../../sample_files/judge_conf.yml)
+Bạn có thể xem file cấu hình mẫu đầy đủ tại đây: [Mẫu cấu hình judge_conf.yml](../sample_files/judge_conf.yml)
 
 #### Bước 4: Khởi chạy kiểm tra máy chấm
 ```bash

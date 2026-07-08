@@ -1,4 +1,5 @@
 generator: generator.cpp
+io_mode: std
 points: 5
 test_cases:
 - generator_args: [1]

@@ -7,8 +7,58 @@ Trong FPTOJ, mỗi bài tập được lưu trữ độc lập trong một thư 
 ## 1. File cấu hình `init.yml`
 
 File này sử dụng cú pháp YAML và phải chứa khóa bắt buộc: `test_cases`.
-- **test_cases**: Khai báo danh sách các test case cụ thể, hoặc định nghĩa biểu thức chính quy (regex) để hệ thống tự động quét và phân loại file test.
-- **archive**: Khóa tùy chọn (khuyên dùng). Cho phép nén toàn bộ thư mục dữ liệu test thành một file `.zip` (ví dụ: `aplusb.zip`) để lưu trữ gọn nhẹ, thay vì để các file text phẳng trực tiếp trong thư mục.
+
+### Các trường cơ bản
+
+| Trường | Bắt buộc | Mô tả |
+|---|---|---|
+| `test_cases` | **Có** | Danh sách các test case hoặc định nghĩa biểu thức chính quy (regex) để tự động quét |
+| `archive` | Không (khuyên dùng) | Nén toàn bộ dữ liệu test thành file `.zip` gọn nhẹ |
+| `io_mode` | Không (mặc định `std`) | Chế độ nhập/xuất dữ liệu: `std` (stdin/stdout) hoặc `file` (đọc/ghi file) |
+| `input_file` | Khi `io_mode: file` | Tên file đầu vào mà bài làm của thí sinh sẽ đọc |
+| `output_file` | Khi `io_mode: file` | Tên file đầu ra mà bài làm của thí sinh sẽ ghi |
+
+### Chế độ I/O (io_mode)
+
+FPTOJ hỗ trợ hai chế độ nhập/xuất dữ liệu:
+
+#### `io_mode: std` (Mặc định)
+
+Bài làm của thí sinh đọc dữ liệu từ **stdin** và ghi kết quả ra **stdout**.
+Đây là chế độ phổ biến nhất, tương thích với mọi ngôn ngữ lập trình.
+
+```yaml
+archive: aplusb.zip
+io_mode: std
+test_cases:
+- {in: aplusb.1.in, out: aplusb.1.out, points: 10}
+```
+
+#### `io_mode: file`
+
+Bài làm của thí sinh đọc dữ liệu từ một file cụ thể (vd: `BAI1.INP`) và ghi kết
+quả ra một file khác (vd: `BAI1.OUT`). Thường dùng trong các kỳ thi Olympic
+Tin học để tương thích với bộ test có sẵn.
+
+Khi dùng `io_mode: file`, bạn **bắt buộc** phải khai báo thêm hai trường:
+
+- **`input_file`**: Tên file đầu vào (vd: `BAI1.INP`).
+- **`output_file`**: Tên file đầu ra (vd: `BAI1.OUT`).
+
+```yaml
+archive: bai1.zip
+io_mode: file
+input_file: BAI1.INP
+output_file: BAI1.OUT
+test_cases:
+- {in: test1/bai1.inp, out: test1/bai1.out, points: 10}
+- {in: test2/bai1.inp, out: test2/bai1.out, points: 20}
+```
+
+> [!TIP]
+> Với `io_mode: file`, tên file trong các trường `in`/`out` của `test_cases`
+> là đường dẫn bên trong file ZIP (dùng để so sánh kết quả), khác với tên file
+> `input_file`/`output_file` mà thí sinh dùng trong code.
 
 ---
 
