@@ -135,7 +135,7 @@ Sao chép file cấu hình mẫu để chỉnh sửa hoặc tự viết:
 
 Các trường thông tin quan trọng cần cập nhật trong `dmoj/local_settings.py`:
 * **DATABASES:** Điền thông tin kết nối MariaDB (User: `dmoj`, Password đã tạo ở bước 2).
-* **CELERY_BROKER_URL** & **CELERY_RESULT_BACKEND:** Trỏ về Redis `redis://127.0.0.1:6379/0`.
+* **CELERY_BROKER_URL:** URL Redis cho Celery broker (`redis://127.0.0.1:6379/0`). `result_backend` được suy ra tự động từ cùng URL này trong `dmoj/celery.py` (dòng `app.conf.result_backend = redis_url`). **Không** cần `CELERY_RESULT_BACKEND`. Secret override dùng `CELERY_BROKER_URL_SECRET` / `CELERY_RESULT_BACKEND_SECRET`.
 * **SITE_NAME:** Tên thương hiệu trang web của bạn (ví dụ: `FPTOJ`).
 * **DMOJ_PDF_PDFOID_URL:** Trỏ về dịch vụ PDF độc quyền `http://localhost:8888`.
 

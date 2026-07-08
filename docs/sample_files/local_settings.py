@@ -191,8 +191,11 @@ BAD_MAIL_PROVIDERS = set()
 #EVENT_DAEMON_AMQP_EXCHANGE = '<AMQP exchange to use>'
 
 ## Celery
-#CELERY_BROKER_URL = 'redis://localhost:6379'
-#CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+# config_from_object(settings, namespace='CELERY') → CELERY_BROKER_URL -> broker_url
+# result_backend được suy ra tự động từ CELERY_BROKER_URL trong dmoj/celery.py
+CELERY_BROKER_URL = 'redis://localhost:6379/0'
+# Không cần CELERY_RESULT_BACKEND ở đây, tránh deprecated code path
+# Secret override: CELERY_BROKER_URL_SECRET / CELERY_RESULT_BACKEND_SECRET
 
 ## CDN control.
 # Base URL for a copy of Ace editor.
