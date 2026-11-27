@@ -643,60 +643,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../site/mathoid/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-  Hiển thị công thức Toán (LaTeX)
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-                
-              
-                
-                  
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../site/texoid/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-  Hiển thị hình vẽ LaTeX
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-                
-              
-                
-                  
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../site/turnstile/" class="md-nav__link">
         
   
@@ -2006,9 +1952,11 @@
 <p>Chương trình của bạn đã chạy xong mà không bị sập (crash), nhưng kết quả xuất ra (output) không khớp với kết quả mẫu (key) của đề bài.</p>
 <hr />
 <h2 id="3-ir-invalid-return-tra-ve-gia-tri-khong-hop-le">3. IR - Invalid Return (Trả về giá trị không hợp lệ)</h2>
-<p>Chương trình kết thúc với mã lỗi khác 0 (exit code != 0).
-- Đối với các ngôn ngữ như C/C++, lỗi này thường xảy ra khi bạn quên <code>return 0;</code> trong hàm <code>main</code>, hoặc chương trình bị sập.
-- Đối với Python hoặc Java, lỗi này thường đi kèm với tên ngoại lệ (Exception) cụ thể gây sập chương trình như <code>NameError</code>, <code>IndexError</code>, hoặc <code>java.lang.NullPointerException</code>.</p>
+<p>Chương trình kết thúc với mã lỗi khác 0 (exit code != 0).</p>
+<ul>
+<li>Đối với các ngôn ngữ như C/C++, lỗi này thường xảy ra khi bạn quên <code>return 0;</code> trong hàm <code>main</code>, hoặc chương trình bị sập.</li>
+<li>Đối với Python hoặc Java, lỗi này thường đi kèm với tên ngoại lệ (Exception) cụ thể gây sập chương trình như <code>NameError</code>, <code>IndexError</code>, hoặc <code>java.lang.NullPointerException</code>.</li>
+</ul>
 <hr />
 <h2 id="4-rte-runtime-error-loi-thoi-gian-chay">4. RTE - Runtime Error (Lỗi thời gian chạy)</h2>
 <p>Chương trình của bạn bị dừng đột ngột hoặc vi phạm các quy tắc an toàn hệ thống (chủ yếu xảy ra với các ngôn ngữ biên dịch như C/C++). FPTOJ phân tích chi tiết lỗi thời gian chạy thành các mô tả sau:</p>

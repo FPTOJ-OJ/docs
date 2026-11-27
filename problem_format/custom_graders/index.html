@@ -643,60 +643,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../site/mathoid/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-  Hiển thị công thức Toán (LaTeX)
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-                
-              
-                
-                  
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../site/texoid/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-  Hiển thị hình vẽ LaTeX
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-                
-              
-                
-                  
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../site/turnstile/" class="md-nav__link">
         
   
@@ -1954,9 +1900,11 @@
 
 
 <h1 id="trinh-cham-tuong-tac-goi-ham-custom-graders">Trình chấm Tương tác &amp; Gọi hàm (Custom Graders)</h1>
-<p>Đôi khi, việc tương tác tĩnh giữa máy chấm và bài nộp (Input/Output thô qua tệp tin hoặc luồng vào ra chuẩn) là không đủ. Ví dụ:
-- <strong>Bài toán tương tác (Interactive)</strong>: Thí sinh cần giao tiếp với máy chấm qua cơ chế hỏi - đáp (ví dụ: máy sinh số bí ẩn, thí sinh đoán số và máy phản hồi lớn hơn/nhỏ hơn).
-- <strong>Chấm hàm/Thư viện (Signature/Grader)</strong>: Thí sinh không viết hàm <code>main</code> đọc dữ liệu, mà chỉ viết một hàm chức năng (ví dụ: <code>bool is_valid(int n)</code>) và liên kết vào chương trình chấm chính của giáo viên.</p>
+<p>Đôi khi, việc tương tác tĩnh giữa máy chấm và bài nộp (Input/Output thô qua tệp tin hoặc luồng vào ra chuẩn) là không đủ. Ví dụ:</p>
+<ul>
+<li><strong>Bài toán tương tác (Interactive)</strong>: Thí sinh cần giao tiếp với máy chấm qua cơ chế hỏi - đáp (ví dụ: máy sinh số bí ẩn, thí sinh đoán số và máy phản hồi lớn hơn/nhỏ hơn).</li>
+<li><strong>Chấm hàm/Thư viện (Signature/Grader)</strong>: Thí sinh không viết hàm <code>main</code> đọc dữ liệu, mà chỉ viết một hàm chức năng (ví dụ: <code>bool is_valid(int n)</code>) và liên kết vào chương trình chấm chính của giáo viên.</li>
+</ul>
 <p>FPTOJ hỗ trợ cấu hình các dạng chấm nâng cao này trực tiếp qua khóa <code>custom_judge</code>, <code>interactive</code>, hoặc <code>signature_grader</code> trong <code>init.yml</code>.</p>
 <hr />
 <h2 id="1-trinh-cham-tuong-tac-interactive-grading">1. Trình chấm Tương tác (Interactive Grading)</h2>
@@ -1967,10 +1915,10 @@
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">in</span><span class="p">:</span><span class="w"> </span><span class="nv">data.1.in</span><span class="p p-Indicator">,</span><span class="nt"> points</span><span class="p">:</span><span class="w"> </span><span class="nv">20</span><span class="p p-Indicator">}</span>
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">in</span><span class="p">:</span><span class="w"> </span><span class="nv">data.2.in</span><span class="p p-Indicator">,</span><span class="nt"> points</span><span class="p">:</span><span class="w"> </span><span class="nv">80</span><span class="p p-Indicator">}</span>
 </code></pre></div>
-<blockquote>
-<p>[!IMPORTANT]<br />
-Nên thiết lập <code>unbuffered: true</code> để tránh bộ nhớ đệm (buffer) của luồng xuất làm nghẽn tiến trình hỏi - đáp thời gian thực, học sinh sẽ không cần gọi lệnh <code>fflush(stdout)</code> thủ công trong code của họ.</p>
-</blockquote>
+<div class="admonition info">
+<p class="admonition-title">Quan trọng</p>
+<p>Nên thiết lập <code>unbuffered: true</code> để tránh bộ nhớ đệm (buffer) của luồng xuất làm nghẽn tiến trình hỏi - đáp thời gian thực, học sinh sẽ không cần gọi lệnh <code>fflush(stdout)</code> thủ công trong code của họ.</p>
+</div>
 <h3 id="viet-file-interactorcpp-su-dung-c-va-testlib">Viết file <code>interactor.cpp</code> (sử dụng C++ và testlib):</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">"testlib.h"</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>

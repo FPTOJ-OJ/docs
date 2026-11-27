@@ -643,60 +643,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../site/mathoid/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-  Hiển thị công thức Toán (LaTeX)
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-                
-              
-                
-                  
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../site/texoid/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-  Hiển thị hình vẽ LaTeX
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-                
-              
-                
-                  
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../site/turnstile/" class="md-nav__link">
         
   
@@ -2178,21 +2124,31 @@
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>docker<span class="w"> </span>build<span class="w"> </span>--build-arg<span class="w"> </span><span class="nv">TAG</span><span class="o">=</span><span class="s2">"master"</span><span class="w"> </span>-t<span class="w"> </span>dmoj/judge-tier1<span class="w"> </span>-t<span class="w"> </span>dmoj/judge-tier1:latest<span class="w"> </span>./tier1
 </code></pre></div></p>
 <h4 id="buoc-4-khoi-chay-may-cham-docker">Bước 4: Khởi chạy Máy chấm Docker</h4>
-<p>Chạy lệnh sau để khởi chạy máy chấm chạy ngầm và tự động tải lại nếu máy chủ reset:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>docker<span class="w"> </span>run<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span>--name<span class="w"> </span>fptoj-judge<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span>-v<span class="w"> </span>/data/problems:/problems<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span>--cap-add<span class="o">=</span>SYS_PTRACE<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">    </span>-d<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">    </span>--restart<span class="o">=</span>always<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">    </span>dmoj/judge-tier1:latest<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">    </span>run<span class="w"> </span>-p<span class="w"> </span><span class="m">9999</span><span class="w"> </span>-c<span class="w"> </span>/problems/judge.yml<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">    </span><span class="m">127</span>.0.0.1<span class="w"> </span>judge-01<span class="w"> </span>your_auth_key_here
+<p>Chạy lệnh sau để khởi chạy máy chấm chạy ngầm, cô lập mạng nội bộ (không cho code thí sinh nối ra Internet) và tự động khởi động lại nếu máy chủ reboot:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Tạo mạng Docker nội bộ không có Internet (chỉ làm 1 lần)</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>docker<span class="w"> </span>network<span class="w"> </span>create<span class="w"> </span>--driver<span class="w"> </span>bridge<span class="w"> </span>--internal<span class="w"> </span>--subnet<span class="w"> </span><span class="m">172</span>.28.0.0/24<span class="w"> </span>--gateway<span class="w"> </span><span class="m">172</span>.28.0.1<span class="w"> </span>fptoj_judge_internal
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1"># Chạy máy chấm trong mạng nội bộ, mount /data/problems chỉ đọc (:ro)</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>docker<span class="w"> </span>run<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">    </span>--name<span class="w"> </span>fptoj-judge<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">    </span>--network<span class="w"> </span>fptoj_judge_internal<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">    </span>-v<span class="w"> </span>/data/problems:/problems:ro<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">    </span>--cap-add<span class="o">=</span>SYS_PTRACE<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">    </span>--pids-limit<span class="o">=</span><span class="m">256</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">    </span>-d<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">    </span>--restart<span class="o">=</span>unless-stopped<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">    </span>dmoj/judge-tier2:latest<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">    </span>run<span class="w"> </span>-p<span class="w"> </span><span class="m">9999</span><span class="w"> </span>-c<span class="w"> </span>/problems/judge.yml<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">    </span><span class="m">172</span>.28.0.1<span class="w"> </span>judge-01<span class="w"> </span>your_auth_key_here
 </code></pre></div>
-* <strong>Lưu ý:</strong>
-  * Thay <code>127.0.0.1</code> bằng IP của Web Site nếu máy chấm nằm ở Server khác.
-  * <code>-p 9999</code> là cổng kết nối của Bridge trên Site.
-  * Thư mục test case <code>/data/problems</code> trên Host được mount vào <code>/problems</code> trong Docker.</p>
+<div class="admonition note">
+<p class="admonition-title">Lưu ý kết nối Bridge</p>
+<ul>
+<li>Nếu dùng mạng cô lập <code>fptoj_judge_internal</code>, trỏ địa chỉ Bridge về gateway <code>172.28.0.1</code> (và cấu hình <code>BRIDGED_JUDGE_ADDRESS = [('172.28.0.1', 9999), ('127.0.0.1', 9999)]</code> trong <code>local_settings.py</code>, mở firewall nội bộ subnet <code>172.28.0.0/24</code> cho cổng <code>9999</code>).</li>
+<li>Không mở port <code>-p 897x:897x</code> ra ngoài mạng để tránh bị lạm dụng.</li>
+<li>Thư mục test case <code>/data/problems</code> trên Host nên mount dạng <code>:ro</code> (read-only) vào <code>/problems</code> trong Docker.</li>
+</ul>
+</div>
 <hr />
 <h3 id="phuong-phap-b-cai-at-thu-cong-bang-python-pip-tuy-bien-cao">Phương pháp B: Cài đặt thủ công bằng Python Pip (Tùy biến cao)</h3>
 <p>Nếu không sử dụng Docker, bạn có thể tự cài đặt trên hệ điều hành Ubuntu/Linux:</p>

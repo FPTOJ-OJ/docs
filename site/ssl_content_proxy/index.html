@@ -648,60 +648,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../mathoid/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-  Hiển thị công thức Toán (LaTeX)
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-                
-              
-                
-                  
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../texoid/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-  Hiển thị hình vẽ LaTeX
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-                
-              
-                
-                  
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../turnstile/" class="md-nav__link">
         
   
@@ -1901,10 +1847,12 @@ Việc cài đặt Camo trên cùng một máy chủ vật lý với Site chính
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>npm<span class="w"> </span>install
 </code></pre></div>
 <p>Kiểm tra khởi chạy Camo bằng lệnh:</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nv">PORT</span><span class="o">=</span><span class="s2">"8081"</span><span class="w"> </span><span class="nv">CAMO_KEY</span><span class="o">=</span><span class="s2">"your_camo_secret_key"</span><span class="w"> </span>coffee<span class="w"> </span>server.coffee
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nv">PORT</span><span class="o">=</span><span class="s2">"8081"</span><span class="w"> </span><span class="nv">CAMO_KEY</span><span class="o">=</span><span class="s2">"your_camo_secret_key"</span><span class="w"> </span>coffee<span class="w"> </span>server.coffee
 </code></pre></div>
-- <strong>PORT</strong>: Cổng dịch vụ Camo sẽ lắng nghe (ví dụ: <code>8081</code>).
-- <strong>CAMO_KEY</strong>: Khóa HMAC bí mật tự chọn dùng để mã hóa URL ảnh.</p>
+<ul>
+<li><strong>PORT</strong>: Cổng dịch vụ Camo sẽ lắng nghe (ví dụ: <code>8081</code>).</li>
+<li><strong>CAMO_KEY</strong>: Khóa HMAC bí mật tự chọn dùng để mã hóa URL ảnh.</li>
+</ul>
 <hr />
 <h2 id="2-cau-hinh-chay-ngam-bang-supervisor">2. Cấu hình chạy ngầm bằng Supervisor</h2>
 <p>Tạo file cấu hình <code>/etc/supervisor/conf.d/camo.conf</code> để tự động chạy Camo:</p>

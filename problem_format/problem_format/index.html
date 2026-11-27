@@ -643,60 +643,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../site/mathoid/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-  Hiển thị công thức Toán (LaTeX)
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-                
-              
-                
-                  
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../site/texoid/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-  Hiển thị hình vẽ LaTeX
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-                
-              
-                
-                  
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../site/turnstile/" class="md-nav__link">
         
   
@@ -2134,12 +2080,12 @@ Tin học để tương thích với bộ test có sẵn.</p>
 <a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">in</span><span class="p">:</span><span class="w"> </span><span class="nv">test1/bai1.inp</span><span class="p p-Indicator">,</span><span class="nt"> out</span><span class="p">:</span><span class="w"> </span><span class="nv">test1/bai1.out</span><span class="p p-Indicator">,</span><span class="nt"> points</span><span class="p">:</span><span class="w"> </span><span class="nv">10</span><span class="p p-Indicator">}</span>
 <a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">in</span><span class="p">:</span><span class="w"> </span><span class="nv">test2/bai1.inp</span><span class="p p-Indicator">,</span><span class="nt"> out</span><span class="p">:</span><span class="w"> </span><span class="nv">test2/bai1.out</span><span class="p p-Indicator">,</span><span class="nt"> points</span><span class="p">:</span><span class="w"> </span><span class="nv">20</span><span class="p p-Indicator">}</span>
 </code></pre></div>
-<blockquote>
-<p>[!TIP]
-Với <code>io_mode: file</code>, tên file trong các trường <code>in</code>/<code>out</code> của <code>test_cases</code>
+<div class="admonition tip">
+<p class="admonition-title">Mẹo cấu hình File I/O</p>
+<p>Với <code>io_mode: file</code>, tên file trong các trường <code>in</code>/<code>out</code> của <code>test_cases</code>
 là đường dẫn bên trong file ZIP (dùng để so sánh kết quả), khác với tên file
 <code>input_file</code>/<code>output_file</code> mà thí sinh dùng trong code.</p>
-</blockquote>
+</div>
 <hr />
 <h2 id="2-cach-cau-hinh-test_cases">2. Cách cấu hình <code>test_cases</code></h2>
 <p>Có hai cách để khai báo danh sách test case:</p>
@@ -2152,10 +2098,10 @@ là đường dẫn bên trong file ZIP (dùng để so sánh kết quả), khá
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">points</span><span class="p">:</span><span class="w"> </span><span class="nv">10</span><span class="p p-Indicator">,</span><span class="nt"> in</span><span class="p">:</span><span class="w"> </span><span class="nv">aplusb.1.in</span><span class="p p-Indicator">,</span><span class="nt"> out</span><span class="p">:</span><span class="w"> </span><span class="nv">aplusb.1.out</span><span class="p p-Indicator">}</span>
 <a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">points</span><span class="p">:</span><span class="w"> </span><span class="nv">10</span><span class="p p-Indicator">,</span><span class="nt"> in</span><span class="p">:</span><span class="w"> </span><span class="nv">aplusb.2.in</span><span class="p p-Indicator">,</span><span class="nt"> out</span><span class="p">:</span><span class="w"> </span><span class="nv">aplusb.2.out</span><span class="p p-Indicator">}</span>
 </code></pre></div>
-<blockquote>
-<p>[!TIP]<br />
-Các test case có <code>points: 0</code> thường được dùng làm <strong>Pretest (hoặc test ví dụ)</strong>. Nếu bài làm chạy sai ở test 0 điểm này, máy chấm sẽ dừng ngay lập tức (Short-circuit) và không chấm tiếp các test sau để tiết kiệm thời gian. Do đó, hãy xếp các test 0 điểm lên đầu tiên.</p>
-</blockquote>
+<div class="admonition tip">
+<p class="admonition-title">Pretest / Test ví dụ (0 điểm)</p>
+<p>Các test case có <code>points: 0</code> thường được dùng làm <strong>Pretest (hoặc test ví dụ)</strong>. Nếu bài làm chạy sai ở test 0 điểm này, máy chấm sẽ dừng ngay lập tức (Short-circuit) và không chấm tiếp các test sau để tiết kiệm thời gian. Do đó, hãy xếp các test 0 điểm lên đầu tiên.</p>
+</div>
 <h4 id="test-theo-nhom-batched-cases">Test theo nhóm (Batched cases):</h4>
 <p>Cho phép gộp nhiều test case thành một nhóm (Subtask). Thí sinh phải trả lời đúng <strong>tất cả</strong> các test trong nhóm mới nhận được điểm của nhóm đó.</p>
 <p><div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nt">test_cases</span><span class="p">:</span>
@@ -2180,10 +2126,12 @@ Các test case có <code>points: 0</code> thường được dùng làm <strong>
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span><span class="c1"># Điểm số cho mỗi test case quét được</span>
 <a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">  </span><span class="nt">case_points</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
 </code></pre></div></p>
-<p>Các định dạng tên file tương thích tốt bao gồm:
-- <code>test.1.in</code> / <code>test.1.out</code>
-- <code>test-case-1.in</code> / <code>test-case-1.out</code>
-- <code>test-batch-1-case-2.in</code> (Chấm theo nhóm: Nhóm 1 - Test 2)</p>
+<p>Các định dạng tên file tương thích tốt bao gồm:</p>
+<ul>
+<li><code>test.1.in</code> / <code>test.1.out</code></li>
+<li><code>test-case-1.in</code> / <code>test-case-1.out</code></li>
+<li><code>test-batch-1-case-2.in</code> (Chấm theo nhóm: Nhóm 1 - Test 2)</li>
+</ul>
 
 
 

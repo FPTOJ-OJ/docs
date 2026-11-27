@@ -643,60 +643,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../site/mathoid/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-  Hiển thị công thức Toán (LaTeX)
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-                
-              
-                
-                  
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../site/texoid/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-  Hiển thị hình vẽ LaTeX
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-                
-              
-                
-                  
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../site/turnstile/" class="md-nav__link">
         
   
@@ -2034,20 +1980,24 @@ Hoặc truyền thêm tham số cấu hình:
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="nt">precision</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">6</span>
 </code></pre></div></p>
 <h3 id="11-so-khop-chuan-standard">1.1 So khớp chuẩn - <code>standard</code></h3>
-<p>Đây là bộ chấm mặc định nếu không khai báo <code>checker</code>.
-- Tách đầu ra của thí sinh và đáp án theo từng dòng và từng từ (token), bỏ qua các khoảng trắng thừa ở cuối dòng. 
-- So khớp chính xác từng từ trên mỗi dòng.</p>
+<p>Đây là bộ chấm mặc định nếu không khai báo <code>checker</code>.</p>
+<ul>
+<li>Tách đầu ra của thí sinh và đáp án theo từng dòng và từng từ (token), bỏ qua các khoảng trắng thừa ở cuối dòng. </li>
+<li>So khớp chính xác từng từ trên mỗi dòng.</li>
+</ul>
 <h3 id="12-so-khop-de-dai-easy">1.2 So khớp dễ dãi - <code>easy</code></h3>
 <ul>
 <li>Bỏ qua toàn bộ khoảng trắng, ký tự xuống dòng và không phân biệt chữ hoa/thường. Sau đó đếm số lần xuất hiện của mỗi ký tự để so sánh.</li>
 </ul>
 <h3 id="13-cham-so-thuc-co-sai-so-floats">1.3 Chấm số thực có sai số - <code>floats</code></h3>
-<p>Sử dụng khi đáp án là các số thực và chấp nhận sai số nhỏ.
-- <strong>precision</strong>: Sai số cho phép (mặc định là <code>6</code>, tương ứng sai số $\le 10^{-6}$).
-- <strong>error_mode</strong>: 
-  - <code>default</code>: Chấp nhận sai số tuyệt đối hoặc tương đối trong khoảng cho phép.
-  - <code>absolute</code>: Chỉ kiểm tra sai số tuyệt đối.
-  - <code>relative</code>: Chỉ kiểm tra sai số tương đối.</p>
+<p>Sử dụng khi đáp án là các số thực và chấp nhận sai số nhỏ.</p>
+<ul>
+<li><strong>precision</strong>: Sai số cho phép (mặc định là <code>6</code>, tương ứng sai số $\le 10^{-6}$).</li>
+<li><strong>error_mode</strong>: </li>
+<li><code>default</code>: Chấp nhận sai số tuyệt đối hoặc tương đối trong khoảng cho phép.</li>
+<li><code>absolute</code>: Chỉ kiểm tra sai số tuyệt đối.</li>
+<li><code>relative</code>: Chỉ kiểm tra sai số tương đối.</li>
+</ul>
 <h3 id="14-so-khop-tuyet-oi-identical">1.4 So khớp tuyệt đối - <code>identical</code></h3>
 <ul>
 <li>So sánh chính xác từng ký tự bao gồm cả khoảng trắng và ký tự xuống dòng.</li>

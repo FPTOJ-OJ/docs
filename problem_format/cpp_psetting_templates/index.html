@@ -643,60 +643,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../site/mathoid/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-  Hiển thị công thức Toán (LaTeX)
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-                
-              
-                
-                  
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../site/texoid/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-  Hiển thị hình vẽ LaTeX
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-                
-              
-                
-                  
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../site/turnstile/" class="md-nav__link">
         
   
@@ -2006,10 +1952,12 @@
 <p>Các mẫu này được thiết kế để viết bộ chấm tùy biến (checker) hoặc tương tác (interactor) chạy trực tiếp trên máy chấm thông qua cổng <code>bridged</code>.</p>
 <h3 id="21-checker-tuyet-oi-identical-checker">2.1 Checker Tuyệt đối (Identical Checker)</h3>
 <p>Yêu cầu học sinh định dạng kết quả chính xác tuyệt đối. Các hàm kiểm tra khoảng trắng (<code>readSpace</code>, <code>readNewLine</code>, <code>readEOF</code>) sẽ tự động trả về kết quả lỗi trình bày <code>Presentation Error</code> (PE) nếu thí sinh viết sai khoảng trắng, và <code>Wrong Answer</code> (WA) nếu kết quả tính toán sai.</p>
-<p>Các hàm bổ sung:
-- <code>exitWA()</code>, <code>exitPE()</code>: Dừng ngay chương trình và trả về lỗi WA/PE tương ứng.
-- <code>assertWA(condition)</code>: Dừng chương trình trả về WA nếu điều kiện <code>condition</code> là <code>false</code>.
-- Namespace <code>CheckerCodes</code>: Chứa các hằng số kết quả <code>AC</code> (0), <code>WA</code> (1), <code>PE</code> (2), <code>PARTIAL</code> (7). Sử dụng trong hàm <code>main</code> để trả về kết quả chấm: <code>return CheckerCodes::AC;</code>.</p>
+<p>Các hàm bổ sung:</p>
+<ul>
+<li><code>exitWA()</code>, <code>exitPE()</code>: Dừng ngay chương trình và trả về lỗi WA/PE tương ứng.</li>
+<li><code>assertWA(condition)</code>: Dừng chương trình trả về WA nếu điều kiện <code>condition</code> là <code>false</code>.</li>
+<li>Namespace <code>CheckerCodes</code>: Chứa các hằng số kết quả <code>AC</code> (0), <code>WA</code> (1), <code>PE</code> (2), <code>PARTIAL</code> (7). Sử dụng trong hàm <code>main</code> để trả về kết quả chấm: <code>return CheckerCodes::AC;</code>.</li>
+</ul>
 <h3 id="22-checker-tieu-chuan-standard-checker">2.2 Checker Tiêu chuẩn (Standard Checker)</h3>
 <p>Checker này hoạt động linh hoạt và dễ chịu hơn cho thí sinh, bỏ qua các lỗi khoảng trắng thừa ở cuối dòng hoặc xuống dòng thừa.</p>
 <ul>
