@@ -5,6 +5,7 @@ repo_url: https://github.com/FPTOJ-OJ/online-judge
 
 theme:
   name: material
+  variant: classic
   language: vi
   palette:
     - scheme: default

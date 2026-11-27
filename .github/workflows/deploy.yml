@@ -1,4 +1,4 @@
-name: Deploy MkDocs to GitHub Pages
+name: Deploy Zensical to GitHub Pages
 
 on:
   push:
@@ -27,11 +27,11 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install mkdocs-material
+          pip install zensical
 
-      - name: Build MkDocs
+      - name: Build Zensical
         run: |
-          mkdocs build
+          zensical build
 
       - name: Deploy to gh-pages branch
         uses: JamesIves/github-pages-deploy-action@v4

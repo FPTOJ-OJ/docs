@@ -56,27 +56,27 @@ Làm theo các hướng dẫn hiện trên màn hình, điền mật khẩu và 
 
 ## 🛠 CÁCH 2: Cài đặt thủ công từng bước (Dành cho kỹ sư hệ thống)
 
-Nếu bạn muốn tự quản lý cấu trúc hoặc tùy biến sâu, hãy làm theo các bước dưới đây:
+Nếu bạn muốn tự quản lý cấu trúc hoặc tùy biến sâu, hãy làm theo các bước dưới đây. Hệ thống hiện chạy trên **Python 3.12** và **Django 5.2 LTS**.
 
 ### 1. Cài đặt các thư viện hệ thống cần thiết
 
-Chạy lệnh sau để cài đặt các công cụ biên dịch, thư viện hệ thống cho Python, công cụ biên dịch giao diện và các dịch vụ nền:
+Chạy lệnh sau để cài đặt các công cụ biên dịch, thư viện hệ thống cho Python và các dịch vụ nền:
 
 ```bash
 sudo apt update
-sudo apt install -y git gcc g++ make python3-dev python3-pip python3-venv libxml2-dev libxslt1-dev zlib1g-dev gettext curl redis-server supervisor nginx wkhtmltopdf lsof
+sudo apt install -y git gcc g++ make python3.12-dev python3-pip python3.12-venv libxml2-dev libxslt1-dev zlib1g-dev gettext curl redis-server supervisor nginx wkhtmltopdf lsof
 ```
 
-**Cài đặt Node.js và các công cụ CSS/Sass:**
-FPTOJ sử dụng Sass và PostCSS để biên dịch giao diện.
-```bash
-# Cài đặt NodeJS 18.x
-curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash -
-sudo apt install -y nodejs
-
-# Cài đặt các công cụ đóng gói CSS toàn cục
-sudo npm install -g sass postcss-cli postcss autoprefixer
-```
+> [!NOTE]
+> **Không cần Node.js để chạy runtime site hay WebSocket.** WebSocket event server (`wsevent`) đã được viết lại bằng Python thuần (`aiohttp`) trong `websocket/daemon.py`.
+> Bạn **chỉ cần Node.js** nếu muốn tự biên dịch lại file Sass/CSS từ mã nguồn bằng script `./make_style.sh`:
+>
+> ```bash
+> # Chỉ cài nếu cần tự build Sass/CSS bằng make_style.sh
+> curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+> sudo apt install -y nodejs
+> sudo npm install -g sass postcss-cli postcss autoprefixer
+> ```
 
 ---
 
@@ -112,9 +112,9 @@ mariadb-tzinfo-to-sql /usr/share/zoneinfo | sudo mariadb -u root mysql
 
 ---
 
-### 3. Cài đặt mã nguồn và môi trường ảo Python
+### 3. Cài đặt mã nguồn và môi trường ảo Python (Python 3.12)
 
-Tạo môi trường ảo `dmojsite` để cài đặt các thư viện Python nhằm tránh xung đột hệ thống:
+Tạo môi trường ảo `dmojsite` bằng **Python 3.12** để cài đặt các thư viện cho **Django 5.2 LTS** nhằm tránh xung đột hệ thống (`requirements.txt` đã tích hợp `aiohttp` cho WebSocket và loại bỏ `django-fernet-fields`, `jsonfield`):
 
 ```bash
 # Di chuyển tới thư mục dự án
@@ -124,8 +124,8 @@ cd ~/site
 git submodule init
 git submodule update
 
-# Tạo môi trường ảo
-python3 -m venv dmojsite
+# Tạo môi trường ảo với Python 3.12
+python3.12 -m venv dmojsite
 source dmojsite/bin/activate
 ```
 
@@ -147,10 +147,11 @@ Sao chép file cấu hình mẫu để chỉnh sửa hoặc tự viết:
 ```
 
 Các trường thông tin quan trọng cần cập nhật trong `dmoj/local_settings.py`:
-* **DATABASES:** Điền thông tin kết nối MariaDB (User: `dmoj`, Password đã tạo ở bước 2).
+* **DATABASES:** Điền thông tin kết nối MariaDB (User: `dmoj`, Password đã tạo ở bước 2). Nên giữ `'CONN_MAX_AGE': 60` và `'CONN_HEALTH_CHECKS': True` để tái sử dụng kết nối DB an toàn trên Django 5.2.
 * **CELERY_BROKER_URL:** URL Redis cho Celery broker (`redis://127.0.0.1:6379/0`). `result_backend` được suy ra tự động từ cùng URL này trong `dmoj/celery.py` (dòng `app.conf.result_backend = app.conf.broker_url`). **Không** cần `CELERY_RESULT_BACKEND`. Secret override dùng `CELERY_BROKER_URL_SECRET` / `CELERY_RESULT_BACKEND_SECRET`.
 * **SITE_NAME:** Tên thương hiệu trang web của bạn (ví dụ: `FPTOJ`).
 * **DMOJ_PDF_PDFOID_URL:** Trỏ về dịch vụ PDF độc quyền `http://localhost:8888`.
+* **LOGGING:** Trong môi trường production, cấu hình các logger (`console`, `bridge`, `judge.bridge`, `django.request`) ở mức `WARNING`/`ERROR` để tránh ghi log debug quá nhiều.
 
 ---
 
@@ -189,6 +190,8 @@ Các trường thông tin quan trọng cần cập nhật trong `dmoj/local_sett
 
 ### 7. Cấu hình và chạy các tiến trình nền bằng Supervisord
 
+Đảm bảo file `uwsgi.ini` trong thư mục `~/site/` đã bật các cờ an toàn cho Django & Supervisor (`lazy-apps = true`, `need-app = true`, `die-on-term = true`).
+
 Sao chép hoặc ghi cấu hình dịch vụ vào thư mục `/etc/supervisor/conf.d/`:
 
 * **Web Site (`/etc/supervisor/conf.d/site.conf`):**
@@ -196,7 +199,7 @@ Sao chép hoặc ghi cấu hình dịch vụ vào thư mục `/etc/supervisor/co
 [program:site]
 command=~/site/dmojsite/bin/uwsgi --ini uwsgi.ini
 directory=~/site
-stopsignal=QUIT
+stopsignal=TERM
 stdout_logfile=/tmp/site.stdout.log
 stderr_logfile=/tmp/site.stderr.log
 autorestart=true
@@ -214,10 +217,13 @@ autorestart=true
 ```
 
 * **Event server cập nhật real-time (`/etc/supervisor/conf.d/wsevent.conf`):**
+Chạy bằng Python thuần (`aiohttp`) thông qua `websocket/daemon.py`, không cần Node.js:
 ```ini
 [program:wsevent]
-command=/usr/bin/node ~/site/websocket/daemon.js
-environment=NODE_PATH="~/site/node_modules"
+command=~/site/dmojsite/bin/python ~/site/websocket/daemon.py
+directory=~/site
+environment=WS_BIND_HOST="127.0.0.1",WS_GET_PORT="15100",WS_POST_PORT="15101",WS_HTTP_PORT="15102"
+stopsignal=TERM
 stdout_logfile=/tmp/wsevent.stdout.log
 stderr_logfile=/tmp/wsevent.stderr.log
 autorestart=true
@@ -233,11 +239,20 @@ sudo supervisorctl status
 
 ### 8. Cấu hình Nginx và Khởi động
 
-Ghi file cấu hình `/etc/nginx/sites-available/fptoj` và tạo liên kết:
+Ghi file cấu hình `/etc/nginx/sites-available/fptoj` (tham khảo mẫu `sample_files/nginx.conf`) và tạo liên kết:
 ```bash
 sudo ln -sf /etc/nginx/sites-available/fptoj /etc/nginx/sites-enabled/fptoj
 sudo rm -f /etc/nginx/sites-enabled/default # Xóa site mặc định
 sudo systemctl restart nginx
+```
+
+#### Tối ưu Nginx cho Cloudflare Origin (Khuyến nghị)
+Khi đặt FPTOJ phía sau Cloudflare Proxy, cấu hình Nginx nên bổ sung các tham số sau trong khối `server` (đã có sẵn trong mẫu `nginx.conf`):
+* `keepalive_timeout 900s;` và `keepalive_requests 100000;`: Giữ kết nối keep-alive lâu và phục vụ nhiều request trên cùng kết nối với Cloudflare Edge, giảm độ trễ bắt tay TCP/TLS.
+* `large_client_header_buffers 4 16k;`: Tránh lỗi `400 Request Header Or Cookie Too Large` khi Cloudflare gửi kèm nhiều header và cookie.
+* **Tách `/static/cache/` và `/static/`:**
+  * `location /static/cache/`: Chứa file CSS/JS đã được `django-compressor` nén và gắn hash, dùng `expires max;` và `add_header Cache-Control "public, immutable";` để trình duyệt và Cloudflare cache dài hạn.
+  * `location /static`: Chứa các file tĩnh thông thường (ảnh, font, file chưa hash), dùng `expires 7d;` và `add_header Cache-Control "public";`.
 
 ---
 
@@ -260,7 +275,7 @@ Hệ thống gồm 8 container chạy đồng thời:
 | `fptoj-redis` | Redis 7 - Cache & hàng đợi Celery |
 | `fptoj-web` | uWSGI Django - Web application |
 | `fptoj-celery` | Celery worker - Xử lý tác vụ nền |
-| `fptoj-wsevent` | Node.js - WebSocket event server |
+| `fptoj-wsevent` | Python (aiohttp) - WebSocket event server |
 | `fptoj-bridged` | Bridge server - Kết nối máy chấm |
 | `fptoj-nginx` | Nginx - Reverse proxy (cổng 80) |
 | `fptoj-judge` | Judge server - Máy chấm bài |
@@ -354,4 +369,3 @@ docker compose -f docker-compose.tier2.yml up -d
 > [!TIP]
 > Thư mục dữ liệu (CSDL, problems, pdfcache) được mount từ host (`DATA_DIR`)
 > nên dữ liệu sẽ được giữ nguyên khi chuyển đổi giữa các Tier.
-```
