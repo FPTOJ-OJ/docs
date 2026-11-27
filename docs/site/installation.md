@@ -37,10 +37,7 @@ Hệ thống cung cấp một công cụ cài đặt tự động cực kỳ th�
 5. **Cài đặt các dịch vụ độc quyền:** Tự động tải, cấu hình và chạy dịch vụ
    xuất PDF (`html-to-pdf-flask`) và máy chấm (`judge-server` qua Docker).
 
-!!! warning "Hệ điều hành hỗ trợ"
-    Script chỉ mới được kiểm tra và hoạt động ổn định trên **Ubuntu 22.04 / 24.04 / 26.04**.
-    Nếu bạn sử dụng hệ điều hành khác (CentOS, Debian, macOS...), hãy sử dụng
-    phương pháp **Docker Compose (Cách 3)** để triển khai thay vì chạy script trực tiếp.
+> **Lưu ý:** Script chỉ mới được kiểm tra và hoạt động ổn định trên **Ubuntu 22.04 / 24.04 / 26.04**. Nếu bạn sử dụng hệ điều hành khác (CentOS, Debian, macOS...), hãy sử dụng phương pháp **Docker Compose (Cách 3)** để triển khai thay vì chạy script trực tiếp.
 
 ### Các bước thực hiện:
 ```bash
@@ -67,17 +64,18 @@ sudo apt update
 sudo apt install -y git gcc g++ make python3.12-dev python3-pip python3.12-venv libxml2-dev libxslt1-dev zlib1g-dev gettext curl redis-server supervisor nginx lsof pkg-config default-libmysqlclient-dev
 ```
 
-!!! note "Không cần Node.js cho runtime & Không cần Mathoid/Texoid"
-    - **WebSocket (`wsevent`)** đã được viết lại bằng Python thuần (`aiohttp`) trong `websocket/daemon.py`, nên **không cần Node.js** để chạy site hay WebSocket.
-    - **Công thức Toán & Minh họa**: FPTOJ hiển thị công thức trực tiếp ở trình duyệt bằng **MathJax / KaTeX** và hình ảnh SVG tĩnh, nên **không cần** cài thêm dịch vụ `mathoid` hay `texoid`.
-    - Bạn **chỉ cần Node.js (20 LTS)** nếu muốn tự biên dịch lại file Sass/CSS từ mã nguồn bằng script `./make_style.sh`:
+**Lưu ý về Node.js & Công thức Toán:**
 
-    ```bash
-    # Chỉ cài nếu cần tự build Sass/CSS bằng make_style.sh
-    curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
-    sudo apt install -y nodejs
-    sudo npm install -g sass postcss-cli postcss autoprefixer
-    ```
+- **Không cần Node.js** để chạy runtime site hay WebSocket (`wsevent` đã chuyển sang Python thuần `aiohttp` trong `websocket/daemon.py`).
+- **Không cần `mathoid` hay `texoid`**: FPTOJ hiển thị công thức toán trực tiếp ở trình duyệt bằng **MathJax / KaTeX** và hình minh họa SVG tĩnh.
+- Bạn **chỉ cần Node.js (20 LTS)** nếu muốn tự biên dịch lại file Sass/CSS từ mã nguồn bằng `./make_style.sh`:
+
+```bash
+# Chỉ cài nếu cần tự build Sass/CSS bằng make_style.sh
+curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+sudo apt install -y nodejs
+sudo npm install -g sass postcss-cli postcss autoprefixer
+```
 
 ---
 
@@ -281,8 +279,7 @@ Khi đặt FPTOJ phía sau Cloudflare Proxy, cấu hình Nginx nên bổ sung c�
 Phương pháp này phù hợp khi bạn muốn triển khai nhanh mà không cần cài đặt từng
 dịch vụ thủ công, hoặc khi bạn dùng hệ điều hành khác ngoài Ubuntu.
 
-!!! note "Vị trí cấu hình Docker"
-    Các file cấu hình Docker nằm tại thư mục `docker/` trong mã nguồn Site (`~/site/docker/`).
+Các file cấu hình Docker nằm tại thư mục `docker/` trong mã nguồn Site (`~/site/docker/`).
 
 ### Cấu trúc dịch vụ
 
@@ -385,6 +382,4 @@ docker compose -f docker-compose.tier1.yml down
 docker compose -f docker-compose.tier2.yml up -d
 ```
 
-!!! tip "Bảo toàn dữ liệu khi nâng cấp Tier"
-    Thư mục dữ liệu (CSDL, problems, pdfcache) được mount từ host (`DATA_DIR`)
-    nên dữ liệu sẽ được giữ nguyên khi chuyển đổi giữa các Tier.
+**Lưu ý:** Thư mục dữ liệu (CSDL, problems, pdfcache) được mount từ host (`DATA_DIR`) nên dữ liệu sẽ được giữ nguyên khi chuyển đổi giữa các Tier.

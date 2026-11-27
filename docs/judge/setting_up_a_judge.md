@@ -73,10 +73,11 @@ docker run \
     172.28.0.1 judge-01 your_auth_key_here
 ```
 
-!!! note "Lưu ý kết nối Bridge"
-    - Nếu dùng mạng cô lập `fptoj_judge_internal`, trỏ địa chỉ Bridge về gateway `172.28.0.1` (và cấu hình `BRIDGED_JUDGE_ADDRESS = [('172.28.0.1', 9999), ('127.0.0.1', 9999)]` trong `local_settings.py`, mở firewall nội bộ subnet `172.28.0.0/24` cho cổng `9999`).
-    - Không mở port `-p 897x:897x` ra ngoài mạng để tránh bị lạm dụng.
-    - Thư mục test case `/data/problems` trên Host nên mount dạng `:ro` (read-only) vào `/problems` trong Docker.
+**Lưu ý kết nối Bridge:**
+
+- Nếu dùng mạng cô lập `fptoj_judge_internal`, trỏ địa chỉ Bridge về gateway `172.28.0.1` (và cấu hình `BRIDGED_JUDGE_ADDRESS = [('172.28.0.1', 9999), ('127.0.0.1', 9999)]` trong `local_settings.py`, mở firewall nội bộ subnet `172.28.0.0/24` cho cổng `9999`).
+- Không mở port `-p 897x:897x` ra ngoài mạng để tránh bị lạm dụng.
+- Thư mục test case `/data/problems` trên Host nên mount dạng `:ro` (read-only) vào `/problems` trong Docker.
 
 ---
 

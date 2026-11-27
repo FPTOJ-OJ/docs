@@ -21,8 +21,7 @@ test_cases:
 - {in: data.2.in, points: 80}
 ```
 
-!!! info "Quan trọng"
-    Nên thiết lập `unbuffered: true` để tránh bộ nhớ đệm (buffer) của luồng xuất làm nghẽn tiến trình hỏi - đáp thời gian thực, học sinh sẽ không cần gọi lệnh `fflush(stdout)` thủ công trong code của họ.
+**Quan trọng:** Nên thiết lập `unbuffered: true` để tránh bộ nhớ đệm (buffer) của luồng xuất làm nghẽn tiến trình hỏi - đáp thời gian thực, học sinh sẽ không cần gọi lệnh `fflush(stdout)` thủ công trong code của họ.
 
 ### Viết file `interactor.cpp` (sử dụng C++ và testlib):
 ```cpp

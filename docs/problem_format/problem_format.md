@@ -55,10 +55,7 @@ test_cases:
 - {in: test2/bai1.inp, out: test2/bai1.out, points: 20}
 ```
 
-!!! tip "Mẹo cấu hình File I/O"
-    Với `io_mode: file`, tên file trong các trường `in`/`out` của `test_cases`
-    là đường dẫn bên trong file ZIP (dùng để so sánh kết quả), khác với tên file
-    `input_file`/`output_file` mà thí sinh dùng trong code.
+**Lưu ý:** Với `io_mode: file`, tên file trong các trường `in`/`out` của `test_cases` là đường dẫn bên trong file ZIP (dùng để so sánh kết quả), khác với tên file `input_file`/`output_file` mà thí sinh dùng trong code.
 
 ---
 
@@ -80,8 +77,7 @@ test_cases:
 - {points: 10, in: aplusb.2.in, out: aplusb.2.out}
 ```
 
-!!! tip "Pretest / Test ví dụ (0 điểm)"
-    Các test case có `points: 0` thường được dùng làm **Pretest (hoặc test ví dụ)**. Nếu bài làm chạy sai ở test 0 điểm này, máy chấm sẽ dừng ngay lập tức (Short-circuit) và không chấm tiếp các test sau để tiết kiệm thời gian. Do đó, hãy xếp các test 0 điểm lên đầu tiên.
+**Mẹo:** Các test case có `points: 0` thường được dùng làm **Pretest (hoặc test ví dụ)**. Nếu bài làm chạy sai ở test 0 điểm này, máy chấm sẽ dừng ngay lập tức (Short-circuit) và không chấm tiếp các test sau để tiết kiệm thời gian. Do đó, hãy xếp các test 0 điểm lên đầu tiên.
 
 #### Test theo nhóm (Batched cases):
 Cho phép gộp nhiều test case thành một nhóm (Subtask). Thí sinh phải trả lời đúng **tất cả** các test trong nhóm mới nhận được điểm của nhóm đó.
