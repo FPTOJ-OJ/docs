@@ -2141,14 +2141,12 @@
 <a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">    </span>run<span class="w"> </span>-p<span class="w"> </span><span class="m">9999</span><span class="w"> </span>-c<span class="w"> </span>/problems/judge.yml<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">    </span><span class="m">172</span>.28.0.1<span class="w"> </span>judge-01<span class="w"> </span>your_auth_key_here
 </code></pre></div>
-<div class="admonition note">
-<p class="admonition-title">Lưu ý kết nối Bridge</p>
+<p><strong>Lưu ý kết nối Bridge:</strong></p>
 <ul>
 <li>Nếu dùng mạng cô lập <code>fptoj_judge_internal</code>, trỏ địa chỉ Bridge về gateway <code>172.28.0.1</code> (và cấu hình <code>BRIDGED_JUDGE_ADDRESS = [('172.28.0.1', 9999), ('127.0.0.1', 9999)]</code> trong <code>local_settings.py</code>, mở firewall nội bộ subnet <code>172.28.0.0/24</code> cho cổng <code>9999</code>).</li>
 <li>Không mở port <code>-p 897x:897x</code> ra ngoài mạng để tránh bị lạm dụng.</li>
 <li>Thư mục test case <code>/data/problems</code> trên Host nên mount dạng <code>:ro</code> (read-only) vào <code>/problems</code> trong Docker.</li>
 </ul>
-</div>
 <hr />
 <h3 id="phuong-phap-b-cai-at-thu-cong-bang-python-pip-tuy-bien-cao">Phương pháp B: Cài đặt thủ công bằng Python Pip (Tùy biến cao)</h3>
 <p>Nếu không sử dụng Docker, bạn có thể tự cài đặt trên hệ điều hành Ubuntu/Linux:</p>
