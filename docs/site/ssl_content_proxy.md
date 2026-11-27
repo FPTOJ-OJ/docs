@@ -25,6 +25,7 @@ Kiểm tra khởi chạy Camo bằng lệnh:
 ```bash
 PORT="8081" CAMO_KEY="your_camo_secret_key" coffee server.coffee
 ```
+
 - **PORT**: Cổng dịch vụ Camo sẽ lắng nghe (ví dụ: `8081`).
 - **CAMO_KEY**: Khóa HMAC bí mật tự chọn dùng để mã hóa URL ảnh.
 

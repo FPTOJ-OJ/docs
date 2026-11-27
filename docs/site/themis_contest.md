@@ -65,6 +65,7 @@ Khi giáo viên upload file zip này lên, hệ thống sẽ tự động bóc t
 
 ### 3.2. Cơ chế tài khoản dự phòng tự động (Student Fallback)
 Khi giáo viên nộp bài hộ học sinh thông qua file zip chấm hàng loạt:
+
 - Nếu thư mục mang tên học sinh `hocsinh_01` nhưng tài khoản này **không tồn tại** trên hệ thống FPTOJ: Hệ thống sẽ **không báo lỗi**, thay vào đó sẽ tự động đứng tên chạy dưới tài khoản của giáo viên (Admin) đang thực hiện upload để tránh việc dừng tiến trình chấm.
 - Hệ thống sẽ hiển thị cảnh báo trên màn hình console logs:
   `!! Student [hocsinh_01] not found in database. Submitted under admin [kien] instead.`
@@ -77,8 +78,10 @@ Nếu bật cấu hình này, khi học sinh thực hiện nộp bài (upload zi
 
 ### 3.5. Thi thật ẩn điểm số (Real Exam / Hidden Scores)
 Để tái lập kỳ thi quốc gia hoặc kỳ thi học sinh giỏi thực tế:
+
 - **Bảng xếp hạng (Scoreboard)**: Hiển thị ký tự `?` ở cột điểm và tổng điểm của các thí sinh khác đối với học sinh. Giáo viên và Admin vẫn xem được điểm đầy đủ theo thời gian thực.
 - **Danh sách bài nộp**: Ẩn các tag trạng thái (AC, WA, TLE, RTE), ẩn số điểm, CPU time, bộ nhớ sử dụng. Chỉ hiển thị trạng thái đơn giản là `Đã chấm` (Graded) hoặc `Đang chấm` (Grading).
 - **Chi tiết bài nộp (Submission Detail)**: Khi học sinh nhấn xem chi tiết bài nộp của mình, hệ thống sẽ ẩn toàn bộ danh sách test case và hiển thị thông báo:
   `"Bài nộp của bạn đã được chấm xong. Kết quả chi tiết được ẩn đi cho đến khi kỳ thi kết thúc."`
+
 - **Màn hình Console logs**: Ẩn điểm số cập nhật thời gian thực khi đang chấm bài.

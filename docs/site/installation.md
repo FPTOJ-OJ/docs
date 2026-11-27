@@ -37,10 +37,10 @@ Hệ thống cung cấp một công cụ cài đặt tự động cực kỳ th�
 5. **Cài đặt các dịch vụ độc quyền:** Tự động tải, cấu hình và chạy dịch vụ
    xuất PDF (`html-to-pdf-flask`) và máy chấm (`judge-server` qua Docker).
 
-> [!WARNING]
-> Script chỉ mới được kiểm tra và hoạt động ổn định trên **Ubuntu 20.04/22.04/24.04**.
-> Nếu bạn sử dụng hệ điều hành khác (CentOS, Debian, macOS...), hãy cân nhắc sử dụng
-> phương pháp **Docker Compose** (CÁCH 3) để triển khai thay vì chạy script trực tiếp.
+!!! warning "Hệ điều hành hỗ trợ"
+    Script chỉ mới được kiểm tra và hoạt động ổn định trên **Ubuntu 22.04 / 24.04 / 26.04**.
+    Nếu bạn sử dụng hệ điều hành khác (CentOS, Debian, macOS...), hãy sử dụng
+    phương pháp **Docker Compose (Cách 3)** để triển khai thay vì chạy script trực tiếp.
 
 ### Các bước thực hiện:
 ```bash
@@ -64,19 +64,20 @@ Chạy lệnh sau để cài đặt các công cụ biên dịch, thư viện h�
 
 ```bash
 sudo apt update
-sudo apt install -y git gcc g++ make python3.12-dev python3-pip python3.12-venv libxml2-dev libxslt1-dev zlib1g-dev gettext curl redis-server supervisor nginx wkhtmltopdf lsof
+sudo apt install -y git gcc g++ make python3.12-dev python3-pip python3.12-venv libxml2-dev libxslt1-dev zlib1g-dev gettext curl redis-server supervisor nginx lsof pkg-config default-libmysqlclient-dev
 ```
 
-> [!NOTE]
-> **Không cần Node.js để chạy runtime site hay WebSocket.** WebSocket event server (`wsevent`) đã được viết lại bằng Python thuần (`aiohttp`) trong `websocket/daemon.py`.
-> Bạn **chỉ cần Node.js** nếu muốn tự biên dịch lại file Sass/CSS từ mã nguồn bằng script `./make_style.sh`:
->
-> ```bash
-> # Chỉ cài nếu cần tự build Sass/CSS bằng make_style.sh
-> curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash -
-> sudo apt install -y nodejs
-> sudo npm install -g sass postcss-cli postcss autoprefixer
-> ```
+!!! note "Không cần Node.js cho runtime & Không cần Mathoid/Texoid"
+    - **WebSocket (`wsevent`)** đã được viết lại bằng Python thuần (`aiohttp`) trong `websocket/daemon.py`, nên **không cần Node.js** để chạy site hay WebSocket.
+    - **Công thức Toán & Minh họa**: FPTOJ hiển thị công thức trực tiếp ở trình duyệt bằng **MathJax / KaTeX** và hình ảnh SVG tĩnh, nên **không cần** cài thêm dịch vụ `mathoid` hay `texoid`.
+    - Bạn **chỉ cần Node.js (20 LTS)** nếu muốn tự biên dịch lại file Sass/CSS từ mã nguồn bằng script `./make_style.sh`:
+
+    ```bash
+    # Chỉ cài nếu cần tự build Sass/CSS bằng make_style.sh
+    curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+    sudo apt install -y nodejs
+    sudo npm install -g sass postcss-cli postcss autoprefixer
+    ```
 
 ---
 
@@ -147,6 +148,7 @@ Sao chép file cấu hình mẫu để chỉnh sửa hoặc tự viết:
 ```
 
 Các trường thông tin quan trọng cần cập nhật trong `dmoj/local_settings.py`:
+
 * **DATABASES:** Điền thông tin kết nối MariaDB (User: `dmoj`, Password đã tạo ở bước 2). Nên giữ `'CONN_MAX_AGE': 60` và `'CONN_HEALTH_CHECKS': True` để tái sử dụng kết nối DB an toàn trên Django 5.2.
 * **CELERY_BROKER_URL:** URL Redis cho Celery broker (`redis://127.0.0.1:6379/0`). `result_backend` được suy ra tự động từ cùng URL này trong `dmoj/celery.py` (dòng `app.conf.result_backend = app.conf.broker_url`). **Không** cần `CELERY_RESULT_BACKEND`. Secret override dùng `CELERY_BROKER_URL_SECRET` / `CELERY_RESULT_BACKEND_SECRET`.
 * **SITE_NAME:** Tên thương hiệu trang web của bạn (ví dụ: `FPTOJ`).
@@ -194,38 +196,55 @@ Các trường thông tin quan trọng cần cập nhật trong `dmoj/local_sett
 
 Sao chép hoặc ghi cấu hình dịch vụ vào thư mục `/etc/supervisor/conf.d/`:
 
-* **Web Site (`/etc/supervisor/conf.d/site.conf`):**
+* **Web Site (`/etc/supervisor/conf.d/site.conf`):** (thay `/home/kien/site` bằng đường dẫn tuyệt đối thực tế vì `supervisord` không tự mở rộng `~`):
+
 ```ini
 [program:site]
-command=~/site/dmojsite/bin/uwsgi --ini uwsgi.ini
-directory=~/site
+command=/home/kien/site/dmojsite/bin/uwsgi --ini uwsgi.ini
+directory=/home/kien/site
+user=kien
+group=kien
 stopsignal=TERM
-stdout_logfile=/tmp/site.stdout.log
-stderr_logfile=/tmp/site.stderr.log
+stopwaitsecs=30
+stopasgroup=true
+killasgroup=true
+stdout_logfile=/home/kien/site/logs/site.stdout.log
+stderr_logfile=/home/kien/site/logs/site.stderr.log
 autorestart=true
 ```
 
 * **Bridge kết nối Judge (`/etc/supervisor/conf.d/bridged.conf`):**
+
 ```ini
 [program:bridged]
-command=~/site/dmojsite/bin/python manage.py runbridged
-directory=~/site
+command=/home/kien/site/dmojsite/bin/python manage.py runbridged
+directory=/home/kien/site
+user=kien
+group=kien
 stopsignal=INT
-stdout_logfile=/tmp/bridge.stdout.log
-stderr_logfile=/tmp/bridge.stderr.log
+stopasgroup=true
+killasgroup=true
+stdout_logfile=/home/kien/site/logs/bridge.stdout.log
+stderr_logfile=/home/kien/site/logs/bridge.stderr.log
 autorestart=true
 ```
 
 * **Event server cập nhật real-time (`/etc/supervisor/conf.d/wsevent.conf`):**
+
 Chạy bằng Python thuần (`aiohttp`) thông qua `websocket/daemon.py`, không cần Node.js:
+
 ```ini
 [program:wsevent]
-command=~/site/dmojsite/bin/python ~/site/websocket/daemon.py
-directory=~/site
+command=/home/kien/site/dmojsite/bin/python /home/kien/site/websocket/daemon.py
+directory=/home/kien/site
+user=kien
+group=kien
 environment=WS_BIND_HOST="127.0.0.1",WS_GET_PORT="15100",WS_POST_PORT="15101",WS_HTTP_PORT="15102"
 stopsignal=TERM
-stdout_logfile=/tmp/wsevent.stdout.log
-stderr_logfile=/tmp/wsevent.stderr.log
+stopasgroup=true
+killasgroup=true
+stdout_logfile=/home/kien/site/logs/wsevent.stdout.log
+stderr_logfile=/home/kien/site/logs/wsevent.stderr.log
 autorestart=true
 ```
 
@@ -248,6 +267,7 @@ sudo systemctl restart nginx
 
 #### Tối ưu Nginx cho Cloudflare Origin (Khuyến nghị)
 Khi đặt FPTOJ phía sau Cloudflare Proxy, cấu hình Nginx nên bổ sung các tham số sau trong khối `server` (đã có sẵn trong mẫu `nginx.conf`):
+
 * `keepalive_timeout 900s;` và `keepalive_requests 100000;`: Giữ kết nối keep-alive lâu và phục vụ nhiều request trên cùng kết nối với Cloudflare Edge, giảm độ trễ bắt tay TCP/TLS.
 * `large_client_header_buffers 4 16k;`: Tránh lỗi `400 Request Header Or Cookie Too Large` khi Cloudflare gửi kèm nhiều header và cookie.
 * **Tách `/static/cache/` và `/static/`:**
@@ -261,9 +281,8 @@ Khi đặt FPTOJ phía sau Cloudflare Proxy, cấu hình Nginx nên bổ sung c�
 Phương pháp này phù hợp khi bạn muốn triển khai nhanh mà không cần cài đặt từng
 dịch vụ thủ công, hoặc khi bạn dùng hệ điều hành khác ngoài Ubuntu.
 
-> [!NOTE]
-> Các file cấu hình Docker nằm tại thư mục `docker/` trong mã nguồn Site
-> (`~/site/docker/`).
+!!! note "Vị trí cấu hình Docker"
+    Các file cấu hình Docker nằm tại thư mục `docker/` trong mã nguồn Site (`~/site/docker/`).
 
 ### Cấu trúc dịch vụ
 
@@ -366,6 +385,6 @@ docker compose -f docker-compose.tier1.yml down
 docker compose -f docker-compose.tier2.yml up -d
 ```
 
-> [!TIP]
-> Thư mục dữ liệu (CSDL, problems, pdfcache) được mount từ host (`DATA_DIR`)
-> nên dữ liệu sẽ được giữ nguyên khi chuyển đổi giữa các Tier.
+!!! tip "Bảo toàn dữ liệu khi nâng cấp Tier"
+    Thư mục dữ liệu (CSDL, problems, pdfcache) được mount từ host (`DATA_DIR`)
+    nên dữ liệu sẽ được giữ nguyên khi chuyển đổi giữa các Tier.

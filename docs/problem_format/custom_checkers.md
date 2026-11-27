@@ -23,6 +23,7 @@ checker:
 
 ### 1.1 So khớp chuẩn - `standard`
 Đây là bộ chấm mặc định nếu không khai báo `checker`.
+
 - Tách đầu ra của thí sinh và đáp án theo từng dòng và từng từ (token), bỏ qua các khoảng trắng thừa ở cuối dòng. 
 - So khớp chính xác từng từ trên mỗi dòng.
 
@@ -31,6 +32,7 @@ checker:
 
 ### 1.3 Chấm số thực có sai số - `floats`
 Sử dụng khi đáp án là các số thực và chấp nhận sai số nhỏ.
+
 - **precision**: Sai số cho phép (mặc định là `6`, tương ứng sai số $\le 10^{-6}$).
 - **error_mode**: 
   - `default`: Chấp nhận sai số tuyệt đối hoặc tương đối trong khoảng cho phép.

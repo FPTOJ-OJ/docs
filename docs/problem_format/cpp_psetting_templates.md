@@ -38,6 +38,7 @@ Các mẫu này được thiết kế để viết bộ chấm tùy biến (chec
 Yêu cầu học sinh định dạng kết quả chính xác tuyệt đối. Các hàm kiểm tra khoảng trắng (`readSpace`, `readNewLine`, `readEOF`) sẽ tự động trả về kết quả lỗi trình bày `Presentation Error` (PE) nếu thí sinh viết sai khoảng trắng, và `Wrong Answer` (WA) nếu kết quả tính toán sai.
 
 Các hàm bổ sung:
+
 - `exitWA()`, `exitPE()`: Dừng ngay chương trình và trả về lỗi WA/PE tương ứng.
 - `assertWA(condition)`: Dừng chương trình trả về WA nếu điều kiện `condition` là `false`.
 - Namespace `CheckerCodes`: Chứa các hằng số kết quả `AC` (0), `WA` (1), `PE` (2), `PARTIAL` (7). Sử dụng trong hàm `main` để trả về kết quả chấm: `return CheckerCodes::AC;`.

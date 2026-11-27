@@ -53,22 +53,30 @@ docker build --build-arg TAG="master" -t dmoj/judge-tier1 -t dmoj/judge-tier1:la
 ```
 
 #### Bước 4: Khởi chạy Máy chấm Docker
-Chạy lệnh sau để khởi chạy máy chấm chạy ngầm và tự động tải lại nếu máy chủ reset:
+Chạy lệnh sau để khởi chạy máy chấm chạy ngầm, cô lập mạng nội bộ (không cho code thí sinh nối ra Internet) và tự động khởi động lại nếu máy chủ reboot:
+
 ```bash
+# Tạo mạng Docker nội bộ không có Internet (chỉ làm 1 lần)
+docker network create --driver bridge --internal --subnet 172.28.0.0/24 --gateway 172.28.0.1 fptoj_judge_internal
+
+# Chạy máy chấm trong mạng nội bộ, mount /data/problems chỉ đọc (:ro)
 docker run \
     --name fptoj-judge \
-    -v /data/problems:/problems \
+    --network fptoj_judge_internal \
+    -v /data/problems:/problems:ro \
     --cap-add=SYS_PTRACE \
+    --pids-limit=256 \
     -d \
-    --restart=always \
-    dmoj/judge-tier1:latest \
+    --restart=unless-stopped \
+    dmoj/judge-tier2:latest \
     run -p 9999 -c /problems/judge.yml \
-    127.0.0.1 judge-01 your_auth_key_here
+    172.28.0.1 judge-01 your_auth_key_here
 ```
-* **Lưu ý:**
-  * Thay `127.0.0.1` bằng IP của Web Site nếu máy chấm nằm ở Server khác.
-  * `-p 9999` là cổng kết nối của Bridge trên Site.
-  * Thư mục test case `/data/problems` trên Host được mount vào `/problems` trong Docker.
+
+!!! note "Lưu ý kết nối Bridge"
+    - Nếu dùng mạng cô lập `fptoj_judge_internal`, trỏ địa chỉ Bridge về gateway `172.28.0.1` (và cấu hình `BRIDGED_JUDGE_ADDRESS = [('172.28.0.1', 9999), ('127.0.0.1', 9999)]` trong `local_settings.py`, mở firewall nội bộ subnet `172.28.0.0/24` cho cổng `9999`).
+    - Không mở port `-p 897x:897x` ra ngoài mạng để tránh bị lạm dụng.
+    - Thư mục test case `/data/problems` trên Host nên mount dạng `:ro` (read-only) vào `/problems` trong Docker.
 
 ---
 

@@ -3,6 +3,7 @@
 Máy chấm FPTOJ hỗ trợ chấm hơn **50 ngôn ngữ lập trình** khác nhau (được cấu hình qua các Executor trong mã nguồn của [FPTOJ Judge Server](https://github.com/FPTOJ-OJ/judge-server)):
 
 Các ngôn ngữ phổ biến gồm có:
+
 - **C/C++**: Hỗ trợ đầy đủ các tiêu chuẩn từ C++03, C++11, C++14, C++17, C++20 (sử dụng trình biên dịch GCC hoặc Clang).
 - **Python**: Hỗ trợ Python 3, PyPy 3 (khuyên dùng để cải thiện tốc độ chạy cho Python).
 - **Java**: Java 8 và các phiên bản Java mới nhất.

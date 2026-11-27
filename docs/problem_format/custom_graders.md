@@ -1,6 +1,7 @@
 # Trình chấm Tương tác & Gọi hàm (Custom Graders)
 
 Đôi khi, việc tương tác tĩnh giữa máy chấm và bài nộp (Input/Output thô qua tệp tin hoặc luồng vào ra chuẩn) là không đủ. Ví dụ:
+
 - **Bài toán tương tác (Interactive)**: Thí sinh cần giao tiếp với máy chấm qua cơ chế hỏi - đáp (ví dụ: máy sinh số bí ẩn, thí sinh đoán số và máy phản hồi lớn hơn/nhỏ hơn).
 - **Chấm hàm/Thư viện (Signature/Grader)**: Thí sinh không viết hàm `main` đọc dữ liệu, mà chỉ viết một hàm chức năng (ví dụ: `bool is_valid(int n)`) và liên kết vào chương trình chấm chính của giáo viên.
 
@@ -20,8 +21,8 @@ test_cases:
 - {in: data.2.in, points: 80}
 ```
 
-> [!IMPORTANT]  
-> Nên thiết lập `unbuffered: true` để tránh bộ nhớ đệm (buffer) của luồng xuất làm nghẽn tiến trình hỏi - đáp thời gian thực, học sinh sẽ không cần gọi lệnh `fflush(stdout)` thủ công trong code của họ.
+!!! info "Quan trọng"
+    Nên thiết lập `unbuffered: true` để tránh bộ nhớ đệm (buffer) của luồng xuất làm nghẽn tiến trình hỏi - đáp thời gian thực, học sinh sẽ không cần gọi lệnh `fflush(stdout)` thủ công trong code của họ.
 
 ### Viết file `interactor.cpp` (sử dụng C++ và testlib):
 ```cpp

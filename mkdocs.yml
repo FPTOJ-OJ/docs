@@ -48,8 +48,6 @@ nav:
     - Cấu hình PDF (html-to-pdf-flask): site/html-to-pdf-flask.md
     - Hệ thống phân quyền: site/permission_system.md
     - Quản lý bài tập qua giao diện: site/managing_problems.md
-    - Hiển thị công thức Toán (LaTeX): site/mathoid.md
-    - Hiển thị hình vẽ LaTeX: site/texoid.md
     - Chống spam bằng Cloudflare Turnstile: site/turnstile.md
     - Proxy SSL cho nội dung: site/ssl_content_proxy.md
     - Tải dữ liệu người dùng: site/user_data_download.md

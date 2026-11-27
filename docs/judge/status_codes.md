@@ -18,6 +18,7 @@ Chương trình của bạn đã chạy xong mà không bị sập (crash), như
 
 ## 3. IR - Invalid Return (Trả về giá trị không hợp lệ)
 Chương trình kết thúc với mã lỗi khác 0 (exit code != 0).
+
 - Đối với các ngôn ngữ như C/C++, lỗi này thường xảy ra khi bạn quên `return 0;` trong hàm `main`, hoặc chương trình bị sập.
 - Đối với Python hoặc Java, lỗi này thường đi kèm với tên ngoại lệ (Exception) cụ thể gây sập chương trình như `NameError`, `IndexError`, hoặc `java.lang.NullPointerException`.
 
