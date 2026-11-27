@@ -1,4 +1,6 @@
 
+
+
 <!doctype html>
 <html lang="vi" class="no-js">
   <head>
@@ -11,6 +13,8 @@
         <link rel="canonical" href="https://docs.fptoj.com/site/installation/">
       
       
+      
+      
         <link rel="prev" href="../..">
       
       
@@ -21,7 +25,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="zensical-0.1.3">
     
     
       
@@ -29,10 +33,16 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      <link rel="stylesheet" href="../../assets/stylesheets/classic/main.0006804e.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/classic/palette.813d4b3f.min.css">
+      
       
       
 
@@ -46,12 +56,12 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
     
       
 
@@ -72,14 +82,11 @@
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" for="__drawer"></label>
+    <label class="md-overlay" for="__drawer" aria-hidden="true"></label>
     <div data-md-component="skip">
-      
-        
-        <a href="#huong-dan-cai-at-fptoj-phan-site" class="md-skip">
-          Bỏ qua
-        </a>
-      
+      <a href="#__skip" class="md-skip">
+        Bỏ qua
+      </a>
     </div>
     <div data-md-component="announce">
       
@@ -99,6 +106,7 @@
     <label class="md-header__button md-icon" for="__drawer">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+      <span class="md-visually-hidden">Thanh điều hướng</span>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -123,7 +131,7 @@
     
     
     
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
     
       <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
@@ -133,7 +141,7 @@
     
     
     
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
     
       <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
@@ -153,56 +161,28 @@
         <label class="md-header__button md-icon" for="__search">
           
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+          <span class="md-visually-hidden">Tìm kiếm</span>
         </label>
-        <div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="__search"></label>
-  <div class="md-search__inner" role="search">
-    <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Tìm kiếm" placeholder="Tìm kiếm" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
-      <label class="md-search__icon md-icon" for="__search">
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
-      </label>
-      <nav class="md-search__options" aria-label="Tìm kiếm">
-        
-        <button type="reset" class="md-search__icon md-icon" title="Xoá" aria-label="Xoá" tabindex="-1">
-          
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
-        </button>
-      </nav>
-      
-        <div class="md-search__suggest" data-md-component="search-suggest"></div>
-      
-    </form>
-    <div class="md-search__output">
-      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="search-result">
-          <div class="md-search-result__meta">
-            Initializing search
-          </div>
-          <ol class="md-search-result__list" role="presentation"></ol>
-        </div>
-      </div>
-    </div>
-  </div>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Tìm kiếm">
+  <button type="button" class="md-search__button">
+    Tìm kiếm
+  </button>
 </div>
       
     
-    
-      <div class="md-header__source">
+    <div class="md-header__source">
+      
         <a href="https://github.com/FPTOJ-OJ/online-judge" title="Xem mã nguồn" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
   </div>
   <div class="md-source__repository">
     FPTOJ-OJ/online-judge
   </div>
 </a>
-      </div>
-    
+      
+    </div>
   </nav>
   
 </header>
@@ -226,9 +206,6 @@
       <a href="../.." class="md-tabs__link">
         
   
-  
-    
-  
   Trang chủ
 
       </a>
@@ -244,11 +221,13 @@
   
   
     
+      
+    
+    
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+        <a href="././" class="md-tabs__link">
           
-  
   
   Trang web (Site)
 
@@ -264,11 +243,13 @@
   
   
     
+      
+    
+    
     
       <li class="md-tabs__item">
         <a href="../../judge/setting_up_a_judge/" class="md-tabs__link">
           
-  
   
   Trình chấm (Judge)
 
@@ -284,11 +265,13 @@
   
   
     
+      
+    
+    
     
       <li class="md-tabs__item">
         <a href="../../problem_format/problem_format/" class="md-tabs__link">
           
-  
   
   Định dạng đề bài
 
@@ -304,11 +287,13 @@
   
   
     
+      
+    
+    
     
       <li class="md-tabs__item">
         <a href="../../sample_files/" class="md-tabs__link">
           
-  
   
   Mẫu cấu hình
 
@@ -324,11 +309,13 @@
   
   
     
+      
+    
+    
     
       <li class="md-tabs__item">
         <a href="../../about/LICENSE/" class="md-tabs__link">
           
-  
   
   Thông tin
 
@@ -373,7 +360,7 @@
       <a href="https://github.com/FPTOJ-OJ/online-judge" title="Xem mã nguồn" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
   </div>
   <div class="md-source__repository">
     FPTOJ-OJ/online-judge
@@ -397,8 +384,7 @@
   <span class="md-ellipsis">
     
   
-    Trang chủ
-  
+  Trang chủ
 
     
   </span>
@@ -445,8 +431,7 @@
   <span class="md-ellipsis">
     
   
-    Trang web (Site)
-  
+  Trang web (Site)
 
     
   </span>
@@ -456,19 +441,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_2">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+              
   
-    Trang web (Site)
-  
+  Trang web (Site)
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
     
@@ -477,7 +462,9 @@
   
     <li class="md-nav__item md-nav__item--active">
       
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+        <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
       
       
         
@@ -490,8 +477,7 @@
   <span class="md-ellipsis">
     
   
-    Cài đặt hệ thống
-  
+  Cài đặt hệ thống
 
     
   </span>
@@ -501,15 +487,14 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="./" class="md-nav__link md-nav__link--active">
+      <a href="././" class="md-nav__link md-nav__link--active">
         
   
   
   <span class="md-ellipsis">
     
   
-    Cài đặt hệ thống
-  
+  Cài đặt hệ thống
 
     
   </span>
@@ -519,6 +504,7 @@
       </a>
       
         
+
 
 <nav class="md-nav md-nav--secondary" aria-label="Mục lục">
   
@@ -536,9 +522,9 @@
         <li class="md-nav__item">
   <a href="#truoc-khi-bat-au-clone-ma-nguon" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Trước khi bắt đầu: Clone mã nguồn
-      
+      </span>
     </span>
   </a>
   
@@ -547,9 +533,9 @@
         <li class="md-nav__item">
   <a href="#cach-1-cai-at-tu-ong-bang-script-khuyen-khich-de-nhu-an-banh" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         ⚡ CÁCH 1: Cài đặt tự động bằng Script (Khuyến khích - Dễ như ăn bánh)
-      
+      </span>
     </span>
   </a>
   
@@ -559,9 +545,9 @@
           <li class="md-nav__item">
   <a href="#cac-buoc-thuc-hien" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Các bước thực hiện:
-      
+      </span>
     </span>
   </a>
   
@@ -575,9 +561,9 @@
         <li class="md-nav__item">
   <a href="#cach-2-cai-at-thu-cong-tung-buoc-danh-cho-ky-su-he-thong" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         🛠 CÁCH 2: Cài đặt thủ công từng bước (Dành cho kỹ sư hệ thống)
-      
+      </span>
     </span>
   </a>
   
@@ -587,9 +573,9 @@
           <li class="md-nav__item">
   <a href="#1-cai-at-cac-thu-vien-he-thong-can-thiet" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         1. Cài đặt các thư viện hệ thống cần thiết
-      
+      </span>
     </span>
   </a>
   
@@ -598,20 +584,20 @@
           <li class="md-nav__item">
   <a href="#2-thiet-lap-co-so-du-lieu-mariadb-mysql" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         2. Thiết lập Cơ sở dữ liệu (MariaDB / MySQL)
-      
+      </span>
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-cai-at-ma-nguon-va-moi-truong-ao-python" class="md-nav__link">
+  <a href="#3-cai-at-ma-nguon-va-moi-truong-ao-python-python-312" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        3. Cài đặt mã nguồn và môi trường ảo Python
-      
+      <span class="md-typeset">
+        3. Cài đặt mã nguồn và môi trường ảo Python (Python 3.12)
+      </span>
     </span>
   </a>
   
@@ -620,9 +606,9 @@
           <li class="md-nav__item">
   <a href="#4-cau-hinh-file-local_settingspy" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        4. Cấu hình file local_settings.py
-      
+      <span class="md-typeset">
+        4. Cấu hình file <code>local_settings.py</code>
+      </span>
     </span>
   </a>
   
@@ -631,9 +617,9 @@
           <li class="md-nav__item">
   <a href="#5-dich-giao-dien-va-bien-dich-assets" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         5. Dịch giao diện và biên dịch Assets
-      
+      </span>
     </span>
   </a>
   
@@ -642,9 +628,9 @@
           <li class="md-nav__item">
   <a href="#6-khoi-tao-co-so-du-lieu-va-tai-khoan-admin" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         6. Khởi tạo Cơ sở dữ liệu và Tài khoản Admin
-      
+      </span>
     </span>
   </a>
   
@@ -653,9 +639,9 @@
           <li class="md-nav__item">
   <a href="#7-cau-hinh-va-chay-cac-tien-trinh-nen-bang-supervisord" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         7. Cấu hình và chạy các tiến trình nền bằng Supervisord
-      
+      </span>
     </span>
   </a>
   
@@ -664,9 +650,9 @@
           <li class="md-nav__item">
   <a href="#8-cau-hinh-nginx-va-khoi-ong" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         8. Cấu hình Nginx và Khởi động
-      
+      </span>
     </span>
   </a>
   
@@ -674,11 +660,89 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#toi-uu-nginx-cho-cloudflare-origin-khuyen-nghi" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Tối ưu Nginx cho Cloudflare Origin (Khuyến nghị)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cach-3-trien-khai-toan-bo-he-thong-bang-docker-compose" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        🐳 CÁCH 3: Triển khai toàn bộ hệ thống bằng Docker Compose
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🐳 CÁCH 3: Triển khai toàn bộ hệ thống bằng Docker Compose">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cau-truc-dich-vu" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Cấu trúc dịch vụ
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ho-so-tai-nguyen-tiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Hồ sơ tài nguyên (Tiers)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cac-buoc-trien-khai" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Các bước triển khai
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Các bước triển khai">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#buoc-1-cai-at-docker-docker-compose" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Bước 1: Cài đặt Docker &amp; Docker Compose
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#buoc-2-tao-cau-hinh-moi-truong" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Bước 2: Tạo cấu hình môi trường
-      
+      </span>
     </span>
   </a>
   
@@ -687,9 +751,9 @@
           <li class="md-nav__item">
   <a href="#buoc-3-xay-dung-docker-image-cho-site" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Bước 3: Xây dựng Docker image cho Site
-      
+      </span>
     </span>
   </a>
   
@@ -698,9 +762,9 @@
           <li class="md-nav__item">
   <a href="#buoc-4-khoi-chay-toan-bo-he-thong" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Bước 4: Khởi chạy toàn bộ hệ thống
-      
+      </span>
     </span>
   </a>
   
@@ -709,9 +773,9 @@
           <li class="md-nav__item">
   <a href="#buoc-5-tao-tai-khoan-admin" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Bước 5: Tạo tài khoản Admin
-      
+      </span>
     </span>
   </a>
   
@@ -720,9 +784,9 @@
           <li class="md-nav__item">
   <a href="#buoc-6-cap-nhat-cau-hinh-judge-tren-admin-site" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Bước 6: Cập nhật cấu hình Judge trên Admin Site
-      
+      </span>
     </span>
   </a>
   
@@ -731,9 +795,9 @@
           <li class="md-nav__item">
   <a href="#nang-cap-len-ho-so-cao-hon" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Nâng cấp lên hồ sơ cao hơn
-      
+      </span>
     </span>
   </a>
   
@@ -756,10 +820,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -772,8 +836,7 @@
   <span class="md-ellipsis">
     
   
-    Cập nhật hệ thống
-  
+  Cập nhật hệ thống
 
     
   </span>
@@ -784,10 +847,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -800,8 +863,7 @@
   <span class="md-ellipsis">
     
   
-    Thể lệ kỳ thi (Contest Formats)
-  
+  Thể lệ kỳ thi (Contest Formats)
 
     
   </span>
@@ -812,10 +874,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -828,8 +890,7 @@
   <span class="md-ellipsis">
     
   
-    Định dạng Contest Themis
-  
+  Định dạng Contest Themis
 
     
   </span>
@@ -840,10 +901,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -856,8 +917,7 @@
   <span class="md-ellipsis">
     
   
-    Cấu hình PDF (html-to-pdf-flask)
-  
+  Cấu hình PDF (html-to-pdf-flask)
 
     
   </span>
@@ -868,10 +928,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -884,8 +944,7 @@
   <span class="md-ellipsis">
     
   
-    Hệ thống phân quyền
-  
+  Hệ thống phân quyền
 
     
   </span>
@@ -896,10 +955,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -912,8 +971,7 @@
   <span class="md-ellipsis">
     
   
-    Quản lý bài tập qua giao diện
-  
+  Quản lý bài tập qua giao diện
 
     
   </span>
@@ -924,10 +982,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -940,8 +998,7 @@
   <span class="md-ellipsis">
     
   
-    Hiển thị công thức Toán (LaTeX)
-  
+  Hiển thị công thức Toán (LaTeX)
 
     
   </span>
@@ -952,10 +1009,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -968,8 +1025,7 @@
   <span class="md-ellipsis">
     
   
-    Hiển thị hình vẽ LaTeX
-  
+  Hiển thị hình vẽ LaTeX
 
     
   </span>
@@ -980,10 +1036,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -996,8 +1052,7 @@
   <span class="md-ellipsis">
     
   
-    Chống spam bằng Cloudflare Turnstile
-  
+  Chống spam bằng Cloudflare Turnstile
 
     
   </span>
@@ -1008,10 +1063,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1024,8 +1079,7 @@
   <span class="md-ellipsis">
     
   
-    Proxy SSL cho nội dung
-  
+  Proxy SSL cho nội dung
 
     
   </span>
@@ -1036,10 +1090,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1052,8 +1106,7 @@
   <span class="md-ellipsis">
     
   
-    Tải dữ liệu người dùng
-  
+  Tải dữ liệu người dùng
 
     
   </span>
@@ -1064,10 +1117,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1080,8 +1133,7 @@
   <span class="md-ellipsis">
     
   
-    Tài liệu API
-  
+  Tài liệu API
 
     
   </span>
@@ -1092,10 +1144,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1108,8 +1160,7 @@
   <span class="md-ellipsis">
     
   
-    CLI cho AI Agents
-  
+  CLI cho AI Agents
 
     
   </span>
@@ -1120,10 +1171,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1136,8 +1187,7 @@
   <span class="md-ellipsis">
     
   
-    Quản lý đề thi (Quiz/Exam)
-  
+  Quản lý đề thi (Quiz/Exam)
 
     
   </span>
@@ -1148,10 +1198,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -1187,8 +1238,7 @@
   <span class="md-ellipsis">
     
   
-    Trình chấm (Judge)
-  
+  Trình chấm (Judge)
 
     
   </span>
@@ -1198,19 +1248,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+              
   
-    Trình chấm (Judge)
-  
+  Trình chấm (Judge)
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -1223,8 +1273,7 @@
   <span class="md-ellipsis">
     
   
-    Cài đặt Judge
-  
+  Cài đặt Judge
 
     
   </span>
@@ -1235,10 +1284,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1251,8 +1300,7 @@
   <span class="md-ellipsis">
     
   
-    Cấu hình Judge
-  
+  Cấu hình Judge
 
     
   </span>
@@ -1263,10 +1311,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1279,8 +1327,7 @@
   <span class="md-ellipsis">
     
   
-    Ngôn ngữ lập trình
-  
+  Ngôn ngữ lập trình
 
     
   </span>
@@ -1291,10 +1338,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1307,8 +1354,7 @@
   <span class="md-ellipsis">
     
   
-    Các mã trạng thái
-  
+  Các mã trạng thái
 
     
   </span>
@@ -1319,10 +1365,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -1358,8 +1405,7 @@
   <span class="md-ellipsis">
     
   
-    Định dạng đề bài
-  
+  Định dạng đề bài
 
     
   </span>
@@ -1369,19 +1415,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+              
   
-    Định dạng đề bài
-  
+  Định dạng đề bài
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -1394,8 +1440,7 @@
   <span class="md-ellipsis">
     
   
-    Định dạng bài tập
-  
+  Định dạng bài tập
 
     
   </span>
@@ -1406,10 +1451,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1422,8 +1467,7 @@
   <span class="md-ellipsis">
     
   
-    Trình chấm tùy chỉnh (Checker)
-  
+  Trình chấm tùy chỉnh (Checker)
 
     
   </span>
@@ -1434,10 +1478,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1450,8 +1494,7 @@
   <span class="md-ellipsis">
     
   
-    Trình chấm tùy chỉnh (Grader)
-  
+  Trình chấm tùy chỉnh (Grader)
 
     
   </span>
@@ -1462,10 +1505,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1478,8 +1521,7 @@
   <span class="md-ellipsis">
     
   
-    Trình sinh test (Generator)
-  
+  Trình sinh test (Generator)
 
     
   </span>
@@ -1490,10 +1532,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1506,8 +1548,7 @@
   <span class="md-ellipsis">
     
   
-    Các bài tập mẫu
-  
+  Các bài tập mẫu
 
     
   </span>
@@ -1518,10 +1559,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1534,8 +1575,7 @@
   <span class="md-ellipsis">
     
   
-    Mẫu thiết lập bài tập C++
-  
+  Mẫu thiết lập bài tập C++
 
     
   </span>
@@ -1546,10 +1586,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -1585,8 +1626,7 @@
   <span class="md-ellipsis">
     
   
-    Mẫu cấu hình
-  
+  Mẫu cấu hình
 
     
   </span>
@@ -1596,19 +1636,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+              
   
-    Mẫu cấu hình
-  
+  Mẫu cấu hình
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -1621,8 +1661,7 @@
   <span class="md-ellipsis">
     
   
-    Tổng quan
-  
+  Tổng quan
 
     
   </span>
@@ -1633,10 +1672,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1649,8 +1688,7 @@
   <span class="md-ellipsis">
     
   
-    local_settings.py
-  
+  local_settings.py
 
     
   </span>
@@ -1661,10 +1699,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1677,8 +1715,7 @@
   <span class="md-ellipsis">
     
   
-    nginx.conf
-  
+  nginx.conf
 
     
   </span>
@@ -1689,10 +1726,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1705,8 +1742,7 @@
   <span class="md-ellipsis">
     
   
-    judge_conf.yml
-  
+  judge_conf.yml
 
     
   </span>
@@ -1717,10 +1753,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1733,8 +1769,7 @@
   <span class="md-ellipsis">
     
   
-    problem_markdown_example.md.txt
-  
+  problem_markdown_example.md.txt
 
     
   </span>
@@ -1745,10 +1780,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1761,8 +1796,7 @@
   <span class="md-ellipsis">
     
   
-    uwsgi.ini
-  
+  uwsgi.ini
 
     
   </span>
@@ -1773,10 +1807,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1789,8 +1823,7 @@
   <span class="md-ellipsis">
     
   
-    site.conf
-  
+  site.conf
 
     
   </span>
@@ -1801,10 +1834,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1817,8 +1850,7 @@
   <span class="md-ellipsis">
     
   
-    bridged.conf
-  
+  bridged.conf
 
     
   </span>
@@ -1829,10 +1861,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1845,8 +1877,7 @@
   <span class="md-ellipsis">
     
   
-    html-to-pdf-flask.conf
-  
+  html-to-pdf-flask.conf
 
     
   </span>
@@ -1857,10 +1888,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1873,8 +1904,7 @@
   <span class="md-ellipsis">
     
   
-    celery.conf
-  
+  celery.conf
 
     
   </span>
@@ -1885,10 +1915,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1901,8 +1931,7 @@
   <span class="md-ellipsis">
     
   
-    wsevent.conf
-  
+  wsevent.conf
 
     
   </span>
@@ -1913,10 +1942,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1929,8 +1958,7 @@
   <span class="md-ellipsis">
     
   
-    Mẫu C++
-  
+  Mẫu C++
 
     
   </span>
@@ -1941,10 +1969,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -1980,8 +2009,7 @@
   <span class="md-ellipsis">
     
   
-    Thông tin
-  
+  Thông tin
 
     
   </span>
@@ -1991,19 +2019,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_6">
+              <span class="md-nav__icon md-icon"></span>
+              
   
-    Thông tin
-  
+  Thông tin
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -2016,8 +2044,7 @@
   <span class="md-ellipsis">
     
   
-    Bản quyền
-  
+  Bản quyền
 
     
   </span>
@@ -2028,10 +2055,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -2047,8 +2075,10 @@
               
               <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
                 <div class="md-sidebar__scrollwrap">
+                  
                   <div class="md-sidebar__inner">
                     
+
 
 <nav class="md-nav md-nav--secondary" aria-label="Mục lục">
   
@@ -2066,9 +2096,9 @@
         <li class="md-nav__item">
   <a href="#truoc-khi-bat-au-clone-ma-nguon" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Trước khi bắt đầu: Clone mã nguồn
-      
+      </span>
     </span>
   </a>
   
@@ -2077,9 +2107,9 @@
         <li class="md-nav__item">
   <a href="#cach-1-cai-at-tu-ong-bang-script-khuyen-khich-de-nhu-an-banh" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         ⚡ CÁCH 1: Cài đặt tự động bằng Script (Khuyến khích - Dễ như ăn bánh)
-      
+      </span>
     </span>
   </a>
   
@@ -2089,9 +2119,9 @@
           <li class="md-nav__item">
   <a href="#cac-buoc-thuc-hien" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Các bước thực hiện:
-      
+      </span>
     </span>
   </a>
   
@@ -2105,9 +2135,9 @@
         <li class="md-nav__item">
   <a href="#cach-2-cai-at-thu-cong-tung-buoc-danh-cho-ky-su-he-thong" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         🛠 CÁCH 2: Cài đặt thủ công từng bước (Dành cho kỹ sư hệ thống)
-      
+      </span>
     </span>
   </a>
   
@@ -2117,9 +2147,9 @@
           <li class="md-nav__item">
   <a href="#1-cai-at-cac-thu-vien-he-thong-can-thiet" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         1. Cài đặt các thư viện hệ thống cần thiết
-      
+      </span>
     </span>
   </a>
   
@@ -2128,20 +2158,20 @@
           <li class="md-nav__item">
   <a href="#2-thiet-lap-co-so-du-lieu-mariadb-mysql" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         2. Thiết lập Cơ sở dữ liệu (MariaDB / MySQL)
-      
+      </span>
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-cai-at-ma-nguon-va-moi-truong-ao-python" class="md-nav__link">
+  <a href="#3-cai-at-ma-nguon-va-moi-truong-ao-python-python-312" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        3. Cài đặt mã nguồn và môi trường ảo Python
-      
+      <span class="md-typeset">
+        3. Cài đặt mã nguồn và môi trường ảo Python (Python 3.12)
+      </span>
     </span>
   </a>
   
@@ -2150,9 +2180,9 @@
           <li class="md-nav__item">
   <a href="#4-cau-hinh-file-local_settingspy" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        4. Cấu hình file local_settings.py
-      
+      <span class="md-typeset">
+        4. Cấu hình file <code>local_settings.py</code>
+      </span>
     </span>
   </a>
   
@@ -2161,9 +2191,9 @@
           <li class="md-nav__item">
   <a href="#5-dich-giao-dien-va-bien-dich-assets" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         5. Dịch giao diện và biên dịch Assets
-      
+      </span>
     </span>
   </a>
   
@@ -2172,9 +2202,9 @@
           <li class="md-nav__item">
   <a href="#6-khoi-tao-co-so-du-lieu-va-tai-khoan-admin" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         6. Khởi tạo Cơ sở dữ liệu và Tài khoản Admin
-      
+      </span>
     </span>
   </a>
   
@@ -2183,9 +2213,9 @@
           <li class="md-nav__item">
   <a href="#7-cau-hinh-va-chay-cac-tien-trinh-nen-bang-supervisord" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         7. Cấu hình và chạy các tiến trình nền bằng Supervisord
-      
+      </span>
     </span>
   </a>
   
@@ -2194,9 +2224,9 @@
           <li class="md-nav__item">
   <a href="#8-cau-hinh-nginx-va-khoi-ong" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         8. Cấu hình Nginx và Khởi động
-      
+      </span>
     </span>
   </a>
   
@@ -2204,11 +2234,89 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#toi-uu-nginx-cho-cloudflare-origin-khuyen-nghi" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Tối ưu Nginx cho Cloudflare Origin (Khuyến nghị)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cach-3-trien-khai-toan-bo-he-thong-bang-docker-compose" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        🐳 CÁCH 3: Triển khai toàn bộ hệ thống bằng Docker Compose
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🐳 CÁCH 3: Triển khai toàn bộ hệ thống bằng Docker Compose">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cau-truc-dich-vu" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Cấu trúc dịch vụ
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ho-so-tai-nguyen-tiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Hồ sơ tài nguyên (Tiers)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cac-buoc-trien-khai" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Các bước triển khai
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Các bước triển khai">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#buoc-1-cai-at-docker-docker-compose" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Bước 1: Cài đặt Docker &amp; Docker Compose
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#buoc-2-tao-cau-hinh-moi-truong" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Bước 2: Tạo cấu hình môi trường
-      
+      </span>
     </span>
   </a>
   
@@ -2217,9 +2325,9 @@
           <li class="md-nav__item">
   <a href="#buoc-3-xay-dung-docker-image-cho-site" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Bước 3: Xây dựng Docker image cho Site
-      
+      </span>
     </span>
   </a>
   
@@ -2228,9 +2336,9 @@
           <li class="md-nav__item">
   <a href="#buoc-4-khoi-chay-toan-bo-he-thong" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Bước 4: Khởi chạy toàn bộ hệ thống
-      
+      </span>
     </span>
   </a>
   
@@ -2239,9 +2347,9 @@
           <li class="md-nav__item">
   <a href="#buoc-5-tao-tai-khoan-admin" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Bước 5: Tạo tài khoản Admin
-      
+      </span>
     </span>
   </a>
   
@@ -2250,9 +2358,9 @@
           <li class="md-nav__item">
   <a href="#buoc-6-cap-nhat-cau-hinh-judge-tren-admin-site" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Bước 6: Cập nhật cấu hình Judge trên Admin Site
-      
+      </span>
     </span>
   </a>
   
@@ -2261,9 +2369,9 @@
           <li class="md-nav__item">
   <a href="#nang-cap-len-ho-so-cao-hon" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Nâng cấp lên hồ sơ cao hơn
-      
+      </span>
     </span>
   </a>
   
@@ -2291,9 +2399,9 @@
             <div class="md-content" data-md-component="content">
               
               <article class="md-content__inner md-typeset">
+                <a id="__skip" tabindex="-1"></a>
                 
                   
-
 
   
   
@@ -2345,21 +2453,22 @@ phương pháp <strong>Docker Compose</strong> (CÁCH 3) để triển khai thay
 Làm theo các hướng dẫn hiện trên màn hình, điền mật khẩu và tài khoản mong muốn. Khi hoàn tất, trang web của bạn sẽ hoạt động ngay lập tức tại cổng 80 (HTTP).</p>
 <hr />
 <h2 id="cach-2-cai-at-thu-cong-tung-buoc-danh-cho-ky-su-he-thong">🛠 CÁCH 2: Cài đặt thủ công từng bước (Dành cho kỹ sư hệ thống)</h2>
-<p>Nếu bạn muốn tự quản lý cấu trúc hoặc tùy biến sâu, hãy làm theo các bước dưới đây:</p>
+<p>Nếu bạn muốn tự quản lý cấu trúc hoặc tùy biến sâu, hãy làm theo các bước dưới đây. Hệ thống hiện chạy trên <strong>Python 3.12</strong> và <strong>Django 5.2 LTS</strong>.</p>
 <h3 id="1-cai-at-cac-thu-vien-he-thong-can-thiet">1. Cài đặt các thư viện hệ thống cần thiết</h3>
-<p>Chạy lệnh sau để cài đặt các công cụ biên dịch, thư viện hệ thống cho Python, công cụ biên dịch giao diện và các dịch vụ nền:</p>
+<p>Chạy lệnh sau để cài đặt các công cụ biên dịch, thư viện hệ thống cho Python và các dịch vụ nền:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>git<span class="w"> </span>gcc<span class="w"> </span>g++<span class="w"> </span>make<span class="w"> </span>python3-dev<span class="w"> </span>python3-pip<span class="w"> </span>python3-venv<span class="w"> </span>libxml2-dev<span class="w"> </span>libxslt1-dev<span class="w"> </span>zlib1g-dev<span class="w"> </span>gettext<span class="w"> </span>curl<span class="w"> </span>redis-server<span class="w"> </span>supervisor<span class="w"> </span>nginx<span class="w"> </span>wkhtmltopdf<span class="w"> </span>lsof
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>git<span class="w"> </span>gcc<span class="w"> </span>g++<span class="w"> </span>make<span class="w"> </span>python3.12-dev<span class="w"> </span>python3-pip<span class="w"> </span>python3.12-venv<span class="w"> </span>libxml2-dev<span class="w"> </span>libxslt1-dev<span class="w"> </span>zlib1g-dev<span class="w"> </span>gettext<span class="w"> </span>curl<span class="w"> </span>redis-server<span class="w"> </span>supervisor<span class="w"> </span>nginx<span class="w"> </span>wkhtmltopdf<span class="w"> </span>lsof
 </code></pre></div>
-<p><strong>Cài đặt Node.js và các công cụ CSS/Sass:</strong>
-FPTOJ sử dụng Sass và PostCSS để biên dịch giao diện.
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Cài đặt NodeJS 18.x</span>
+<blockquote>
+<p>[!NOTE]
+<strong>Không cần Node.js để chạy runtime site hay WebSocket.</strong> WebSocket event server (<code>wsevent</code>) đã được viết lại bằng Python thuần (<code>aiohttp</code>) trong <code>websocket/daemon.py</code>.
+Bạn <strong>chỉ cần Node.js</strong> nếu muốn tự biên dịch lại file Sass/CSS từ mã nguồn bằng script <code>./make_style.sh</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Chỉ cài nếu cần tự build Sass/CSS bằng make_style.sh</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>curl<span class="w"> </span>-sL<span class="w"> </span>https://deb.nodesource.com/setup_18.x<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>-E<span class="w"> </span>bash<span class="w"> </span>-
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>nodejs
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="c1"># Cài đặt các công cụ đóng gói CSS toàn cục</span>
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>sudo<span class="w"> </span>npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>sass<span class="w"> </span>postcss-cli<span class="w"> </span>postcss<span class="w"> </span>autoprefixer
-</code></pre></div></p>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>sudo<span class="w"> </span>npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>sass<span class="w"> </span>postcss-cli<span class="w"> </span>postcss<span class="w"> </span>autoprefixer
+</code></pre></div>
+</blockquote>
 <hr />
 <h3 id="2-thiet-lap-co-so-du-lieu-mariadb-mysql">2. Thiết lập Cơ sở dữ liệu (MariaDB / MySQL)</h3>
 <p>FPTOJ hoạt động tối ưu nhất trên MariaDB hoặc MySQL 8.0.</p>
@@ -2375,7 +2484,7 @@ FPTOJ sử dụng Sass và PostCSS để biên dịch giao diện.
 </code></pre></div>
 <p>Trong dấu nhắc lệnh của MariaDB, nhập các lệnh sau (thay thế <code>&lt;password&gt;</code> bằng mật khẩu của bạn):</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">dmoj</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="nb">CHARACTER</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">utf8mb4</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">COLLATE</span><span class="w"> </span><span class="n">utf8mb4_general_ci</span><span class="p">;</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="k">GRANT</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">dmoj</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s1">&#39;dmoj&#39;</span><span class="o">@</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="w"> </span><span class="n">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;&lt;password&gt;&#39;</span><span class="p">;</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="k">GRANT</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">dmoj</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s1">'dmoj'</span><span class="o">@</span><span class="s1">'127.0.0.1'</span><span class="w"> </span><span class="n">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">'&lt;password&gt;'</span><span class="p">;</span>
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">FLUSH</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="p">;</span>
 <a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="n">EXIT</span><span class="p">;</span>
 </code></pre></div>
@@ -2383,8 +2492,8 @@ FPTOJ sử dụng Sass và PostCSS để biên dịch giao diện.
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>mariadb-tzinfo-to-sql<span class="w"> </span>/usr/share/zoneinfo<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>mariadb<span class="w"> </span>-u<span class="w"> </span>root<span class="w"> </span>mysql
 </code></pre></div></p>
 <hr />
-<h3 id="3-cai-at-ma-nguon-va-moi-truong-ao-python">3. Cài đặt mã nguồn và môi trường ảo Python</h3>
-<p>Tạo môi trường ảo <code>dmojsite</code> để cài đặt các thư viện Python nhằm tránh xung đột hệ thống:</p>
+<h3 id="3-cai-at-ma-nguon-va-moi-truong-ao-python-python-312">3. Cài đặt mã nguồn và môi trường ảo Python (Python 3.12)</h3>
+<p>Tạo môi trường ảo <code>dmojsite</code> bằng <strong>Python 3.12</strong> để cài đặt các thư viện cho <strong>Django 5.2 LTS</strong> nhằm tránh xung đột hệ thống (<code>requirements.txt</code> đã tích hợp <code>aiohttp</code> cho WebSocket và loại bỏ <code>django-fernet-fields</code>, <code>jsonfield</code>):</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Di chuyển tới thư mục dự án</span>
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nb">cd</span><span class="w"> </span>~/site
 <a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
@@ -2392,8 +2501,8 @@ FPTOJ sử dụng Sass và PostCSS để biên dịch giao diện.
 <a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>git<span class="w"> </span>submodule<span class="w"> </span>init
 <a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>git<span class="w"> </span>submodule<span class="w"> </span>update
 <a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>
-<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="c1"># Tạo môi trường ảo</span>
-<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>dmojsite
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="c1"># Tạo môi trường ảo với Python 3.12</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>python3.12<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>dmojsite
 <a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="nb">source</span><span class="w"> </span>dmojsite/bin/activate
 </code></pre></div>
 <p>Khi môi trường ảo được kích hoạt <code>(dmojsite)</code>, cài đặt các thư viện Python:</p>
@@ -2407,10 +2516,11 @@ FPTOJ sử dụng Sass và PostCSS để biên dịch giao diện.
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="o">(</span>dmojsite<span class="o">)</span><span class="w"> </span>cp<span class="w"> </span>dmoj/local_settings.py.example<span class="w"> </span>dmoj/local_settings.py
 </code></pre></div></p>
 <p>Các trường thông tin quan trọng cần cập nhật trong <code>dmoj/local_settings.py</code>:
-* <strong>DATABASES:</strong> Điền thông tin kết nối MariaDB (User: <code>dmoj</code>, Password đã tạo ở bước 2).
+* <strong>DATABASES:</strong> Điền thông tin kết nối MariaDB (User: <code>dmoj</code>, Password đã tạo ở bước 2). Nên giữ <code>'CONN_MAX_AGE': 60</code> và <code>'CONN_HEALTH_CHECKS': True</code> để tái sử dụng kết nối DB an toàn trên Django 5.2.
 * <strong>CELERY_BROKER_URL:</strong> URL Redis cho Celery broker (<code>redis://127.0.0.1:6379/0</code>). <code>result_backend</code> được suy ra tự động từ cùng URL này trong <code>dmoj/celery.py</code> (dòng <code>app.conf.result_backend = app.conf.broker_url</code>). <strong>Không</strong> cần <code>CELERY_RESULT_BACKEND</code>. Secret override dùng <code>CELERY_BROKER_URL_SECRET</code> / <code>CELERY_RESULT_BACKEND_SECRET</code>.
 * <strong>SITE_NAME:</strong> Tên thương hiệu trang web của bạn (ví dụ: <code>FPTOJ</code>).
-* <strong>DMOJ_PDF_PDFOID_URL:</strong> Trỏ về dịch vụ PDF độc quyền <code>http://localhost:8888</code>.</p>
+* <strong>DMOJ_PDF_PDFOID_URL:</strong> Trỏ về dịch vụ PDF độc quyền <code>http://localhost:8888</code>.
+* <strong>LOGGING:</strong> Trong môi trường production, cấu hình các logger (<code>console</code>, <code>bridge</code>, <code>judge.bridge</code>, <code>django.request</code>) ở mức <code>WARNING</code>/<code>ERROR</code> để tránh ghi log debug quá nhiều.</p>
 <hr />
 <h3 id="5-dich-giao-dien-va-bien-dich-assets">5. Dịch giao diện và biên dịch Assets</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Biên dịch giao diện CSS (Sass)</span>
@@ -2438,6 +2548,7 @@ FPTOJ sử dụng Sass và PostCSS để biên dịch giao diện.
 </code></pre></div>
 <hr />
 <h3 id="7-cau-hinh-va-chay-cac-tien-trinh-nen-bang-supervisord">7. Cấu hình và chạy các tiến trình nền bằng Supervisord</h3>
+<p>Đảm bảo file <code>uwsgi.ini</code> trong thư mục <code>~/site/</code> đã bật các cờ an toàn cho Django &amp; Supervisor (<code>lazy-apps = true</code>, <code>need-app = true</code>, <code>die-on-term = true</code>).</p>
 <p>Sao chép hoặc ghi cấu hình dịch vụ vào thư mục <code>/etc/supervisor/conf.d/</code>:</p>
 <ul>
 <li>
@@ -2445,7 +2556,7 @@ FPTOJ sử dụng Sass và PostCSS để biên dịch giao diện.
 <div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">[program:site]</span>
 <a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="na">command</span><span class="o">=</span><span class="s">~/site/dmojsite/bin/uwsgi --ini uwsgi.ini</span>
 <a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="na">directory</span><span class="o">=</span><span class="s">~/site</span>
-<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="na">stopsignal</span><span class="o">=</span><span class="s">QUIT</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="na">stopsignal</span><span class="o">=</span><span class="s">TERM</span>
 <a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="na">stdout_logfile</span><span class="o">=</span><span class="s">/tmp/site.stdout.log</span>
 <a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="na">stderr_logfile</span><span class="o">=</span><span class="s">/tmp/site.stderr.log</span>
 <a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="na">autorestart</span><span class="o">=</span><span class="s">true</span>
@@ -2464,12 +2575,15 @@ FPTOJ sử dụng Sass và PostCSS để biên dịch giao diện.
 </li>
 <li>
 <p><strong>Event server cập nhật real-time (<code>/etc/supervisor/conf.d/wsevent.conf</code>):</strong>
+Chạy bằng Python thuần (<code>aiohttp</code>) thông qua <code>websocket/daemon.py</code>, không cần Node.js:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">[program:wsevent]</span>
-<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="na">command</span><span class="o">=</span><span class="s">/usr/bin/node ~/site/websocket/daemon.js</span>
-<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="na">environment=NODE_PATH</span><span class="o">=</span><span class="s">&quot;~/site/node_modules&quot;</span>
-<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="na">stdout_logfile</span><span class="o">=</span><span class="s">/tmp/wsevent.stdout.log</span>
-<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="na">stderr_logfile</span><span class="o">=</span><span class="s">/tmp/wsevent.stderr.log</span>
-<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="na">autorestart</span><span class="o">=</span><span class="s">true</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="na">command</span><span class="o">=</span><span class="s">~/site/dmojsite/bin/python ~/site/websocket/daemon.py</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="na">directory</span><span class="o">=</span><span class="s">~/site</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="na">environment=WS_BIND_HOST</span><span class="o">=</span><span class="s">"127.0.0.1"</span><span class="na">,WS_GET_PORT</span><span class="o">=</span><span class="s">"15100"</span><span class="na">,WS_POST_PORT</span><span class="o">=</span><span class="s">"15101"</span><span class="na">,WS_HTTP_PORT</span><span class="o">=</span><span class="s">"15102"</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="na">stopsignal</span><span class="o">=</span><span class="s">TERM</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="na">stdout_logfile</span><span class="o">=</span><span class="s">/tmp/wsevent.stdout.log</span>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="na">stderr_logfile</span><span class="o">=</span><span class="s">/tmp/wsevent.stderr.log</span>
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="na">autorestart</span><span class="o">=</span><span class="s">true</span>
 </code></pre></div></p>
 </li>
 </ul>
@@ -2479,62 +2593,119 @@ FPTOJ sử dụng Sass và PostCSS để biên dịch giao diện.
 </code></pre></div></p>
 <hr />
 <h3 id="8-cau-hinh-nginx-va-khoi-ong">8. Cấu hình Nginx và Khởi động</h3>
-<p>Ghi file cấu hình <code>/etc/nginx/sites-available/fptoj</code> và tạo liên kết:
+<p>Ghi file cấu hình <code>/etc/nginx/sites-available/fptoj</code> (tham khảo mẫu <code>sample_files/nginx.conf</code>) và tạo liên kết:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>sudo<span class="w"> </span>ln<span class="w"> </span>-sf<span class="w"> </span>/etc/nginx/sites-available/fptoj<span class="w"> </span>/etc/nginx/sites-enabled/fptoj
 <a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>sudo<span class="w"> </span>rm<span class="w"> </span>-f<span class="w"> </span>/etc/nginx/sites-enabled/default<span class="w"> </span><span class="c1"># Xóa site mặc định</span>
 <a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>nginx
-<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>
-<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>---
-<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>
-<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="c1">## 🐳 CÁCH 3: Triển khai toàn bộ hệ thống bằng Docker Compose</span>
-<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>
-<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>Phương<span class="w"> </span>pháp<span class="w"> </span>này<span class="w"> </span>phù<span class="w"> </span>hợp<span class="w"> </span>khi<span class="w"> </span>bạn<span class="w"> </span>muốn<span class="w"> </span>triển<span class="w"> </span>khai<span class="w"> </span>nhanh<span class="w"> </span>mà<span class="w"> </span>không<span class="w"> </span>cần<span class="w"> </span>cài<span class="w"> </span>đặt<span class="w"> </span>từng
-<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a>dịch<span class="w"> </span>vụ<span class="w"> </span>thủ<span class="w"> </span>công,<span class="w"> </span>hoặc<span class="w"> </span>khi<span class="w"> </span>bạn<span class="w"> </span>dùng<span class="w"> </span>hệ<span class="w"> </span>điều<span class="w"> </span>hành<span class="w"> </span>khác<span class="w"> </span>ngoài<span class="w"> </span>Ubuntu.
-<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a>
-<a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a>&gt;<span class="w"> </span><span class="o">[</span>!NOTE<span class="o">]</span>
-<a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a>&gt;<span class="w"> </span>Các<span class="w"> </span>file<span class="w"> </span>cấu<span class="w"> </span>hình<span class="w"> </span>Docker<span class="w"> </span>nằm<span class="w"> </span>tại<span class="w"> </span>thư<span class="w"> </span>mục<span class="w"> </span><span class="sb">`</span>docker/<span class="sb">`</span><span class="w"> </span>trong<span class="w"> </span>mã<span class="w"> </span>nguồn<span class="w"> </span>Site
-<a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a>&gt;<span class="w"> </span><span class="o">(</span><span class="sb">`</span>~/site/docker/<span class="sb">`</span><span class="o">)</span>.
-<a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a>
-<a id="__codelineno-16-16" name="__codelineno-16-16" href="#__codelineno-16-16"></a><span class="c1">### Cấu trúc dịch vụ</span>
-<a id="__codelineno-16-17" name="__codelineno-16-17" href="#__codelineno-16-17"></a>
-<a id="__codelineno-16-18" name="__codelineno-16-18" href="#__codelineno-16-18"></a>Hệ<span class="w"> </span>thống<span class="w"> </span>gồm<span class="w"> </span><span class="m">8</span><span class="w"> </span>container<span class="w"> </span>chạy<span class="w"> </span>đồng<span class="w"> </span>thời:
-<a id="__codelineno-16-19" name="__codelineno-16-19" href="#__codelineno-16-19"></a>
-<a id="__codelineno-16-20" name="__codelineno-16-20" href="#__codelineno-16-20"></a><span class="p">|</span><span class="w"> </span>Container<span class="w"> </span><span class="p">|</span><span class="w"> </span>Chức<span class="w"> </span>năng<span class="w"> </span><span class="p">|</span>
-<a id="__codelineno-16-21" name="__codelineno-16-21" href="#__codelineno-16-21"></a><span class="p">|</span>---<span class="p">|</span>---<span class="p">|</span>
-<a id="__codelineno-16-22" name="__codelineno-16-22" href="#__codelineno-16-22"></a><span class="p">|</span><span class="w"> </span><span class="sb">`</span>fptoj-db<span class="sb">`</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>MariaDB<span class="w"> </span><span class="m">10</span>.11<span class="w"> </span>-<span class="w"> </span>Cơ<span class="w"> </span>sở<span class="w"> </span>dữ<span class="w"> </span>liệu<span class="w"> </span><span class="p">|</span>
-<a id="__codelineno-16-23" name="__codelineno-16-23" href="#__codelineno-16-23"></a><span class="p">|</span><span class="w"> </span><span class="sb">`</span>fptoj-redis<span class="sb">`</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>Redis<span class="w"> </span><span class="m">7</span><span class="w"> </span>-<span class="w"> </span>Cache<span class="w"> </span><span class="p">&amp;</span><span class="w"> </span>hàng<span class="w"> </span>đợi<span class="w"> </span>Celery<span class="w"> </span><span class="p">|</span>
-<a id="__codelineno-16-24" name="__codelineno-16-24" href="#__codelineno-16-24"></a><span class="p">|</span><span class="w"> </span><span class="sb">`</span>fptoj-web<span class="sb">`</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>uWSGI<span class="w"> </span>Django<span class="w"> </span>-<span class="w"> </span>Web<span class="w"> </span>application<span class="w"> </span><span class="p">|</span>
-<a id="__codelineno-16-25" name="__codelineno-16-25" href="#__codelineno-16-25"></a><span class="p">|</span><span class="w"> </span><span class="sb">`</span>fptoj-celery<span class="sb">`</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>Celery<span class="w"> </span>worker<span class="w"> </span>-<span class="w"> </span>Xử<span class="w"> </span>lý<span class="w"> </span>tác<span class="w"> </span>vụ<span class="w"> </span>nền<span class="w"> </span><span class="p">|</span>
-<a id="__codelineno-16-26" name="__codelineno-16-26" href="#__codelineno-16-26"></a><span class="p">|</span><span class="w"> </span><span class="sb">`</span>fptoj-wsevent<span class="sb">`</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>Node.js<span class="w"> </span>-<span class="w"> </span>WebSocket<span class="w"> </span>event<span class="w"> </span>server<span class="w"> </span><span class="p">|</span>
-<a id="__codelineno-16-27" name="__codelineno-16-27" href="#__codelineno-16-27"></a><span class="p">|</span><span class="w"> </span><span class="sb">`</span>fptoj-bridged<span class="sb">`</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>Bridge<span class="w"> </span>server<span class="w"> </span>-<span class="w"> </span>Kết<span class="w"> </span>nối<span class="w"> </span>máy<span class="w"> </span>chấm<span class="w"> </span><span class="p">|</span>
-<a id="__codelineno-16-28" name="__codelineno-16-28" href="#__codelineno-16-28"></a><span class="p">|</span><span class="w"> </span><span class="sb">`</span>fptoj-nginx<span class="sb">`</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>Nginx<span class="w"> </span>-<span class="w"> </span>Reverse<span class="w"> </span>proxy<span class="w"> </span><span class="o">(</span>cổng<span class="w"> </span><span class="m">80</span><span class="o">)</span><span class="w"> </span><span class="p">|</span>
-<a id="__codelineno-16-29" name="__codelineno-16-29" href="#__codelineno-16-29"></a><span class="p">|</span><span class="w"> </span><span class="sb">`</span>fptoj-judge<span class="sb">`</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>Judge<span class="w"> </span>server<span class="w"> </span>-<span class="w"> </span>Máy<span class="w"> </span>chấm<span class="w"> </span>bài<span class="w"> </span><span class="p">|</span>
-<a id="__codelineno-16-30" name="__codelineno-16-30" href="#__codelineno-16-30"></a>
-<a id="__codelineno-16-31" name="__codelineno-16-31" href="#__codelineno-16-31"></a><span class="c1">### Hồ sơ tài nguyên (Tiers)</span>
-<a id="__codelineno-16-32" name="__codelineno-16-32" href="#__codelineno-16-32"></a>
-<a id="__codelineno-16-33" name="__codelineno-16-33" href="#__codelineno-16-33"></a>Tuỳ<span class="w"> </span>theo<span class="w"> </span>cấu<span class="w"> </span>hình<span class="w"> </span>máy<span class="w"> </span>chủ,<span class="w"> </span>chọn<span class="w"> </span>một<span class="w"> </span>trong<span class="w"> </span>ba<span class="w"> </span>hồ<span class="w"> </span>sơ<span class="w"> </span>sau:
-<a id="__codelineno-16-34" name="__codelineno-16-34" href="#__codelineno-16-34"></a>
-<a id="__codelineno-16-35" name="__codelineno-16-35" href="#__codelineno-16-35"></a><span class="p">|</span><span class="w"> </span>Hồ<span class="w"> </span>sơ<span class="w"> </span><span class="p">|</span><span class="w"> </span>Tài<span class="w"> </span>nguyên<span class="w"> </span><span class="p">|</span><span class="w"> </span>uWSGI<span class="w"> </span>workers<span class="w"> </span><span class="p">|</span><span class="w"> </span>Celery<span class="w"> </span><span class="p">|</span><span class="w"> </span>Số<span class="w"> </span>máy<span class="w"> </span>chấm<span class="w"> </span><span class="p">|</span>
-<a id="__codelineno-16-36" name="__codelineno-16-36" href="#__codelineno-16-36"></a><span class="p">|</span>---<span class="p">|</span>---<span class="p">|</span>---<span class="p">|</span>---<span class="p">|</span>---<span class="p">|</span>
-<a id="__codelineno-16-37" name="__codelineno-16-37" href="#__codelineno-16-37"></a><span class="p">|</span><span class="w"> </span>**Tier<span class="w"> </span><span class="m">1</span>**<span class="w"> </span><span class="p">|</span><span class="w"> </span>Tối<span class="w"> </span>thiểu<span class="w"> </span><span class="o">(</span><span class="m">1</span>-2<span class="w"> </span>CPU,<span class="w"> </span><span class="m">2</span>-4GB<span class="w"> </span>RAM<span class="o">)</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="p">|</span>
-<a id="__codelineno-16-38" name="__codelineno-16-38" href="#__codelineno-16-38"></a><span class="p">|</span><span class="w"> </span>**Tier<span class="w"> </span><span class="m">2</span>**<span class="w"> </span><span class="p">|</span><span class="w"> </span>Trung<span class="w"> </span>bình<span class="w"> </span><span class="o">(</span><span class="m">4</span>-8<span class="w"> </span>CPU,<span class="w"> </span><span class="m">8</span>-16GB<span class="w"> </span>RAM<span class="o">)</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="p">|</span>
-<a id="__codelineno-16-39" name="__codelineno-16-39" href="#__codelineno-16-39"></a><span class="p">|</span><span class="w"> </span>**Tier<span class="w"> </span><span class="m">3</span>**<span class="w"> </span><span class="p">|</span><span class="w"> </span>Cao<span class="w"> </span>cấp<span class="w"> </span><span class="o">(</span><span class="m">8</span>-16<span class="w"> </span>CPU,<span class="w"> </span><span class="m">16</span>-32GB<span class="w"> </span>RAM<span class="o">)</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="p">|</span>
-<a id="__codelineno-16-40" name="__codelineno-16-40" href="#__codelineno-16-40"></a>
-<a id="__codelineno-16-41" name="__codelineno-16-41" href="#__codelineno-16-41"></a><span class="c1">### Các bước triển khai</span>
-<a id="__codelineno-16-42" name="__codelineno-16-42" href="#__codelineno-16-42"></a>
-<a id="__codelineno-16-43" name="__codelineno-16-43" href="#__codelineno-16-43"></a><span class="c1">#### Bước 1: Cài đặt Docker &amp; Docker Compose</span>
-<a id="__codelineno-16-44" name="__codelineno-16-44" href="#__codelineno-16-44"></a>
-<a id="__codelineno-16-45" name="__codelineno-16-45" href="#__codelineno-16-45"></a><span class="sb">```</span>bash
-<a id="__codelineno-16-46" name="__codelineno-16-46" href="#__codelineno-16-46"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
-<a id="__codelineno-16-47" name="__codelineno-16-47" href="#__codelineno-16-47"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>docker.io<span class="w"> </span>docker-compose-v2
-<a id="__codelineno-16-48" name="__codelineno-16-48" href="#__codelineno-16-48"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>docker
-<a id="__codelineno-16-49" name="__codelineno-16-49" href="#__codelineno-16-49"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>docker
 </code></pre></div></p>
+<h4 id="toi-uu-nginx-cho-cloudflare-origin-khuyen-nghi">Tối ưu Nginx cho Cloudflare Origin (Khuyến nghị)</h4>
+<p>Khi đặt FPTOJ phía sau Cloudflare Proxy, cấu hình Nginx nên bổ sung các tham số sau trong khối <code>server</code> (đã có sẵn trong mẫu <code>nginx.conf</code>):
+* <code>keepalive_timeout 900s;</code> và <code>keepalive_requests 100000;</code>: Giữ kết nối keep-alive lâu và phục vụ nhiều request trên cùng kết nối với Cloudflare Edge, giảm độ trễ bắt tay TCP/TLS.
+* <code>large_client_header_buffers 4 16k;</code>: Tránh lỗi <code>400 Request Header Or Cookie Too Large</code> khi Cloudflare gửi kèm nhiều header và cookie.
+* <strong>Tách <code>/static/cache/</code> và <code>/static/</code>:</strong>
+  * <code>location /static/cache/</code>: Chứa file CSS/JS đã được <code>django-compressor</code> nén và gắn hash, dùng <code>expires max;</code> và <code>add_header Cache-Control "public, immutable";</code> để trình duyệt và Cloudflare cache dài hạn.
+  * <code>location /static</code>: Chứa các file tĩnh thông thường (ảnh, font, file chưa hash), dùng <code>expires 7d;</code> và <code>add_header Cache-Control "public";</code>.</p>
+<hr />
+<h2 id="cach-3-trien-khai-toan-bo-he-thong-bang-docker-compose">🐳 CÁCH 3: Triển khai toàn bộ hệ thống bằng Docker Compose</h2>
+<p>Phương pháp này phù hợp khi bạn muốn triển khai nhanh mà không cần cài đặt từng
+dịch vụ thủ công, hoặc khi bạn dùng hệ điều hành khác ngoài Ubuntu.</p>
+<blockquote>
+<p>[!NOTE]
+Các file cấu hình Docker nằm tại thư mục <code>docker/</code> trong mã nguồn Site
+(<code>~/site/docker/</code>).</p>
+</blockquote>
+<h3 id="cau-truc-dich-vu">Cấu trúc dịch vụ</h3>
+<p>Hệ thống gồm 8 container chạy đồng thời:</p>
+<table>
+<thead>
+<tr>
+<th>Container</th>
+<th>Chức năng</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fptoj-db</code></td>
+<td>MariaDB 10.11 - Cơ sở dữ liệu</td>
+</tr>
+<tr>
+<td><code>fptoj-redis</code></td>
+<td>Redis 7 - Cache &amp; hàng đợi Celery</td>
+</tr>
+<tr>
+<td><code>fptoj-web</code></td>
+<td>uWSGI Django - Web application</td>
+</tr>
+<tr>
+<td><code>fptoj-celery</code></td>
+<td>Celery worker - Xử lý tác vụ nền</td>
+</tr>
+<tr>
+<td><code>fptoj-wsevent</code></td>
+<td>Python (aiohttp) - WebSocket event server</td>
+</tr>
+<tr>
+<td><code>fptoj-bridged</code></td>
+<td>Bridge server - Kết nối máy chấm</td>
+</tr>
+<tr>
+<td><code>fptoj-nginx</code></td>
+<td>Nginx - Reverse proxy (cổng 80)</td>
+</tr>
+<tr>
+<td><code>fptoj-judge</code></td>
+<td>Judge server - Máy chấm bài</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ho-so-tai-nguyen-tiers">Hồ sơ tài nguyên (Tiers)</h3>
+<p>Tuỳ theo cấu hình máy chủ, chọn một trong ba hồ sơ sau:</p>
+<table>
+<thead>
+<tr>
+<th>Hồ sơ</th>
+<th>Tài nguyên</th>
+<th>uWSGI workers</th>
+<th>Celery</th>
+<th>Số máy chấm</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Tier 1</strong></td>
+<td>Tối thiểu (1-2 CPU, 2-4GB RAM)</td>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td><strong>Tier 2</strong></td>
+<td>Trung bình (4-8 CPU, 8-16GB RAM)</td>
+<td>4</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td><strong>Tier 3</strong></td>
+<td>Cao cấp (8-16 CPU, 16-32GB RAM)</td>
+<td>8</td>
+<td>4</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<h3 id="cac-buoc-trien-khai">Các bước triển khai</h3>
+<h4 id="buoc-1-cai-at-docker-docker-compose">Bước 1: Cài đặt Docker &amp; Docker Compose</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>docker.io<span class="w"> </span>docker-compose-v2
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>docker
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>docker
+</code></pre></div>
 <h4 id="buoc-2-tao-cau-hinh-moi-truong">Bước 2: Tạo cấu hình môi trường</h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="nb">cd</span><span class="w"> </span>~/site/docker
-<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>cp<span class="w"> </span>.env.example<span class="w"> </span>.env
-<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="c1"># Sửa file .env với các thông tin của bạn</span>
-<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>nano<span class="w"> </span>.env
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="nb">cd</span><span class="w"> </span>~/site/docker
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>cp<span class="w"> </span>.env.example<span class="w"> </span>.env
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="c1"># Sửa file .env với các thông tin của bạn</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>nano<span class="w"> </span>.env
 </code></pre></div>
 <p>Các biến quan trọng cần cập nhật trong <code>.env</code>:</p>
 <table>
@@ -2576,18 +2747,18 @@ FPTOJ sử dụng Sass và PostCSS để biên dịch giao diện.
 </tbody>
 </table>
 <h4 id="buoc-3-xay-dung-docker-image-cho-site">Bước 3: Xây dựng Docker image cho Site</h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="nb">cd</span><span class="w"> </span>~/site
-<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>docker<span class="w"> </span>compose<span class="w"> </span>-f<span class="w"> </span>docker/docker-compose.tier1.yml<span class="w"> </span>build
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="nb">cd</span><span class="w"> </span>~/site
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>docker<span class="w"> </span>compose<span class="w"> </span>-f<span class="w"> </span>docker/docker-compose.tier1.yml<span class="w"> </span>build
 </code></pre></div>
 <h4 id="buoc-4-khoi-chay-toan-bo-he-thong">Bước 4: Khởi chạy toàn bộ hệ thống</h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="nb">cd</span><span class="w"> </span>~/site/docker
-<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>docker<span class="w"> </span>compose<span class="w"> </span>-f<span class="w"> </span>docker-compose.tier1.yml<span class="w"> </span>up<span class="w"> </span>-d
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="nb">cd</span><span class="w"> </span>~/site/docker
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>docker<span class="w"> </span>compose<span class="w"> </span>-f<span class="w"> </span>docker-compose.tier1.yml<span class="w"> </span>up<span class="w"> </span>-d
 </code></pre></div>
 <p>Kiểm tra các container đã chạy:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>docker<span class="w"> </span>compose<span class="w"> </span>-f<span class="w"> </span>docker-compose.tier1.yml<span class="w"> </span>ps
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>docker<span class="w"> </span>compose<span class="w"> </span>-f<span class="w"> </span>docker-compose.tier1.yml<span class="w"> </span>ps
 </code></pre></div>
 <h4 id="buoc-5-tao-tai-khoan-admin">Bước 5: Tạo tài khoản Admin</h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>fptoj-web-tier1<span class="w"> </span>python<span class="w"> </span>manage.py<span class="w"> </span>createsuperuser
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>fptoj-web-tier1<span class="w"> </span>python<span class="w"> </span>manage.py<span class="w"> </span>createsuperuser
 </code></pre></div>
 <h4 id="buoc-6-cap-nhat-cau-hinh-judge-tren-admin-site">Bước 6: Cập nhật cấu hình Judge trên Admin Site</h4>
 <ol>
@@ -2599,16 +2770,17 @@ FPTOJ sử dụng Sass và PostCSS để biên dịch giao diện.
 </ol>
 <h4 id="nang-cap-len-ho-so-cao-hon">Nâng cấp lên hồ sơ cao hơn</h4>
 <p>Khi máy chủ có nhiều tài nguyên hơn, bạn có thể chuyển sang Tier 2 hoặc Tier 3:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="nb">cd</span><span class="w"> </span>~/site/docker
-<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>docker<span class="w"> </span>compose<span class="w"> </span>-f<span class="w"> </span>docker-compose.tier1.yml<span class="w"> </span>down
-<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>docker<span class="w"> </span>compose<span class="w"> </span>-f<span class="w"> </span>docker-compose.tier2.yml<span class="w"> </span>up<span class="w"> </span>-d
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="nb">cd</span><span class="w"> </span>~/site/docker
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>docker<span class="w"> </span>compose<span class="w"> </span>-f<span class="w"> </span>docker-compose.tier1.yml<span class="w"> </span>down
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>docker<span class="w"> </span>compose<span class="w"> </span>-f<span class="w"> </span>docker-compose.tier2.yml<span class="w"> </span>up<span class="w"> </span>-d
 </code></pre></div>
 <blockquote>
 <p>[!TIP]
 Thư mục dữ liệu (CSDL, problems, pdfcache) được mount từ host (<code>DATA_DIR</code>)
-nên dữ liệu sẽ được giữ nguyên khi chuyển đổi giữa các Tier.
-```</p>
+nên dữ liệu sẽ được giữ nguyên khi chuyển đổi giữa các Tier.</p>
 </blockquote>
+
+
 
 
 
@@ -2645,8 +2817,8 @@ nên dữ liệu sẽ được giữ nguyên khi chuyển đổi giữa các Tie
   
   
     Made with
-    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-      Material for MkDocs
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
     </a>
   
 </div>
@@ -2656,7 +2828,7 @@ nên dữ liệu sẽ được giữ nguyên khi chuyển đổi giữa các Tie
 </footer>
       
     </div>
-    <div class="md-dialog" data-md-component="dialog">
+    <div class="md-dialog" data-md-component="dialog" role="status" aria-atomic="true">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
@@ -2664,10 +2836,15 @@ nên dữ liệu sẽ được giữ nguyên khi chuyển đổi giữa các Tie
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0110\u00e3 sao ch\u00e9p", "clipboard.copy": "Sao ch\u00e9p v\u00e0o b\u1ed9 nh\u1edb t\u1ea1m", "search.result.more.one": "1 t\u1eeb kh\u00e1c trong trang", "search.result.more.other": "# t\u1eeb kh\u00e1c trong trang", "search.result.none": "Kh\u00f4ng t\u00ecm th\u1ea5y t\u00e0i li\u1ec7u li\u00ean quan", "search.result.one": "1 t\u00e0i li\u1ec7u li\u00ean quan", "search.result.other": "# t\u00e0i li\u1ec7u li\u00ean quan", "search.result.placeholder": "Nh\u1eadp \u0111\u1ec3 b\u1eaft \u0111\u1ea7u t\u00ecm ki\u1ebfm", "search.result.term.missing": "Kh\u00f4ng", "select.version": "Ch\u1ecdn phi\u00ean b\u1ea3n"}, "version": null}</script>
+      
+      
+        
+        
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["navigation.tabs","navigation.sections","navigation.top","search.suggest","search.highlight"],"redirect":null,"search":"../../assets/javascripts/workers/search.719e0d91.min.js","tags":null,"translations":{"clipboard.copied":"Đã sao chép","clipboard.copy":"Sao chép vào bộ nhớ tạm","clipboard.error":"Could not copy to clipboard","search.result.more.one":"1 từ khác trong trang","search.result.more.other":"# từ khác trong trang","search.result.none":"Không tìm thấy tài liệu liên quan","search.result.one":"1 tài liệu liên quan","search.result.other":"# tài liệu liên quan","search.result.placeholder":"Nhập để bắt đầu tìm kiếm","search.result.term.missing":"Không","select.version":"Chọn phiên bản"},"version":null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.9e76c64c.min.js"></script>
+      
       
     
   </body>

@@ -1,4 +1,6 @@
 
+
+
 <!doctype html>
 <html lang="vi" class="no-js">
   <head>
@@ -11,6 +13,8 @@
         <link rel="canonical" href="https://docs.fptoj.com/site/cli_for_agents/">
       
       
+      
+      
         <link rel="prev" href="../api/">
       
       
@@ -21,7 +25,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="zensical-0.1.3">
     
     
       
@@ -29,10 +33,16 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      <link rel="stylesheet" href="../../assets/stylesheets/classic/main.0006804e.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/classic/palette.813d4b3f.min.css">
+      
       
       
 
@@ -46,12 +56,12 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
     
       
 
@@ -72,14 +82,11 @@
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" for="__drawer"></label>
+    <label class="md-overlay" for="__drawer" aria-hidden="true"></label>
     <div data-md-component="skip">
-      
-        
-        <a href="#cli-cho-ai-agents" class="md-skip">
-          Bỏ qua
-        </a>
-      
+      <a href="#__skip" class="md-skip">
+        Bỏ qua
+      </a>
     </div>
     <div data-md-component="announce">
       
@@ -99,6 +106,7 @@
     <label class="md-header__button md-icon" for="__drawer">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+      <span class="md-visually-hidden">Thanh điều hướng</span>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -123,7 +131,7 @@
     
     
     
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
     
       <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
@@ -133,7 +141,7 @@
     
     
     
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
     
       <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
@@ -153,56 +161,28 @@
         <label class="md-header__button md-icon" for="__search">
           
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+          <span class="md-visually-hidden">Tìm kiếm</span>
         </label>
-        <div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="__search"></label>
-  <div class="md-search__inner" role="search">
-    <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Tìm kiếm" placeholder="Tìm kiếm" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
-      <label class="md-search__icon md-icon" for="__search">
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
-      </label>
-      <nav class="md-search__options" aria-label="Tìm kiếm">
-        
-        <button type="reset" class="md-search__icon md-icon" title="Xoá" aria-label="Xoá" tabindex="-1">
-          
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
-        </button>
-      </nav>
-      
-        <div class="md-search__suggest" data-md-component="search-suggest"></div>
-      
-    </form>
-    <div class="md-search__output">
-      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="search-result">
-          <div class="md-search-result__meta">
-            Initializing search
-          </div>
-          <ol class="md-search-result__list" role="presentation"></ol>
-        </div>
-      </div>
-    </div>
-  </div>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Tìm kiếm">
+  <button type="button" class="md-search__button">
+    Tìm kiếm
+  </button>
 </div>
       
     
-    
-      <div class="md-header__source">
+    <div class="md-header__source">
+      
         <a href="https://github.com/FPTOJ-OJ/online-judge" title="Xem mã nguồn" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
   </div>
   <div class="md-source__repository">
     FPTOJ-OJ/online-judge
   </div>
 </a>
-      </div>
-    
+      
+    </div>
   </nav>
   
 </header>
@@ -226,9 +206,6 @@
       <a href="../.." class="md-tabs__link">
         
   
-  
-    
-  
   Trang chủ
 
       </a>
@@ -244,11 +221,13 @@
   
   
     
+      
+    
+    
     
       <li class="md-tabs__item md-tabs__item--active">
         <a href="../installation/" class="md-tabs__link">
           
-  
   
   Trang web (Site)
 
@@ -264,11 +243,13 @@
   
   
     
+      
+    
+    
     
       <li class="md-tabs__item">
         <a href="../../judge/setting_up_a_judge/" class="md-tabs__link">
           
-  
   
   Trình chấm (Judge)
 
@@ -284,11 +265,13 @@
   
   
     
+      
+    
+    
     
       <li class="md-tabs__item">
         <a href="../../problem_format/problem_format/" class="md-tabs__link">
           
-  
   
   Định dạng đề bài
 
@@ -304,11 +287,13 @@
   
   
     
+      
+    
+    
     
       <li class="md-tabs__item">
         <a href="../../sample_files/" class="md-tabs__link">
           
-  
   
   Mẫu cấu hình
 
@@ -324,11 +309,13 @@
   
   
     
+      
+    
+    
     
       <li class="md-tabs__item">
         <a href="../../about/LICENSE/" class="md-tabs__link">
           
-  
   
   Thông tin
 
@@ -373,7 +360,7 @@
       <a href="https://github.com/FPTOJ-OJ/online-judge" title="Xem mã nguồn" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
   </div>
   <div class="md-source__repository">
     FPTOJ-OJ/online-judge
@@ -397,8 +384,7 @@
   <span class="md-ellipsis">
     
   
-    Trang chủ
-  
+  Trang chủ
 
     
   </span>
@@ -445,8 +431,7 @@
   <span class="md-ellipsis">
     
   
-    Trang web (Site)
-  
+  Trang web (Site)
 
     
   </span>
@@ -456,19 +441,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_2">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+              
   
-    Trang web (Site)
-  
+  Trang web (Site)
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -481,8 +466,7 @@
   <span class="md-ellipsis">
     
   
-    Cài đặt hệ thống
-  
+  Cài đặt hệ thống
 
     
   </span>
@@ -493,10 +477,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -509,8 +493,7 @@
   <span class="md-ellipsis">
     
   
-    Cập nhật hệ thống
-  
+  Cập nhật hệ thống
 
     
   </span>
@@ -521,10 +504,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -537,8 +520,7 @@
   <span class="md-ellipsis">
     
   
-    Thể lệ kỳ thi (Contest Formats)
-  
+  Thể lệ kỳ thi (Contest Formats)
 
     
   </span>
@@ -549,10 +531,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -565,8 +547,7 @@
   <span class="md-ellipsis">
     
   
-    Định dạng Contest Themis
-  
+  Định dạng Contest Themis
 
     
   </span>
@@ -577,10 +558,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -593,8 +574,7 @@
   <span class="md-ellipsis">
     
   
-    Cấu hình PDF (html-to-pdf-flask)
-  
+  Cấu hình PDF (html-to-pdf-flask)
 
     
   </span>
@@ -605,10 +585,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -621,8 +601,7 @@
   <span class="md-ellipsis">
     
   
-    Hệ thống phân quyền
-  
+  Hệ thống phân quyền
 
     
   </span>
@@ -633,10 +612,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -649,8 +628,7 @@
   <span class="md-ellipsis">
     
   
-    Quản lý bài tập qua giao diện
-  
+  Quản lý bài tập qua giao diện
 
     
   </span>
@@ -661,10 +639,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -677,8 +655,7 @@
   <span class="md-ellipsis">
     
   
-    Hiển thị công thức Toán (LaTeX)
-  
+  Hiển thị công thức Toán (LaTeX)
 
     
   </span>
@@ -689,10 +666,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -705,8 +682,7 @@
   <span class="md-ellipsis">
     
   
-    Hiển thị hình vẽ LaTeX
-  
+  Hiển thị hình vẽ LaTeX
 
     
   </span>
@@ -717,10 +693,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -733,8 +709,7 @@
   <span class="md-ellipsis">
     
   
-    Chống spam bằng Cloudflare Turnstile
-  
+  Chống spam bằng Cloudflare Turnstile
 
     
   </span>
@@ -745,10 +720,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -761,8 +736,7 @@
   <span class="md-ellipsis">
     
   
-    Proxy SSL cho nội dung
-  
+  Proxy SSL cho nội dung
 
     
   </span>
@@ -773,10 +747,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -789,8 +763,7 @@
   <span class="md-ellipsis">
     
   
-    Tải dữ liệu người dùng
-  
+  Tải dữ liệu người dùng
 
     
   </span>
@@ -801,10 +774,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -817,8 +790,7 @@
   <span class="md-ellipsis">
     
   
-    Tài liệu API
-  
+  Tài liệu API
 
     
   </span>
@@ -829,10 +801,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
     
@@ -841,7 +813,9 @@
   
     <li class="md-nav__item md-nav__item--active">
       
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+        <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
       
       
         
@@ -854,8 +828,7 @@
   <span class="md-ellipsis">
     
   
-    CLI cho AI Agents
-  
+  CLI cho AI Agents
 
     
   </span>
@@ -865,15 +838,14 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="./" class="md-nav__link md-nav__link--active">
+      <a href="././" class="md-nav__link md-nav__link--active">
         
   
   
   <span class="md-ellipsis">
     
   
-    CLI cho AI Agents
-  
+  CLI cho AI Agents
 
     
   </span>
@@ -883,6 +855,7 @@
       </a>
       
         
+
 
 <nav class="md-nav md-nav--secondary" aria-label="Mục lục">
   
@@ -900,9 +873,9 @@
         <li class="md-nav__item">
   <a href="#uu-tien-dung-generator-based-testcases" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Ưu tiên: Dùng Generator-Based Testcases
-      
+      </span>
     </span>
   </a>
   
@@ -911,9 +884,9 @@
         <li class="md-nav__item">
   <a href="#problem-management-cli-problem_cli" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Problem Management CLI (problem_cli)
-      
+      <span class="md-typeset">
+        Problem Management CLI (<code>problem_cli</code>)
+      </span>
     </span>
   </a>
   
@@ -923,9 +896,9 @@
           <li class="md-nav__item">
   <a href="#list-view" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         List / View
-      
+      </span>
     </span>
   </a>
   
@@ -934,9 +907,9 @@
           <li class="md-nav__item">
   <a href="#crud" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         CRUD
-      
+      </span>
     </span>
   </a>
   
@@ -945,9 +918,9 @@
           <li class="md-nav__item">
   <a href="#testcases-generator-based-uu-tien" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Testcases (Generator-Based — Ưu tiên)
-      
+      </span>
     </span>
   </a>
   
@@ -956,9 +929,9 @@
           <li class="md-nav__item">
   <a href="#data-files-compile" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Data Files &amp; Compile
-      
+      </span>
     </span>
   </a>
   
@@ -967,9 +940,9 @@
           <li class="md-nav__item">
   <a href="#types-groups-authors" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Types, Groups, Authors
-      
+      </span>
     </span>
   </a>
   
@@ -983,21 +956,21 @@
         <li class="md-nav__item">
   <a href="#quizexam-management-cli-quiz_cli" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Quiz/Exam Management CLI (quiz_cli)
-      
+      <span class="md-typeset">
+        Quiz/Exam Management CLI (<code>quiz_cli</code>)
+      </span>
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Quiz/Exam Management CLI (quiz_cli)">
+    <nav class="md-nav" aria-label="Quiz&#x2f;Exam Management CLI (quiz_cli)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#exams" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Exams
-      
+      </span>
     </span>
   </a>
   
@@ -1006,9 +979,9 @@
           <li class="md-nav__item">
   <a href="#questions" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Questions
-      
+      </span>
     </span>
   </a>
   
@@ -1017,9 +990,9 @@
           <li class="md-nav__item">
   <a href="#tags" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Tags
-      
+      </span>
     </span>
   </a>
   
@@ -1028,9 +1001,9 @@
           <li class="md-nav__item">
   <a href="#bulk-import" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Bulk Import
-      
+      </span>
     </span>
   </a>
   
@@ -1044,9 +1017,9 @@
         <li class="md-nav__item">
   <a href="#user-management-cli-user_cli" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        User Management CLI (user_cli)
-      
+      <span class="md-typeset">
+        User Management CLI (<code>user_cli</code>)
+      </span>
     </span>
   </a>
   
@@ -1056,9 +1029,9 @@
           <li class="md-nav__item">
   <a href="#list-view_1" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         List / View
-      
+      </span>
     </span>
   </a>
   
@@ -1067,9 +1040,9 @@
           <li class="md-nav__item">
   <a href="#create-promote-demote" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Create / Promote / Demote
-      
+      </span>
     </span>
   </a>
   
@@ -1078,9 +1051,9 @@
           <li class="md-nav__item">
   <a href="#activate-deactivate" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Activate / Deactivate
-      
+      </span>
     </span>
   </a>
   
@@ -1089,9 +1062,9 @@
           <li class="md-nav__item">
   <a href="#vai-tro" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Vai trò
-      
+      </span>
     </span>
   </a>
   
@@ -1105,9 +1078,9 @@
         <li class="md-nav__item">
   <a href="#seed-translations" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Seed &amp; Translations
-      
+      </span>
     </span>
   </a>
   
@@ -1116,9 +1089,9 @@
         <li class="md-nav__item">
   <a href="#quick-reference" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Quick Reference
-      
+      </span>
     </span>
   </a>
   
@@ -1131,10 +1104,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1147,8 +1120,7 @@
   <span class="md-ellipsis">
     
   
-    Quản lý đề thi (Quiz/Exam)
-  
+  Quản lý đề thi (Quiz/Exam)
 
     
   </span>
@@ -1159,10 +1131,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -1198,8 +1171,7 @@
   <span class="md-ellipsis">
     
   
-    Trình chấm (Judge)
-  
+  Trình chấm (Judge)
 
     
   </span>
@@ -1209,19 +1181,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+              
   
-    Trình chấm (Judge)
-  
+  Trình chấm (Judge)
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -1234,8 +1206,7 @@
   <span class="md-ellipsis">
     
   
-    Cài đặt Judge
-  
+  Cài đặt Judge
 
     
   </span>
@@ -1246,10 +1217,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1262,8 +1233,7 @@
   <span class="md-ellipsis">
     
   
-    Cấu hình Judge
-  
+  Cấu hình Judge
 
     
   </span>
@@ -1274,10 +1244,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1290,8 +1260,7 @@
   <span class="md-ellipsis">
     
   
-    Ngôn ngữ lập trình
-  
+  Ngôn ngữ lập trình
 
     
   </span>
@@ -1302,10 +1271,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1318,8 +1287,7 @@
   <span class="md-ellipsis">
     
   
-    Các mã trạng thái
-  
+  Các mã trạng thái
 
     
   </span>
@@ -1330,10 +1298,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -1369,8 +1338,7 @@
   <span class="md-ellipsis">
     
   
-    Định dạng đề bài
-  
+  Định dạng đề bài
 
     
   </span>
@@ -1380,19 +1348,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+              
   
-    Định dạng đề bài
-  
+  Định dạng đề bài
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -1405,8 +1373,7 @@
   <span class="md-ellipsis">
     
   
-    Định dạng bài tập
-  
+  Định dạng bài tập
 
     
   </span>
@@ -1417,10 +1384,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1433,8 +1400,7 @@
   <span class="md-ellipsis">
     
   
-    Trình chấm tùy chỉnh (Checker)
-  
+  Trình chấm tùy chỉnh (Checker)
 
     
   </span>
@@ -1445,10 +1411,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1461,8 +1427,7 @@
   <span class="md-ellipsis">
     
   
-    Trình chấm tùy chỉnh (Grader)
-  
+  Trình chấm tùy chỉnh (Grader)
 
     
   </span>
@@ -1473,10 +1438,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1489,8 +1454,7 @@
   <span class="md-ellipsis">
     
   
-    Trình sinh test (Generator)
-  
+  Trình sinh test (Generator)
 
     
   </span>
@@ -1501,10 +1465,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1517,8 +1481,7 @@
   <span class="md-ellipsis">
     
   
-    Các bài tập mẫu
-  
+  Các bài tập mẫu
 
     
   </span>
@@ -1529,10 +1492,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1545,8 +1508,7 @@
   <span class="md-ellipsis">
     
   
-    Mẫu thiết lập bài tập C++
-  
+  Mẫu thiết lập bài tập C++
 
     
   </span>
@@ -1557,10 +1519,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -1596,8 +1559,7 @@
   <span class="md-ellipsis">
     
   
-    Mẫu cấu hình
-  
+  Mẫu cấu hình
 
     
   </span>
@@ -1607,19 +1569,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+              
   
-    Mẫu cấu hình
-  
+  Mẫu cấu hình
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -1632,8 +1594,7 @@
   <span class="md-ellipsis">
     
   
-    Tổng quan
-  
+  Tổng quan
 
     
   </span>
@@ -1644,10 +1605,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1660,8 +1621,7 @@
   <span class="md-ellipsis">
     
   
-    local_settings.py
-  
+  local_settings.py
 
     
   </span>
@@ -1672,10 +1632,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1688,8 +1648,7 @@
   <span class="md-ellipsis">
     
   
-    nginx.conf
-  
+  nginx.conf
 
     
   </span>
@@ -1700,10 +1659,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1716,8 +1675,7 @@
   <span class="md-ellipsis">
     
   
-    judge_conf.yml
-  
+  judge_conf.yml
 
     
   </span>
@@ -1728,10 +1686,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1744,8 +1702,7 @@
   <span class="md-ellipsis">
     
   
-    problem_markdown_example.md.txt
-  
+  problem_markdown_example.md.txt
 
     
   </span>
@@ -1756,10 +1713,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1772,8 +1729,7 @@
   <span class="md-ellipsis">
     
   
-    uwsgi.ini
-  
+  uwsgi.ini
 
     
   </span>
@@ -1784,10 +1740,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1800,8 +1756,7 @@
   <span class="md-ellipsis">
     
   
-    site.conf
-  
+  site.conf
 
     
   </span>
@@ -1812,10 +1767,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1828,8 +1783,7 @@
   <span class="md-ellipsis">
     
   
-    bridged.conf
-  
+  bridged.conf
 
     
   </span>
@@ -1840,10 +1794,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1856,8 +1810,7 @@
   <span class="md-ellipsis">
     
   
-    html-to-pdf-flask.conf
-  
+  html-to-pdf-flask.conf
 
     
   </span>
@@ -1868,10 +1821,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1884,8 +1837,7 @@
   <span class="md-ellipsis">
     
   
-    celery.conf
-  
+  celery.conf
 
     
   </span>
@@ -1896,10 +1848,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1912,8 +1864,7 @@
   <span class="md-ellipsis">
     
   
-    wsevent.conf
-  
+  wsevent.conf
 
     
   </span>
@@ -1924,10 +1875,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1940,8 +1891,7 @@
   <span class="md-ellipsis">
     
   
-    Mẫu C++
-  
+  Mẫu C++
 
     
   </span>
@@ -1952,10 +1902,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -1991,8 +1942,7 @@
   <span class="md-ellipsis">
     
   
-    Thông tin
-  
+  Thông tin
 
     
   </span>
@@ -2002,19 +1952,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_6">
+              <span class="md-nav__icon md-icon"></span>
+              
   
-    Thông tin
-  
+  Thông tin
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -2027,8 +1977,7 @@
   <span class="md-ellipsis">
     
   
-    Bản quyền
-  
+  Bản quyền
 
     
   </span>
@@ -2039,10 +1988,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -2058,8 +2008,10 @@
               
               <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
                 <div class="md-sidebar__scrollwrap">
+                  
                   <div class="md-sidebar__inner">
                     
+
 
 <nav class="md-nav md-nav--secondary" aria-label="Mục lục">
   
@@ -2077,9 +2029,9 @@
         <li class="md-nav__item">
   <a href="#uu-tien-dung-generator-based-testcases" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Ưu tiên: Dùng Generator-Based Testcases
-      
+      </span>
     </span>
   </a>
   
@@ -2088,9 +2040,9 @@
         <li class="md-nav__item">
   <a href="#problem-management-cli-problem_cli" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Problem Management CLI (problem_cli)
-      
+      <span class="md-typeset">
+        Problem Management CLI (<code>problem_cli</code>)
+      </span>
     </span>
   </a>
   
@@ -2100,9 +2052,9 @@
           <li class="md-nav__item">
   <a href="#list-view" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         List / View
-      
+      </span>
     </span>
   </a>
   
@@ -2111,9 +2063,9 @@
           <li class="md-nav__item">
   <a href="#crud" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         CRUD
-      
+      </span>
     </span>
   </a>
   
@@ -2122,9 +2074,9 @@
           <li class="md-nav__item">
   <a href="#testcases-generator-based-uu-tien" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Testcases (Generator-Based — Ưu tiên)
-      
+      </span>
     </span>
   </a>
   
@@ -2133,9 +2085,9 @@
           <li class="md-nav__item">
   <a href="#data-files-compile" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Data Files &amp; Compile
-      
+      </span>
     </span>
   </a>
   
@@ -2144,9 +2096,9 @@
           <li class="md-nav__item">
   <a href="#types-groups-authors" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Types, Groups, Authors
-      
+      </span>
     </span>
   </a>
   
@@ -2160,21 +2112,21 @@
         <li class="md-nav__item">
   <a href="#quizexam-management-cli-quiz_cli" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Quiz/Exam Management CLI (quiz_cli)
-      
+      <span class="md-typeset">
+        Quiz/Exam Management CLI (<code>quiz_cli</code>)
+      </span>
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Quiz/Exam Management CLI (quiz_cli)">
+    <nav class="md-nav" aria-label="Quiz&#x2f;Exam Management CLI (quiz_cli)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#exams" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Exams
-      
+      </span>
     </span>
   </a>
   
@@ -2183,9 +2135,9 @@
           <li class="md-nav__item">
   <a href="#questions" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Questions
-      
+      </span>
     </span>
   </a>
   
@@ -2194,9 +2146,9 @@
           <li class="md-nav__item">
   <a href="#tags" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Tags
-      
+      </span>
     </span>
   </a>
   
@@ -2205,9 +2157,9 @@
           <li class="md-nav__item">
   <a href="#bulk-import" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Bulk Import
-      
+      </span>
     </span>
   </a>
   
@@ -2221,9 +2173,9 @@
         <li class="md-nav__item">
   <a href="#user-management-cli-user_cli" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        User Management CLI (user_cli)
-      
+      <span class="md-typeset">
+        User Management CLI (<code>user_cli</code>)
+      </span>
     </span>
   </a>
   
@@ -2233,9 +2185,9 @@
           <li class="md-nav__item">
   <a href="#list-view_1" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         List / View
-      
+      </span>
     </span>
   </a>
   
@@ -2244,9 +2196,9 @@
           <li class="md-nav__item">
   <a href="#create-promote-demote" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Create / Promote / Demote
-      
+      </span>
     </span>
   </a>
   
@@ -2255,9 +2207,9 @@
           <li class="md-nav__item">
   <a href="#activate-deactivate" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Activate / Deactivate
-      
+      </span>
     </span>
   </a>
   
@@ -2266,9 +2218,9 @@
           <li class="md-nav__item">
   <a href="#vai-tro" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Vai trò
-      
+      </span>
     </span>
   </a>
   
@@ -2282,9 +2234,9 @@
         <li class="md-nav__item">
   <a href="#seed-translations" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Seed &amp; Translations
-      
+      </span>
     </span>
   </a>
   
@@ -2293,9 +2245,9 @@
         <li class="md-nav__item">
   <a href="#quick-reference" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Quick Reference
-      
+      </span>
     </span>
   </a>
   
@@ -2313,9 +2265,9 @@
             <div class="md-content" data-md-component="content">
               
               <article class="md-content__inner md-typeset">
+                <a id="__skip" tabindex="-1"></a>
                 
                   
-
 
   
   
@@ -2332,7 +2284,7 @@
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">atoi</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">max_val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">atoi</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="n">srand</span><span class="p">(</span><span class="n">time</span><span class="p">(</span><span class="mi">0</span><span class="p">));</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">rand</span><span class="p">()</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">max_val</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">" "</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">rand</span><span class="p">()</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">max_val</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
 <a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="p">}</span>
 </code></pre></div>
@@ -2343,19 +2295,19 @@
 <h3 id="list-view">List / View</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>python<span class="w"> </span>manage.py<span class="w"> </span>problem_cli<span class="w"> </span>list
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>python<span class="w"> </span>manage.py<span class="w"> </span>problem_cli<span class="w"> </span>list<span class="w"> </span>--public<span class="w"> </span>--private<span class="w"> </span>--type<span class="w"> </span>dp<span class="w"> </span>--group<span class="w"> </span>usaco
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>python<span class="w"> </span>manage.py<span class="w"> </span>problem_cli<span class="w"> </span>list<span class="w"> </span>--org<span class="w"> </span>my-school<span class="w"> </span>--search<span class="w"> </span><span class="s2">&quot;hello&quot;</span><span class="w"> </span>--json
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>python<span class="w"> </span>manage.py<span class="w"> </span>problem_cli<span class="w"> </span>list<span class="w"> </span>--org<span class="w"> </span>my-school<span class="w"> </span>--search<span class="w"> </span><span class="s2">"hello"</span><span class="w"> </span>--json
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>python<span class="w"> </span>manage.py<span class="w"> </span>problem_cli<span class="w"> </span>detail<span class="w"> </span>&lt;problem_code&gt;
 </code></pre></div>
 <h3 id="crud">CRUD</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>python<span class="w"> </span>manage.py<span class="w"> </span>problem_cli<span class="w"> </span>create<span class="w"> </span>&lt;code&gt;<span class="w"> </span>&lt;name&gt;<span class="w"> </span>--type<span class="w"> </span>&lt;type_id&gt;<span class="w"> </span>--group<span class="w"> </span>&lt;group_id&gt;<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span>--description<span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="w"> </span>--points<span class="w"> </span><span class="m">10</span><span class="w"> </span>--time-limit<span class="w"> </span><span class="m">1</span>.0<span class="w"> </span>--memory-limit<span class="w"> </span><span class="m">65536</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span>--public<span class="w"> </span>--author<span class="w"> </span><span class="s2">&quot;admin&quot;</span><span class="w"> </span>--org-private
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span>--description<span class="w"> </span><span class="s2">"..."</span><span class="w"> </span>--points<span class="w"> </span><span class="m">10</span><span class="w"> </span>--time-limit<span class="w"> </span><span class="m">1</span>.0<span class="w"> </span>--memory-limit<span class="w"> </span><span class="m">65536</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span>--public<span class="w"> </span>--author<span class="w"> </span><span class="s2">"admin"</span><span class="w"> </span>--org-private
 <a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>python<span class="w"> </span>manage.py<span class="w"> </span>problem_cli<span class="w"> </span>update<span class="w"> </span>&lt;code&gt;<span class="w"> </span>--name<span class="w"> </span><span class="s2">&quot;New Title&quot;</span><span class="w"> </span>--points<span class="w"> </span><span class="m">20</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>python<span class="w"> </span>manage.py<span class="w"> </span>problem_cli<span class="w"> </span>update<span class="w"> </span>&lt;code&gt;<span class="w"> </span>--name<span class="w"> </span><span class="s2">"New Title"</span><span class="w"> </span>--points<span class="w"> </span><span class="m">20</span>
 <a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>python<span class="w"> </span>manage.py<span class="w"> </span>problem_cli<span class="w"> </span>delete<span class="w"> </span>&lt;code&gt;<span class="w"> </span>--force
 </code></pre></div>
 <h3 id="testcases-generator-based-uu-tien">Testcases (Generator-Based — Ưu tiên)</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>python<span class="w"> </span>manage.py<span class="w"> </span>problem_cli<span class="w"> </span>testcase<span class="w"> </span>add<span class="w"> </span>&lt;code&gt;<span class="w"> </span>--generator-args<span class="w"> </span><span class="s2">&quot;5 10&quot;</span><span class="w"> </span>--points<span class="w"> </span><span class="m">2</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>python<span class="w"> </span>manage.py<span class="w"> </span>problem_cli<span class="w"> </span>testcase<span class="w"> </span>add<span class="w"> </span>&lt;code&gt;<span class="w"> </span>--generator-args<span class="w"> </span><span class="s2">"5 10"</span><span class="w"> </span>--points<span class="w"> </span><span class="m">2</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>python<span class="w"> </span>manage.py<span class="w"> </span>problem_cli<span class="w"> </span>testcase<span class="w"> </span>add<span class="w"> </span>&lt;code&gt;<span class="w"> </span>--input<span class="w"> </span>test.in<span class="w"> </span>--output<span class="w"> </span>test.out<span class="w"> </span>--points<span class="w"> </span><span class="m">1</span>
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>python<span class="w"> </span>manage.py<span class="w"> </span>problem_cli<span class="w"> </span>testcase<span class="w"> </span>add<span class="w"> </span>&lt;code&gt;<span class="w"> </span>--type<span class="w"> </span>S<span class="w"> </span>--points<span class="w"> </span><span class="m">10</span>
 <a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>python<span class="w"> </span>manage.py<span class="w"> </span>problem_cli<span class="w"> </span>testcase<span class="w"> </span>add<span class="w"> </span>&lt;code&gt;<span class="w"> </span>--type<span class="w"> </span>E
@@ -2369,8 +2321,8 @@
 </code></pre></div>
 <h3 id="types-groups-authors">Types, Groups, Authors</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>python<span class="w"> </span>manage.py<span class="w"> </span>problem_cli<span class="w"> </span><span class="nb">type</span><span class="w"> </span>list<span class="w"> </span>--json
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>python<span class="w"> </span>manage.py<span class="w"> </span>problem_cli<span class="w"> </span><span class="nb">type</span><span class="w"> </span>add<span class="w"> </span>dp<span class="w"> </span><span class="s2">&quot;Dynamic Programming&quot;</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>python<span class="w"> </span>manage.py<span class="w"> </span>problem_cli<span class="w"> </span>group<span class="w"> </span>add<span class="w"> </span>usaco<span class="w"> </span><span class="s2">&quot;USACO&quot;</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>python<span class="w"> </span>manage.py<span class="w"> </span>problem_cli<span class="w"> </span><span class="nb">type</span><span class="w"> </span>add<span class="w"> </span>dp<span class="w"> </span><span class="s2">"Dynamic Programming"</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>python<span class="w"> </span>manage.py<span class="w"> </span>problem_cli<span class="w"> </span>group<span class="w"> </span>add<span class="w"> </span>usaco<span class="w"> </span><span class="s2">"USACO"</span>
 <a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>python<span class="w"> </span>manage.py<span class="w"> </span>problem_cli<span class="w"> </span>author<span class="w"> </span>add<span class="w"> </span>&lt;code&gt;<span class="w"> </span>&lt;username&gt;
 <a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>python<span class="w"> </span>manage.py<span class="w"> </span>problem_cli<span class="w"> </span>author<span class="w"> </span>remove<span class="w"> </span>&lt;code&gt;<span class="w"> </span>&lt;username&gt;
 </code></pre></div>
@@ -2379,30 +2331,30 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>python<span class="w"> </span>manage.py<span class="w"> </span>quiz_cli<span class="w"> </span>&lt;subcommand&gt;<span class="w"> </span><span class="o">[</span>options<span class="o">]</span>
 </code></pre></div>
 <h3 id="exams">Exams</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>python<span class="w"> </span>manage.py<span class="w"> </span>quiz_cli<span class="w"> </span>exam<span class="w"> </span>list<span class="w"> </span>--visible<span class="w"> </span>--featured<span class="w"> </span>--locked<span class="w"> </span>--search<span class="w"> </span><span class="s2">&quot;name&quot;</span><span class="w"> </span>--json
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>python<span class="w"> </span>manage.py<span class="w"> </span>quiz_cli<span class="w"> </span>exam<span class="w"> </span>list<span class="w"> </span>--visible<span class="w"> </span>--featured<span class="w"> </span>--locked<span class="w"> </span>--search<span class="w"> </span><span class="s2">"name"</span><span class="w"> </span>--json
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>python<span class="w"> </span>manage.py<span class="w"> </span>quiz_cli<span class="w"> </span>exam<span class="w"> </span>detail<span class="w"> </span>&lt;exam_id&gt;
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>python<span class="w"> </span>manage.py<span class="w"> </span>quiz_cli<span class="w"> </span>exam<span class="w"> </span>create<span class="w"> </span><span class="s2">&quot;Exam Name&quot;</span><span class="w"> </span>--description<span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="w"> </span>--duration<span class="w"> </span><span class="m">60</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>python<span class="w"> </span>manage.py<span class="w"> </span>quiz_cli<span class="w"> </span>exam<span class="w"> </span>create<span class="w"> </span><span class="s2">"Exam Name"</span><span class="w"> </span>--description<span class="w"> </span><span class="s2">"..."</span><span class="w"> </span>--duration<span class="w"> </span><span class="m">60</span><span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">    </span>--visible<span class="w"> </span>--featured<span class="w"> </span>--login<span class="w"> </span>--locked<span class="w"> </span>--org-only<span class="w"> </span>--author<span class="w"> </span>admin
-<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>python<span class="w"> </span>manage.py<span class="w"> </span>quiz_cli<span class="w"> </span>exam<span class="w"> </span>update<span class="w"> </span>&lt;id&gt;<span class="w"> </span>--name<span class="w"> </span><span class="s2">&quot;New Name&quot;</span><span class="w"> </span>--duration<span class="w"> </span><span class="m">90</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>python<span class="w"> </span>manage.py<span class="w"> </span>quiz_cli<span class="w"> </span>exam<span class="w"> </span>update<span class="w"> </span>&lt;id&gt;<span class="w"> </span>--name<span class="w"> </span><span class="s2">"New Name"</span><span class="w"> </span>--duration<span class="w"> </span><span class="m">90</span>
 <a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>python<span class="w"> </span>manage.py<span class="w"> </span>quiz_cli<span class="w"> </span>exam<span class="w"> </span>delete<span class="w"> </span>&lt;id&gt;<span class="w"> </span>--force
 </code></pre></div>
 <h3 id="questions">Questions</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>python<span class="w"> </span>manage.py<span class="w"> </span>quiz_cli<span class="w"> </span>exam<span class="w"> </span>question<span class="w"> </span>list<span class="w"> </span>&lt;exam_id&gt;<span class="w"> </span>--json
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>python<span class="w"> </span>manage.py<span class="w"> </span>quiz_cli<span class="w"> </span>exam<span class="w"> </span>question<span class="w"> </span>add<span class="w"> </span>&lt;exam_id&gt;<span class="w"> </span>--content<span class="w"> </span><span class="s2">&quot;What is 2+2?&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>python<span class="w"> </span>manage.py<span class="w"> </span>quiz_cli<span class="w"> </span>exam<span class="w"> </span>question<span class="w"> </span>add<span class="w"> </span>&lt;exam_id&gt;<span class="w"> </span>--content<span class="w"> </span><span class="s2">"What is 2+2?"</span><span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">    </span>--type<span class="w"> </span>choice<span class="w"> </span>--difficulty<span class="w"> </span>easy<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">    </span>--option<span class="w"> </span><span class="s1">&#39;A:&quot;3&quot;:false&#39;</span><span class="w"> </span>--option<span class="w"> </span><span class="s1">&#39;B:&quot;4&quot;:true&#39;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">    </span>--option<span class="w"> </span><span class="s1">&#39;C:&quot;5&quot;:false&#39;</span><span class="w"> </span>--option<span class="w"> </span><span class="s1">&#39;D:&quot;6&quot;:false&#39;</span><span class="w"> </span>--tag<span class="w"> </span>khmt
-<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>python<span class="w"> </span>manage.py<span class="w"> </span>quiz_cli<span class="w"> </span>exam<span class="w"> </span>question<span class="w"> </span>add<span class="w"> </span>&lt;exam_id&gt;<span class="w"> </span>--content<span class="w"> </span><span class="s2">&quot;Which are correct?&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">    </span>--option<span class="w"> </span><span class="s1">'A:"3":false'</span><span class="w"> </span>--option<span class="w"> </span><span class="s1">'B:"4":true'</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">    </span>--option<span class="w"> </span><span class="s1">'C:"5":false'</span><span class="w"> </span>--option<span class="w"> </span><span class="s1">'D:"6":false'</span><span class="w"> </span>--tag<span class="w"> </span>khmt
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>python<span class="w"> </span>manage.py<span class="w"> </span>quiz_cli<span class="w"> </span>exam<span class="w"> </span>question<span class="w"> </span>add<span class="w"> </span>&lt;exam_id&gt;<span class="w"> </span>--content<span class="w"> </span><span class="s2">"Which are correct?"</span><span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">    </span>--type<span class="w"> </span>tf<span class="w"> </span>--difficulty<span class="w"> </span>medium<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">    </span>--option<span class="w"> </span><span class="s1">&#39;a:&quot;Statement 1&quot;:true&#39;</span><span class="w"> </span>--option<span class="w"> </span><span class="s1">&#39;b:&quot;Statement 2&quot;:false&#39;</span><span class="w"> </span>--tag<span class="w"> </span>thud<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">    </span>--explanation<span class="w"> </span><span class="s2">&quot;Explanation text&quot;</span>
-<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>python<span class="w"> </span>manage.py<span class="w"> </span>quiz_cli<span class="w"> </span>exam<span class="w"> </span>question<span class="w"> </span>update<span class="w"> </span>&lt;qid&gt;<span class="w"> </span>--content<span class="w"> </span><span class="s2">&quot;New text&quot;</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">    </span>--option<span class="w"> </span><span class="s1">'a:"Statement 1":true'</span><span class="w"> </span>--option<span class="w"> </span><span class="s1">'b:"Statement 2":false'</span><span class="w"> </span>--tag<span class="w"> </span>thud<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">    </span>--explanation<span class="w"> </span><span class="s2">"Explanation text"</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>python<span class="w"> </span>manage.py<span class="w"> </span>quiz_cli<span class="w"> </span>exam<span class="w"> </span>question<span class="w"> </span>update<span class="w"> </span>&lt;qid&gt;<span class="w"> </span>--content<span class="w"> </span><span class="s2">"New text"</span>
 <a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>python<span class="w"> </span>manage.py<span class="w"> </span>quiz_cli<span class="w"> </span>exam<span class="w"> </span>question<span class="w"> </span>remove<span class="w"> </span>&lt;exam_id&gt;<span class="w"> </span>&lt;qid&gt;
 <a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>python<span class="w"> </span>manage.py<span class="w"> </span>quiz_cli<span class="w"> </span>exam<span class="w"> </span>question<span class="w"> </span>delete<span class="w"> </span>&lt;qid&gt;<span class="w"> </span>--force
 </code></pre></div>
 <h3 id="tags">Tags</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>python<span class="w"> </span>manage.py<span class="w"> </span>quiz_cli<span class="w"> </span>tag<span class="w"> </span>list<span class="w"> </span>--json
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>python<span class="w"> </span>manage.py<span class="w"> </span>quiz_cli<span class="w"> </span>tag<span class="w"> </span>add<span class="w"> </span><span class="s2">&quot;KHMT&quot;</span><span class="w"> </span>khmt
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>python<span class="w"> </span>manage.py<span class="w"> </span>quiz_cli<span class="w"> </span>tag<span class="w"> </span>add<span class="w"> </span><span class="s2">"KHMT"</span><span class="w"> </span>khmt
 <a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>python<span class="w"> </span>manage.py<span class="w"> </span>quiz_cli<span class="w"> </span>tag<span class="w"> </span>delete<span class="w"> </span>&lt;slug&gt;
 </code></pre></div>
 <h3 id="bulk-import">Bulk Import</h3>
@@ -2415,11 +2367,11 @@
 </code></pre></div>
 <h3 id="list-view_1">List / View</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>python<span class="w"> </span>manage.py<span class="w"> </span>user_cli<span class="w"> </span>list<span class="w"> </span>--staff<span class="w"> </span>--superuser<span class="w"> </span>--setter<span class="w"> </span>--admin
-<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>python<span class="w"> </span>manage.py<span class="w"> </span>user_cli<span class="w"> </span>list<span class="w"> </span>--active<span class="w"> </span>--search<span class="w"> </span><span class="s2">&quot;kien&quot;</span><span class="w"> </span>--json
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>python<span class="w"> </span>manage.py<span class="w"> </span>user_cli<span class="w"> </span>list<span class="w"> </span>--active<span class="w"> </span>--search<span class="w"> </span><span class="s2">"kien"</span><span class="w"> </span>--json
 <a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>python<span class="w"> </span>manage.py<span class="w"> </span>user_cli<span class="w"> </span>detail<span class="w"> </span>&lt;username&gt;
 </code></pre></div>
 <h3 id="create-promote-demote">Create / Promote / Demote</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>python<span class="w"> </span>manage.py<span class="w"> </span>user_cli<span class="w"> </span>create<span class="w"> </span>&lt;username&gt;<span class="w"> </span>--email<span class="w"> </span>user@example.com<span class="w"> </span>--password<span class="w"> </span><span class="s2">&quot;secret123&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>python<span class="w"> </span>manage.py<span class="w"> </span>user_cli<span class="w"> </span>create<span class="w"> </span>&lt;username&gt;<span class="w"> </span>--email<span class="w"> </span>user@example.com<span class="w"> </span>--password<span class="w"> </span><span class="s2">"secret123"</span>
 <a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>python<span class="w"> </span>manage.py<span class="w"> </span>user_cli<span class="w"> </span>create<span class="w"> </span>&lt;username&gt;<span class="w"> </span>--setter<span class="w"> </span>--staff
 <a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>python<span class="w"> </span>manage.py<span class="w"> </span>user_cli<span class="w"> </span>promote<span class="w"> </span>&lt;username&gt;<span class="w"> </span>--staff<span class="w"> </span>--superuser<span class="w"> </span>--setter<span class="w"> </span>--admin-rank
 <a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>python<span class="w"> </span>manage.py<span class="w"> </span>user_cli<span class="w"> </span>demote<span class="w"> </span>&lt;username&gt;<span class="w"> </span>--staff<span class="w"> </span>--superuser
@@ -2544,6 +2496,8 @@
 
 
 
+
+
                 
               </article>
             </div>
@@ -2568,8 +2522,8 @@
   
   
     Made with
-    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-      Material for MkDocs
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
     </a>
   
 </div>
@@ -2579,7 +2533,7 @@
 </footer>
       
     </div>
-    <div class="md-dialog" data-md-component="dialog">
+    <div class="md-dialog" data-md-component="dialog" role="status" aria-atomic="true">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
@@ -2587,10 +2541,15 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0110\u00e3 sao ch\u00e9p", "clipboard.copy": "Sao ch\u00e9p v\u00e0o b\u1ed9 nh\u1edb t\u1ea1m", "search.result.more.one": "1 t\u1eeb kh\u00e1c trong trang", "search.result.more.other": "# t\u1eeb kh\u00e1c trong trang", "search.result.none": "Kh\u00f4ng t\u00ecm th\u1ea5y t\u00e0i li\u1ec7u li\u00ean quan", "search.result.one": "1 t\u00e0i li\u1ec7u li\u00ean quan", "search.result.other": "# t\u00e0i li\u1ec7u li\u00ean quan", "search.result.placeholder": "Nh\u1eadp \u0111\u1ec3 b\u1eaft \u0111\u1ea7u t\u00ecm ki\u1ebfm", "search.result.term.missing": "Kh\u00f4ng", "select.version": "Ch\u1ecdn phi\u00ean b\u1ea3n"}, "version": null}</script>
+      
+      
+        
+        
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["navigation.tabs","navigation.sections","navigation.top","search.suggest","search.highlight"],"redirect":null,"search":"../../assets/javascripts/workers/search.719e0d91.min.js","tags":null,"translations":{"clipboard.copied":"Đã sao chép","clipboard.copy":"Sao chép vào bộ nhớ tạm","clipboard.error":"Could not copy to clipboard","search.result.more.one":"1 từ khác trong trang","search.result.more.other":"# từ khác trong trang","search.result.none":"Không tìm thấy tài liệu liên quan","search.result.one":"1 tài liệu liên quan","search.result.other":"# tài liệu liên quan","search.result.placeholder":"Nhập để bắt đầu tìm kiếm","search.result.term.missing":"Không","select.version":"Chọn phiên bản"},"version":null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.9e76c64c.min.js"></script>
+      
       
     
   </body>

@@ -1,7 +1,7 @@
 #####################################
 ########## Django settings ##########
 #####################################
-# See <https://docs.djangoproject.com/en/3.2/ref/settings/>
+# See <https://docs.djangoproject.com/en/5.2/ref/settings/>
 # for more info and help. If you are stuck, you can try Googling about
 # Django - many of these settings below have external documentation about them.
 #
@@ -24,7 +24,7 @@ INSTALLED_APPS += (
 )
 
 # Caching. You can use memcached or redis instead.
-# Documentation: <https://docs.djangoproject.com/en/3.2/topics/cache/>
+# Documentation: <https://docs.djangoproject.com/en/5.2/topics/cache/>
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
@@ -32,7 +32,7 @@ CACHES = {
 }
 
 # Your database credentials. Only MySQL is supported by DMOJ.
-# Documentation: <https://docs.djangoproject.com/en/3.2/ref/databases/>
+# Documentation: <https://docs.djangoproject.com/en/5.2/ref/databases/>
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -40,6 +40,8 @@ DATABASES = {
         'USER': 'dmoj',
         'PASSWORD': '<mariadb user password>',
         'HOST': '127.0.0.1',
+        'CONN_MAX_AGE': 60,
+        'CONN_HEALTH_CHECKS': True,
         'OPTIONS': {
             'charset': 'utf8mb4',
             'sql_mode': 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION',
@@ -48,11 +50,11 @@ DATABASES = {
 }
 
 # Sessions.
-# Documentation: <https://docs.djangoproject.com/en/3.2/topics/http/sessions/>
+# Documentation: <https://docs.djangoproject.com/en/5.2/topics/http/sessions/>
 #SESSION_ENGINE = 'django.contrib.sessions.backends.cached_db'
 
 # Internationalization.
-# Documentation: <https://docs.djangoproject.com/en/3.2/topics/i18n/>
+# Documentation: <https://docs.djangoproject.com/en/5.2/topics/i18n/>
 LANGUAGE_CODE = 'en-ca'
 DEFAULT_USER_TIME_ZONE = 'America/Toronto'
 USE_I18N = True
@@ -74,7 +76,7 @@ STATICFILES_FINDERS += ('compressor.finders.CompressorFinder',)
 #########################################
 ########## Email configuration ##########
 #########################################
-# See <https://docs.djangoproject.com/en/3.2/topics/email/#email-backends>
+# See <https://docs.djangoproject.com/en/5.2/topics/email/#email-backends>
 # for more documentation. You should follow the information there to define
 # your email settings.
 
@@ -116,7 +118,7 @@ SERVER_EMAIL = 'DMOJ: Modern Online Judge <errors@dmoj.ca>'
 ################################################
 ########## Static files configuration ##########
 ################################################
-# See <https://docs.djangoproject.com/en/3.2/howto/static-files/>.
+# See <https://docs.djangoproject.com/en/5.2/howto/static-files/>.
 
 # Change this to somewhere more permanent, especially if you are using a
 # webserver to serve the static files. This is the directory where all the
@@ -166,7 +168,7 @@ BAD_MAIL_PROVIDERS = set()
 # Uncomment to enable live updating.
 #EVENT_DAEMON_USE = True
 
-# Uncomment this section to use websocket/daemon.js included in the site.
+# Uncomment this section to use websocket/daemon.py (Python/aiohttp) included in the site.
 #EVENT_DAEMON_POST = '<ws:// URL to post to>'
 
 # If you are using the defaults from the guide, it is this:
@@ -255,7 +257,7 @@ TIMEZONE_MAP = 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Blue_M
 
 
 ## ======== Logging Settings ========
-# Documentation: https://docs.djangoproject.com/en/3.2/ref/settings/#logging
+# Documentation: https://docs.djangoproject.com/en/5.2/ref/settings/#logging
 #                https://docs.python.org/3/library/logging.config.html#configuration-dictionary-schema
 LOGGING = {
     'version': 1,
@@ -271,7 +273,7 @@ LOGGING = {
     'handlers': {
         # You may use this handler as an example for logging to other files.
         'bridge': {
-            'level': 'INFO',
+            'level': 'WARNING',
             'class': 'logging.handlers.RotatingFileHandler',
             'filename': '<desired bridge log path>',
             'maxBytes': 10 * 1024 * 1024,
@@ -283,7 +285,7 @@ LOGGING = {
             'class': 'dmoj.throttle_mail.ThrottledEmailHandler',
         },
         'console': {
-            'level': 'DEBUG',
+            'level': 'WARNING',
             'class': 'logging.StreamHandler',
             'formatter': 'file',
         },
@@ -298,12 +300,13 @@ LOGGING = {
         # Judging logs as received by bridged.
         'judge.bridge': {
             'handlers': ['bridge', 'mail_admins'],
-            'level': 'INFO',
+            'level': 'WARNING',
             'propagate': True,
         },
         # Catch all logs to stderr.
         '': {
             'handlers': ['console'],
+            'level': 'WARNING',
         },
         # Other loggers of interest. Configure at will.
         #  - judge.user: logs naughty user behaviours.
